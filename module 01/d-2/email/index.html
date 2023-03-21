@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Mail</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        font-size: 12px;
+      }
+
+      .mail {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #f0f0f0;
+        padding: 0 30px;
+        table-layout: fixed;
+        border-spacing: 0 30px;
+      }
+
+      .mail__header {
+        text-align: center;
+        padding: 30px 0;
+      }
+
+      .mail__header:nth-child(1n) {
+        width: 33.3%;
+      }
+
+      .mail__header-title {
+        text-align: left;
+      }
+
+      .mail__header-link {
+        text-align: right;
+      }
+
+      .mail__header-link-content {
+        text-decoration: none;
+      }
+
+      .promo-container {
+        border-radius: 5px;
+        background-color: #ffff;
+      }
+
+      .mail__promo {
+        width: 100%;
+        border-spacing: 0;
+      }
+
+      .mail__promo-img {
+        padding-bottom: 30px;
+      }
+
+      .mail__promo-title {
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 100%;
+        color: #4a545e;
+        padding: 0 30px 20px;
+      }
+
+      .mail__promo-text {
+        font-size: 18px;
+        line-height: 140%;
+        color: rgba(74, 84, 94, 0.7);
+        padding: 0 30px 45px;
+      }
+
+      .mail__promo-link {
+        padding: 0 30px 40px;
+      }
+
+      .mail__promo-link-content {
+        display: block;
+        width: 100%;
+        background-color: #dd1e35;
+        padding: 16px 0;
+        text-align: center;
+        color: #ffff;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 18px;
+        border-radius: 5px;
+      }
+
+      .mail__promo-img-content {
+        width: 100%;
+      }
+
+      .company-container {
+        padding-top: 80px;
+      }
+
+      .mail__company {
+        width: 100%;
+        text-align: center;
+        border-spacing: 0 15px;
+        font-size: 12px;
+        line-height: 120%;
+        color: rgba(74, 84, 94, 0.5);
+        border-bottom: 1px solid rgba(74, 84, 94, 0.2);
+      }
+
+      .sm-link {
+        display: inline-block;
+      }
+
+      .sm-link:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      .mail__company-link-content {
+        text-decoration: none;
+      }
+
+      .mail__contacts {
+        padding: 15px 0;
+        text-align: center;
+      }
+
+      .mail__contacts-item {
+        display: inline-block;
+      }
+
+      .mail__contacts-item:not(:last-child) {
+        margin-right: 30px;
+      }
+
+      .contacts-img {
+        vertical-align: middle;
+      }
+
+      .contacts-number {
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+        color: #4a545e;
+        line-height: 120%;
+        display: inline-block;
+        margin-left: 10px;
+        height: 100%;
+        vertical-align: middle;
+      }
+
+      .mail__footer tr:nth-child(1n) {
+        border-top: 1px solid rgba(74, 84, 94, 0.2);
+      }
+
+      .mail__footer-logo {
+        text-align: left;
+      }
+
+      .mail__footer-logo-content {
+        width: 48px;
+        height: 40px;
+      }
+
+      .mail__footer-link {
+        text-align: right;
+      }
+
+      .mail__footer-link-content {
+        text-decoration: none;
+        font-size: 12px;
+        line-height: 120%;
+      }
+
+      .link_red {
+        color: #dd1e35;
+      }
+
+      @media screen and (max-width: 599px) {
+        .mail {
+          padding: 0 15px;
+        }
+
+        .mail__header {
+          display: none;
+        }
+
+        .mail__header-mobile {
+          display: table-row;
+          width: 100%;
+        }
+
+        .mail__header-mobile-table {
+          text-align: center;
+          table-layout: fixed;
+          width: 100%;
+          border-spacing: 5px;
+        }
+
+        .company-container {
+          padding-top: 60px;
+        }
+
+        .mail__header-mobile-logo {
+          padding-bottom: 10px;
+        }
+
+        .mail__contacts-item {
+          display: block;
+        }
+
+        .mail__contacts-item:not(:last-child) {
+          margin-right: 0px;
+          margin-bottom: 15px;
+        }
+
+        .mail__promo-title {
+          font-size: 32px;
+          padding: 0 15px 20px;
+        }
+
+        .mail__promo-text {
+          font-size: 16px;
+          padding: 0 15px 45px;
+        }
+
+        .mail__promo-link {
+          padding: 0 15px 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <table class="mail" cellspacing="0">
+      <tr class="mail__header">
+        <td class="mail__header-title" colspan="3">Интернет-магазин</td>
+        <td class="mail__header-logo">
+          <a href="http://shop-delfa.by" target="_blank" rel="nofollow"
+            ><img src="images/logo.png" alt="logo"
+          /></a>
+        </td>
+        <td class="mail__header-link">
+          <a
+            class="mail__header-link-content"
+            href="http://delfa.by/"
+            target="_blank"
+            rel="nofollow"
+          >
+            <span class="link link_red">shop-delfa.by</span>
+          </a>
+        </td>
+      </tr>
+      <tr class="mail__header-mobile">
+        <td colspan="3">
+          <table class="mail__header-mobile-table">
+            <tr>
+              <td class="mail__header-mobile-logo">
+                <a href="http://shop-delfa.by" target="_blank" rel="nofollow"
+                  ><img src="images/logo.png" alt="logo"
+                /></a>
+              </td>
+            </tr>
+            <tr>
+              <td class="mail__header-mobile-title">Интернет-магазин</td>
+            </tr>
+            <tr>
+              <td class="mail__header-mobile-link">
+                <a
+                  class="mail__header-link-content"
+                  href="http://delfa.by/"
+                  target="_blank"
+                  rel="nofollow"
+                >
+                  <span class="link link_red">shop-delfa.by</span>
+                </a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="promo-container" colspan="3">
+          <table class="mail__promo">
+            <tr>
+              <td class="mail__promo-img">
+                <img class="mail__promo-img-content" src="images/main.png" />
+              </td>
+            </tr>
+            <tr>
+              <td class="mail__promo-title">
+                Ткани для штор со склада и на заказ
+              </td>
+            </tr>
+            <tr>
+              <td class="mail__promo-text">
+                6 500 наименований тканей для штор всех мыслимых оттенков и
+                характеристик, оригинальных текстур и плетения, и неизменно
+                высокого качества удовлетворят любые вкусы и желания наших
+                клиентов: от среднебюджетных до абсолютно элитных моделей, от
+                тканей повседневного спроса до тканей экстравагантных, от стиля
+                рококо до «хай тек».
+              </td>
+            </tr>
+            <tr>
+              <td class="mail__promo-link">
+                <a
+                  class="mail__promo-link-content"
+                  href="http://shop-delfa.by"
+                  target="_blank"
+                  rel="nofollow"
+                  >Смотреть на сайте
+                </a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="company-container" colspan="3">
+          <table class="mail__company">
+            <tr>
+              <td class="mail__company-sm">
+                <a
+                  class="sm-link"
+                  href="http://vk.com"
+                  target="_blank"
+                  rel="nofollow"
+                  ><img src="images/vk_ico.png" alt="vk"
+                /></a>
+                <a
+                  class="sm-link"
+                  href="http://instagram.com"
+                  target="_blank"
+                  rel="nofollow"
+                  ><img src="images/instagram_ico.png" alt="instagram"
+                /></a>
+                <a
+                  class="sm-link"
+                  href="http://youtube.com"
+                  target="_blank"
+                  rel="nofollow"
+                  ><img src="images/youtube_ico.png" alt="youtube"
+                /></a>
+              </td>
+            </tr>
+            <tr>
+              <td class="mail__company-name">
+                © Совместное белорусско-германское предприятие "Дельфа" общество
+                с ограниченной ответственностью СП "Дельфа". Все права защищены
+              </td>
+            </tr>
+            <tr>
+              <td class="mail__company-requisites">
+                УНП 200307272, свидетельство о регистрации выдано Министерством
+                внешних экономических связей Республики Беларусь. Регистрация в
+                торговом реестре РБ № 357501 от 4 ноября 2016 г. Юр. адрес: РБ,
+                Брестская обл., г. Барановичи, ул. Репина , д. 67А.
+              </td>
+            </tr>
+            <tr>
+              <td class="mail__company-link">
+                <a
+                  class="mail__company-link-content"
+                  href="http://shop-delfa.by"
+                  target="_blank"
+                  rel="nofollow"
+                  ><span class="link link_red">shop-delfa.by</span>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td class="mail__contacts">
+                <div class="mail__contacts-item">
+                  <img class="contacts-img" src="images/a1_ico.png" />
+                  <a class="contacts-number" href="tel:8 044 559-00-44"
+                    >8 044 559-00-44</a
+                  >
+                </div>
+                <div class="mail__contacts-item">
+                  <img class="contacts-img" src="images/mts_ico.png" />
+                  <a class="contacts-number" href="tel:8 029 859-69-59"
+                    >8 029 859-69-59</a
+                  >
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tfoot class="mail__footer">
+        <tr>
+          <td class="mail__footer-logo">
+            <a href="http://shop-delfa.by" target="_blank" rel="nofollow"
+              ><img
+                class="mail__footer-logo-content"
+                src="images/logo.png"
+                alt="logo"
+            /></a>
+          </td>
+          <td class="mail__footer-link" colspan="2">
+            <a
+              class="mail__footer-link-content"
+              href="http://shop-delfa.by"
+              target="_blank"
+              rel="nofollow"
+              ><span class="link link_red">Отписаться от рассылки</span></a
+            >
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
