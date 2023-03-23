@@ -1,0 +1,108 @@
+@font-face {
+  font-family: 'Sequel Sans Black Body';
+  src: url('../assets/fonts/SequelSans-BlackBody.woff2') format('woff2'),
+      url('../assets/fonts/SequelSans-BlackBody.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sequel Sans Semi Bold Body';
+  src: url('./assets/fonts/SequelSans-SemiBoldBody.woff2') format('woff2'),
+      url('./assets/fonts/SequelSans-SemiBoldBody.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sequel Sans Semi Bold Body';
+  src: url('../assets/fonts/SequelSans-SemiBoldBody.woff2') format('woff2'),
+      url('../assets/fonts/SequelSans-SemiBoldBody.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sequel Sans Bold Body';
+  src: url('./assets/fonts/SequelSans-BoldBody.woff2') format('woff2'),
+      url('./assets/fonts/SequelSans-BoldBody.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sequel Sans Medium Body';
+  src: url('./assets/fonts/SequelSans-MediumBody.woff2') format('woff2'),
+      url('./assets/fonts/SequelSans-MediumBody.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sequel Sans Black Body';
+  src: url('../assets/fonts/SequelSans-BlackBody.woff2') format('woff2'),
+      url('../assets/fonts/SequelSans-BlackBody.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sequel Sans Medium Body';
+  src: url('./assets/fonts/SequelSans-MediumBody.woff2') format('woff2'),
+      url('./assets/fonts/SequelSans-MediumBody.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sequel Sans Medium Body';
+  src: url('./assets/fonts/SequelSans-MediumBody.woff2') format('woff2'),
+      url('./assets/fonts/SequelSans-MediumBody.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sequel Sans Bold Body';
+  src: url('./assets/fonts/SequelSans-BoldBody.woff2') format('woff2'),
+      url('./assets/fonts/SequelSans-BoldBody.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sequel Sans Bold Body';
+  src: url('../assets/fonts/SequelSans-BoldBody.woff2') format('woff2'),
+      url('../assets/fonts/SequelSans-BoldBody.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sequel Sans Black Body';
+  src: url('../assets/fonts/SequelSans-BlackBody.woff2') format('woff2'),
+      url('../assets/fonts/SequelSans-BlackBody.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sequel Sans Semi Bold Body';
+  src: url('../assets/fonts/SequelSans-SemiBoldBody.woff2') format('woff2'),
+      url('../assets/fonts/SequelSans-SemiBoldBody.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+

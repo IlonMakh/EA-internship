@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>NFT</title>
+  </head>
+  <body>
+    <section class="contact">
+      <h2 class="contact__title">contact</h2>
+      <div class="contact__container">
+        <img class="contact__border" src="assets/images/border.png" />
+        <div class="contact__message">
+          <h3 class="contact__message-title">Leave us a&nbsp;message!</h3>
+          <p class="contact__message-subtitle">share your ideas with us</p>
+        </div>
+        <form class="contact__form" name="contact" method="POST">
+          <div class="contact__form-item">
+            <label class="contact__form-label" for="name"
+              >Name<sup class="required">*</sup></label
+            >
+            <input
+              class="contact__form-input"
+              id="name"
+              name="name"
+              placeholder="Phillip Patek"
+              autocomplete="off"
+            />
+          </div>
+          <div class="contact__form-item">
+            <label class="contact__form-label" for="email"
+              >Email<sup class="required">*</sup></label
+            >
+            <input
+              class="contact__form-input"
+              id="email"
+              name="email"
+              placeholder="PhillipPatek@gmail.com"
+              autocomplete="off"
+            />
+          </div>
+          <div class="contact__form-item" class="contact__form-item">
+            <label class="contact__form-label" for="message">your text</label>
+            <textarea
+              class="contact__form-textarea"
+              id="message"
+              name="message"
+              placeholder="Text here"
+            ></textarea>
+          </div>
+          <div class="contact__form-btn-container">
+            <button class="contact__form-btn" type="submit">send</button>
+            <div class="contact__form-btn-part">
+              <img class="contact__form-btn-border" src="assets/images/border_btn.png" alt="">
+              <svg class="contact__form-btn-arrow" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 12.5L4.5 12.5V15.5L6 15.5V12.5ZM22 15.5C22.8284 15.5 23.5 14.8284 23.5 14C23.5 13.1716 22.8284 12.5 22 12.5V15.5ZM6 15.5L22 15.5V12.5L6 12.5V15.5Z" fill="currentColor"/>
+                <path d="M14 6L22 14L14 22" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="round"/>
+                </svg>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <svg class="svg">
+      <clipPath id="contacts-clip-path" clipPathUnits="objectBoundingBox">
+        <path
+          d="M0.004,0.818 L0.029,0.87 C0.032,0.875,0.036,0.879,0.039,0.879 H0.331 C0.336,0.879,0.341,0.885,0.344,0.895 L0.365,0.984 C0.368,0.994,0.373,1,0.378,1 H0.623 C0.628,1,0.633,0.993,0.636,0.983 L0.655,0.896 C0.657,0.885,0.663,0.879,0.668,0.879 H0.961 C0.965,0.879,0.969,0.875,0.971,0.87 L0.996,0.818 C0.999,0.813,1,0.805,1,0.798 V0.081 C1,0.073,0.998,0.066,0.996,0.06 L0.971,0.009 C0.968,0.003,0.964,0,0.961,0 H0.656 C0.65,0,0.645,0.007,0.643,0.018 L0.635,0.055 C0.633,0.065,0.628,0.072,0.622,0.072 H0.378 C0.372,0.072,0.367,0.066,0.365,0.056 L0.355,0.016 C0.353,0.006,0.348,0,0.343,0 H0.039 C0.036,0,0.032,0.003,0.029,0.009 L0.004,0.06 C0.002,0.066,0,0.073,0,0.081 V0.798 C0,0.805,0.002,0.813,0.004,0.818"
+        ></path>
+      </clipPath>
+    </svg>
+    <svg class="svg">
+      <clipPath id="input-clip-path" clipPathUnits="objectBoundingBox">
+        <path
+          d="M0.016,1 H0.957 C0.961,1,0.965,0.987,0.968,0.963 L0.995,0.755 C0.998,0.732,1,0.7,1,0.667 V0.125 C1,0.056,0.993,0,0.984,0 H0.043 C0.039,0,0.035,0.013,0.032,0.037 L0.005,0.245 C0.002,0.268,0,0.3,0,0.333 V0.875 C0,0.944,0.007,1,0.016,1"
+        ></path>
+      </clipPath>
+    </svg>
+    <svg class="svg">
+      <clipPath id="btn-clip-path" clipPathUnits="objectBoundingBox">
+        <path
+          d="M0,0.313 V0.882 C0,0.947,0.014,1,0.031,1 H0.918 C0.926,1,0.934,0.988,0.94,0.966 L0.991,0.77 C0.997,0.748,1,0.718,1,0.687 V0.118 C1,0.053,0.986,0,0.969,0 H0.082 C0.074,0,0.066,0.012,0.06,0.034 L0.009,0.23 C0.003,0.252,0,0.282,0,0.313"
+        ></path>
+      </clipPath>
+    </svg>
+    <svg class="svg">
+      <clipPath id="part-clip-path" clipPathUnits="objectBoundingBox">
+        <path
+          d="M0.026,1 L0.147,0.837 C0.166,0.809,0.176,0.773,0.176,0.735 V0.123 C0.176,0.068,0.208,0.023,0.247,0.023 H0.953 C0.993,0.023,1,0.068,1,0.123 V0.718 C1,0.745,1,0.77,1,0.789 L0.857,0.994 C0.843,1,0.825,1,0.807,1 H0.03 C0.025,1,0.023,1,0.026,1"
+        ></path>
+      </clipPath>
+    </svg>
+  </body>
+</html>

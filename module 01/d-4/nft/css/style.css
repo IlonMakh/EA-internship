@@ -1,0 +1,253 @@
+@import url(fonts.css);
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "Sequel Sans Medium Body", sans-serif;
+  background-color: #14183d;
+  color: #ffff;
+}
+
+input,
+textarea {
+  border: none;
+  outline: none;
+  font-family: "Sequel Sans Medium Body", sans-serif;
+}
+
+button {
+  border: none;
+}
+
+.contact {
+  width: 100vw;
+}
+
+.contact__container {
+  margin: 0 auto;
+  margin-top: 6rem;
+  padding: 9rem 9rem 19.5rem;
+  width: 86.9vw;
+  background: linear-gradient(
+    180deg,
+    rgba(29, 38, 114, 0.6) 0%,
+    rgba(21, 25, 62, 0) 102.82%
+  );
+  height: 815px;
+  clip-path: url(#contacts-clip-path);
+  position: relative;
+  z-index: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact__title {
+  position: absolute;
+  top: 8rem;
+  left: calc(50% - 11rem / 2);
+  font-size: 1.4rem;
+  line-height: 120%;
+  letter-spacing: 0.9em;
+  text-transform: uppercase;
+  z-index: 3;
+}
+
+.contact__title::after {
+  content: "";
+  display: block;
+  width: 12rem;
+  height: 0.1rem;
+  background-color: #a5f659;
+  position: absolute;
+  top: 2.5rem;
+  left: calc(50% - 13rem / 2);
+}
+
+.contact__border {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.contact__message {
+  max-width: 26.2vw;
+}
+
+.contact__message-title {
+  font-family: "Sequel Sans Black Body", sans-serif;
+  font-size: 8rem;
+  line-height: 125%;
+  letter-spacing: 0.02em;
+  margin-bottom: 3.2rem;
+}
+
+.contact__message-subtitle {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 120%;
+  letter-spacing: 0.85em;
+  text-transform: uppercase;
+}
+
+.contact__form {
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  z-index: 2;
+}
+
+.contact__form-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.contact__form-item:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+.contact__form-label {
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 120%;
+  letter-spacing: 0.9em;
+  text-transform: uppercase;
+  padding-left: 2.5rem;
+}
+
+.contact__form-input,
+.contact__form-textarea {
+  width: 25.8vw;
+  padding: 2rem 2.5rem;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 120%;
+  letter-spacing: 0.03em;
+  background-color: #101345;
+  color: rgba(255, 255, 255, 0.8);
+  caret-color: rgba(255, 255, 255, 0.8);
+  clip-path: url(#input-clip-path);
+}
+
+.contact__form-input::-webkit-input-placeholder {
+  text-indent: 0px;
+  transition: text-indent 0.3s ease;
+}
+.contact__form-input::-moz-placeholder {
+  text-indent: 0px;
+  transition: text-indent 0.3s ease;
+}
+.contact__form-input:-moz-placeholder {
+  text-indent: 0px;
+  transition: text-indent 0.3s ease;
+}
+.contact__form-input:-ms-input-placeholder {
+  text-indent: 0px;
+  transition: text-indent 0.3s ease;
+}
+.contact__form-input:focus::-webkit-input-placeholder {
+  text-indent: -50%;
+  transition: text-indent 0.3s ease;
+}
+.contact__form-input:focus::-moz-placeholder {
+  text-indent: -50%;
+  transition: text-indent 0.3s ease;
+}
+.contact__form-input:focus:-moz-placeholder {
+  text-indent: -50%;
+  transition: text-indent 0.3s ease;
+}
+.contact__form-input:focus:-ms-textarea-placeholder {
+  text-indent: -50%;
+  transition: text-indent 0.3s ease;
+}
+
+.contact__form-textarea::placeholder,
+.contact__form-input::placeholder {
+  font-family: "Sequel Sans Medium Body", sans-serif;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.contact__form-textarea {
+  height: 12rem;
+}
+
+.contact__form-textarea::placeholder {
+  text-indent: 0px;
+  transition: text-indent 0.3s ease;
+}
+
+.contact__form-textarea:focus::placeholder {
+  text-indent: -50%;
+  transition: text-indent 0.3s ease;
+}
+
+.required {
+  color: #a90000;
+  font-size: 2rem;
+  line-height: 120%;
+}
+
+.contact__form-btn-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.contact__form-btn {
+  padding: 2.4rem 10.2rem;
+  background-color: #a5f659;
+  font-family: "Sequel Sans Semi Bold Body", sans-serif;
+  font-size: 1.8rem;
+  line-height: 120%;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #16183d;
+  clip-path: url(#btn-clip-path);
+  position: relative;
+}
+
+
+.contact__form-btn-part {
+  width: 9.5rem;
+  height: 6.95rem;
+  top: 0;
+  left: -1rem;
+  clip-path: url(#part-clip-path);
+  position: relative;
+  z-index: 3;
+  color: #ffff;
+  transition: all 1s;
+}
+
+.contact__form-btn-border {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 1px;
+  left: 1px;
+}
+
+.contact__form-btn-arrow {
+  position: absolute;
+  top: calc(50% - 2.8rem/2);
+  left: calc(55% - 2.8rem/2);
+}
+
+.contact__form-btn:hover + .contact__form-btn-part {
+  background-color: #a5f659;
+  color: #16183d;
+}
