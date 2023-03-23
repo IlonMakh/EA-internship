@@ -41,7 +41,6 @@ button {
     rgba(29, 38, 114, 0.6) 0%,
     rgba(21, 25, 62, 0) 102.82%
   );
-  height: 815px;
   clip-path: url(#contacts-clip-path);
   position: relative;
   z-index: 0;
@@ -143,19 +142,19 @@ button {
 }
 
 .contact__form-input::-webkit-input-placeholder {
-  text-indent: 0px;
+  text-indent: 0;
   transition: text-indent 0.3s ease;
 }
 .contact__form-input::-moz-placeholder {
-  text-indent: 0px;
+  text-indent: 0;
   transition: text-indent 0.3s ease;
 }
 .contact__form-input:-moz-placeholder {
-  text-indent: 0px;
+  text-indent: 0;
   transition: text-indent 0.3s ease;
 }
 .contact__form-input:-ms-input-placeholder {
-  text-indent: 0px;
+  text-indent: 0;
   transition: text-indent 0.3s ease;
 }
 .contact__form-input:focus::-webkit-input-placeholder {
@@ -186,7 +185,7 @@ button {
 }
 
 .contact__form-textarea::placeholder {
-  text-indent: 0px;
+  text-indent: 0;
   transition: text-indent 0.3s ease;
 }
 
@@ -237,8 +236,8 @@ button {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 1px;
-  left: 1px;
+  top: .1rem;
+  left: .1rem;
 }
 
 .contact__form-btn-arrow {
