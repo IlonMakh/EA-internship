@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'Rex';
+    src: url('../assets/fonts/RexLight.woff2') format('woff2'),
+        url('../assets/fonts/RexLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rex Bold';
+    src: url('../assets/fonts/RexBold.woff2') format('woff2'),
+        url('../assets/fonts/RexBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rex Bold Inline';
+    src: url('../assets/fonts/RexBoldInline.woff2') format('woff2'),
+        url('../assets/fonts/RexBoldInline.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rex';
+    src: url('../assets/fonts/RexBold.woff2') format('woff2'),
+        url('../assets/fonts/RexBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rex Bold Inline';
+    src: url('../assets/fonts/RexBoldInline.woff2') format('woff2'),
+        url('../assets/fonts/RexBoldInline.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rex';
+    src: url('../assets/fonts/RexLight.woff2') format('woff2'),
+        url('../assets/fonts/RexLight.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+

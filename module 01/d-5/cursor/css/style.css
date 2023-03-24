@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@import url(fonts.css);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.4rem;
+  background-color: #040504;
+  color: #ffff;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.test {
+  margin: 0 auto;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  gap: 5rem;
+  width: fit-content;
+}
+
+.test__hero {
+  background-color: #151715;
+  position: relative;
+  width: fit-content;
+}
+
+.test__hero::after {
+  content: "vehicles";
+  width: 100%;
+  text-align: center;
+  display: block;
+  font-family: "Rex Bold", sans-serif;
+  font-size: 3.2rem;
+  position: absolute;
+  bottom: 2rem;
+}
+
+.test__nav-ul {
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+  color: #abacab;
+}
+
+.test__characters {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.test__characters-title {
+  font-family: "Rex Bold", sans-serif;
+  font-size: 3.2rem;
+  letter-spacing: -0.02em;
+}
+
+.test__characters-link {
+  color: #fe3a3a;
+}
+
+.test__nav2-ul {
+  display: flex;
+  align-items: center;
+  gap: 6rem;
+  color: #abacab;
+}
+
+.test__nav2-ul .link {
+  padding: 1.6rem;
+  color: #828282;
+}
+
+.test__nav2-ul .link_active {
+  color: #ffff;
+  position: relative;
+}
+
+.test__nav2-ul .link_active::after {
+  content: '';
+  display: block;
+  width: .8rem;
+  height: .8rem;
+  border-radius: 50%;
+  background-color:#fe3a3a;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - .8rem/2);
+}
+
+.test__idea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.test__idea-title {
+  font-family: "Rex Bold", sans-serif;
+  font-size: 10rem;
+  letter-spacing: -0.02em;
+}
+
+.test__idea-link {
+  color: #fe3a3a;
+  font-size: 1.6rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+}
+
+.test__weapon {
+  position: relative;
+}
+
+.test__weapon::after {
+  content: "weapons";
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  display: block;
+  font-family: "Rex Bold", sans-serif;
+  font-size: 4.8rem;
+  line-height: 100%;
+  position: absolute;
+  top: calc(50% - 4.8rem/2);
+}
+
+.test__pagination-btn {
+  display: flex;
+  align-items: center;
+  gap: 5.5rem;
+  background-color: transparent;
+  border: none;
+  padding: .4rem 0;
+  color: #ffff;
+}
+
+.test__to-top-btn {
+  display: flex;
+  align-items: center;
+  gap: 5.5rem;
+  background-color: transparent;
+  border: none;
+  color: #abacab;
+}
