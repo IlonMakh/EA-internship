@@ -52,6 +52,7 @@ button {
   position: relative;
   width: fit-content;
   transition: all 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 .test__hero:hover {
