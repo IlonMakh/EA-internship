@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Bootstrap grid</title>
+  </head>
+  <body>
+    <header class="header">
+      <img class="header__logo" src="assets/icons/logo.png" alt="logo" />
+    </header>
+    <main>
+      <section class="advantages">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-xxl-12 col-xl-12 col-md-10">
+              <h2 class="advantages__title">The Advanced Commitment</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-xxl-4 col-xl-6 col-md-10">
+              <div class="advantages__card">
+                <img
+                  class="advantages__card-img"
+                  src="assets/icons/healthcare.svg"
+                  alt="healthcare"
+                />
+                <h5 class="advantages__card-title">Patient-Focused Care</h5>
+                <p class="advantages__card-text">
+                  Our mission is to help our Texas patients choose the right
+                  treatments to achieve their goals, deliver a comfortable and
+                  rewarding treatment experience, and restore your confidence by
+                  producing consistently dramatic, natural-looking, and stunning
+                  results.
+                </p>
+              </div>
+            </div>
+            <div class="col-12 col-xxl-4 col-xl-6 col-md-10">
+              <div class="advantages__card">
+                <img
+                  class="advantages__card-img"
+                  src="assets/icons/protection.svg"
+                  alt="protection"
+                />
+                <h5 class="advantages__card-title">
+                  Fully Accredited Surgical Center
+                </h5>
+                <p class="advantages__card-text">
+                  Our private, state-of-the-art surgical suite meets the highest
+                  safety standards in the industry and is accredited by the
+                  American Association for Accreditation of Ambulatory Surgery
+                  Facilities (AAAASF).
+                </p>
+              </div>
+            </div>
+            <div class="col-xxl-4 col-xl-6 col-md-10">
+              <div class="advantages__card">
+                <img
+                  class="advantages__card-img"
+                  src="assets/icons/technology.svg"
+                  alt="technology"
+                />
+                <h5 class="advantages__card-title">Advanced Technology</h5>
+                <p class="advantages__card-text">
+                  Our surgeon uses the latest technology and state-of-the-art
+                  techniques so we can produce the best possible results. From
+                  the full range of breast implant options to non-invasive
+                  injectable treatments, we can enhance your appearance safely
+                  and comfortably.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="offer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-xxl-6">
+              <div class="offer__info">
+                <h6 class="offer__info-suptitle">OUR PROCEDURES</h6>
+                <h5 class="offer__info-title">What We Offer</h5>
+                <div class="offer__info-text">
+                  <p class="offer__info-text-p">
+                    Our surgeons include Dr. Paul Feldman, Dr. Edward Gronka,
+                    Dr. Joseph Raniere, and Dr. Joel Stewart – all of whom are
+                    Board Certified plastic surgeons.
+                  </p>
+                  <p class="offer__info-text-p">
+                    Each of our surgeons uphold the highest level of patient
+                    care and support the vision to provide the Atlanta community
+                    with a facility where they can achieve their aesthetic
+                    goals. Many of our procedures can even be combined together
+                    in order to help you save money and ease recovery time –
+                    we’re here to provide treatment in a way that suits you in
+                    the most efficient way possible.
+                  </p>
+                  <p class="offer__info-text-p">
+                    We offer a variety of face, breast and body procedures that
+                    include:
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-xxl-6">
+              <div class="offer__procedures">
+                <nav class="offer__procedures-nav">
+                  <div class="nav nav_tabs" id="nav-tab" role="tablist">
+                    <button
+                      class="offer__procedures-nav-btn"
+                      id="nav-body-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#nav-body"
+                      type="button"
+                      role="tab"
+                      aria-controls="nav-body"
+                      aria-selected="true"
+                    >
+                      body
+                    </button>
+                    <button
+                      class="offer__procedures-nav-btn"
+                      id="nav-breast-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#nav-breast"
+                      type="button"
+                      role="tab"
+                      aria-controls="nav-breast"
+                      aria-selected="true"
+                    >
+                      breast
+                    </button>
+                    <button
+                      class="offer__procedures-nav-btn"
+                      id="nav-face-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#nav-face"
+                      type="button"
+                      role="tab"
+                      aria-controls="nav-face"
+                      aria-selected="true"
+                    >
+                      face
+                    </button>
+                    <button
+                      class="offer__procedures-nav-btn active"
+                      id="nav-mens-tab"
+                      data-bs-toggle="tab"
+                      data-bs-target="#nav-mens"
+                      type="button"
+                      role="tab"
+                      aria-controls="nav-mens"
+                      aria-selected="true"
+                    >
+                      mens
+                    </button>
+                  </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                  <table
+                    class="tab-pane fade"
+                    id="nav-body"
+                    role="tabpanel"
+                    aria-labelledby="nav-body-tab"
+                  >
+                    <tr>
+                      <td>body</td>
+                      <td>body</td>
+                      <td>body</td>
+                    </tr>
+                    <tr>
+                      <td>body</td>
+                      <td>body</td>
+                      <td>body</td>
+                    </tr>
+                    <tr>
+                      <td>body</td>
+                      <td>body</td>
+                      <td>body</td>
+                    </tr>
+                    <tr>
+                      <td>body</td>
+                      <td>body</td>
+                      <td>body</td>
+                    </tr>
+                  </table>
+                  <table
+                    class="tab-pane fade"
+                    id="nav-breast"
+                    role="tabpanel"
+                    aria-labelledby="nav-breast-tab"
+                  >
+                    <tr>
+                      <td>breast</td>
+                      <td>breast</td>
+                      <td>breast</td>
+                    </tr>
+                    <tr>
+                      <td>breast</td>
+                      <td>breast</td>
+                      <td>breast</td>
+                    </tr>
+                    <tr>
+                      <td>breast</td>
+                      <td>breast</td>
+                      <td>breast</td>
+                    </tr>
+                    <tr>
+                      <td>breast</td>
+                      <td>breast</td>
+                      <td>breast</td>
+                    </tr>
+                  </table>
+                  <table
+                    class="tab-pane active fade show"
+                    id="nav-face"
+                    role="tabpanel"
+                    aria-labelledby="nav-face-tab"
+                  >
+                    <tr>
+                      <td>face</td>
+                      <td>face</td>
+                      <td>face</td>
+                    </tr>
+                    <tr>
+                      <td>face</td>
+                      <td>face</td>
+                      <td>face</td>
+                    </tr>
+                    <tr>
+                      <td>face</td>
+                      <td>face</td>
+                      <td>face</td>
+                    </tr>
+                    <tr>
+                      <td>face</td>
+                      <td>face</td>
+                      <td>face</td>
+                    </tr>
+                  </table>
+                  <table
+                    class="tab-pane fade"
+                    id="nav-mens"
+                    role="tabpanel"
+                    aria-labelledby="nav-mens-tab"
+                  >
+                    <tr>
+                      <td>mens</td>
+                      <td>mens</td>
+                      <td>mens</td>
+                    </tr>
+                    <tr>
+                      <td>mens</td>
+                      <td>mens</td>
+                      <td>mens</td>
+                    </tr>
+                    <tr>
+                      <td>mens</td>
+                      <td>mens</td>
+                      <td>mens</td>
+                    </tr>
+                    <tr>
+                      <td>mens</td>
+                      <td>mens</td>
+                      <td>mens</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="team">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-xxl-8 col-md-8">
+              <div class="team__info">
+                <h5 class="team__info-suptitle">OUR SURGEONS</h5>
+                <h4 class="team__info-title">Who We Are</h4>
+                <p class="team__info-text">
+                  We have over 45 years of combined experience working with
+                  individuals who wish to enhance their bodies.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-xxl-12">
+              <div class="team__cards">
+                <div class="team__card team__card_active">
+                  <h5 class="team__card-title_active">Dr. Edward S. Gronka</h5>
+                  <p class="team__card-text_active">
+                    Tincidunt eget blandit velit a, ultrices diam. At ut enim,
+                    sapien turpis. Augue velit neque elementum dolor aliquam.
+                  </p>
+                </div>
+                <div class="team__card">
+                  <img
+                    class="team__card-img"
+                    src="assets/images/doctor1.png"
+                    alt="doctor"
+                  />
+                  <h5 class="team__card-title">Dr. Joseph Raniere, Jr.</h5>
+                </div>
+                <div class="team__card">
+                  <img
+                    class="team__card-img"
+                    src="assets/images/doctor2.png"
+                    alt="doctor"
+                  />
+                  <h5 class="team__card-title">
+                    Dr. Joel Melford Stewart,&nbsp;Jr.
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-xxl-8">
+              <div class="team__collapse">
+                <button
+                  class="team__collapse-btn"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseExample"
+                  aria-expanded="false"
+                  aria-controls="collapseExample"
+                >
+                  Learn more
+                </button>
+                <div class="collapse" id="collapseExample">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Tempora, quam officiis maiores, deserunt quis itaque
+                    suscipit excepturi vero hic eos, atque numquam incidunt unde
+                    sapiente pariatur quae fugiat? Reprehenderit, modi.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

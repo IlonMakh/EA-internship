@@ -1,0 +1,49 @@
+@import '../components/team-info';
+@import '../components/team-card';
+
+.team {
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2px;
+    row-gap: 4px;
+    align-items: stretch;
+    justify-content: center;
+    margin-bottom: 32px;
+
+    @media (max-width: $breakpoint-md) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__collapse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 16px;
+
+    &-btn {
+      border: none;
+      padding: 24px 30px;
+      color: #fff;
+      font-family: 'Geometria-Bold', sans-serif;
+      font-size: 16px;
+      line-height: 100%;
+      text-transform: uppercase;
+      background-color: $gold;
+      margin-bottom: 20px;
+
+      @media (max-width: $breakpoint-md) {
+        padding: 16px 30px;
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        font-size: 14px;
+      }
+    }
+  }
+
+}
