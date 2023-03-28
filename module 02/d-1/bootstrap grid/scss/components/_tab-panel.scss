@@ -10,10 +10,22 @@
   }
 
   &-nav {
+    width: 100%;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    @media (max-width: $breakpoint-sm) {
+      width: calc(100% - $container-padding * 2);
+    }
+
+    &::-webkit-scrollbar {
+      width: 0; 
+    }
+
     .nav_tabs {
-      border-bottom:  2px solid rgba(0, 0, 0, 0.1);
-      width: fit-content;
       margin-bottom: 32px;
+      display: flex;
     }
 
     &-btn {
@@ -24,6 +36,17 @@
       text-transform: capitalize;
       background-color: inherit;
       padding: 0 16px;
+
+      &::after {
+        content: '';
+        display: block;
+        width: calc(100% + 16px*2);
+        height: 2px;
+        background-color: rgba(0, 0, 0, 0.1);
+        position: relative;
+        bottom: -4px;
+        left: -16px;
+      }
 
       @media(max-width: $breakpoint-md) {
         font-size: 14px;
@@ -46,26 +69,33 @@
   }
   
   .tab-content {
-    table {
-      background-color:#fff;
-      border-collapse: collapse;
+    width: 100%;
+    ul {
+      display: grid;
+      margin: 0 auto;
+      width: 100%;
+      grid-template-rows: auto;
+      grid-template-columns: 33.3%  33.3%  33.3%;
 
-      tr, td {
-        border: 1px solid rgba(0, 0, 0, 0.1);
+      @media(max-width: calc($breakpoint-md - 1px)) {
+        grid-template-columns: 50% 50%;
       }
 
-      td {
-        padding: 53px 0 53px 24px;
-        width: 225px;
+      li {
+        list-style: none;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 53px 24px;
         font-family: 'Geometria-Medium', sans-serif;
         font-size: 16px;
         line-height: 100%;
         color: #0F0F28;
         text-transform: uppercase;
+        word-wrap: break-word;
+        background-color: #ffff;
 
         @media(max-width: $breakpoint-sm) {
           font-size: 14px;
-          padding: 33px 0 33px 42px;
+          padding: 33px 20px 33px 42px;
         }
       }
     }
