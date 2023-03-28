@@ -1,0 +1,80 @@
+.lorem__info {
+  padding-left: calc(89px - $container-padding * 2);
+  position: relative;
+  align-self: center;
+
+  @media (max-width: 1400px) {
+    padding-left:24px;
+  }
+  
+
+  &::before {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 100%;
+    background-color: $gold;
+    position: absolute;
+    top: 0;
+    left: 0px;
+  }
+
+  &-title {
+    font-size: 50px;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: #0F0F28;
+    margin-bottom: 32px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 44px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 32px;
+    }
+  }
+
+  &-text {
+    font-size: 18px;
+    line-height: 140%;
+    color: #0F0F28;
+    opacity: 0.6;
+    margin-bottom: 44px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &-btn {
+    border: none;
+    background-color: $gold;
+
+    &-a {
+      display: block;
+      padding: 24px 30px;
+      color: #fff;
+      font-family: 'Geometria-Bold', sans-serif;
+      font-size: 16px;
+      line-height: 100%;
+      text-transform: uppercase;
+      text-decoration: none;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: 14px;
+        padding: 16px 30px;
+      }
+
+      &:hover {
+        color: #fff;
+      }
+    }
+  }
+}
