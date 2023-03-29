@@ -47,8 +47,10 @@
       padding: 22px 20px;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: #0F0F28;
+      outline: none;
 
       &::before {
         opacity: 0 ;
@@ -85,8 +87,10 @@
       transition: all 0.3s ease-in-out;
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
       color: #ffff;
+      outline: none;
 
       &::before {
         opacity: 0 ;

@@ -5284,6 +5284,7 @@ progress {
 .header__link:hover, .header__link:focus {
   -webkit-transform: scale(0.9);
           transform: scale(0.9);
+  outline: none;
 }
 @media (max-width: 1280px) {
   .header {
@@ -5544,6 +5545,7 @@ progress {
 }
 .offer__procedures-nav-btn:hover, .offer__procedures-nav-btn:focus {
   color: #C9AB63;
+  outline: none;
 }
 .offer__procedures-nav-btn::after {
   content: "";
@@ -5943,13 +5945,18 @@ progress {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.team__collapse-btn:hover, .team__collapse-btn:focus {
+.team__collapse-btn:hover {
   border: 1px solid #C9AB63;
   background-color: white;
   color: #C9AB63;
   -webkit-box-shadow: 0 5px 0 #C9AB63;
           box-shadow: 0 5px 0 #C9AB63;
+}
+.team__collapse-btn:focus {
   outline: none;
+  color: #C9AB63;
+  background-color: white;
+  border: 1px solid #C9AB63;
 }
 .team__collapse-btn:active {
   -webkit-transform: translateY(5px);
@@ -6022,6 +6029,7 @@ progress {
 .lorem__info-underlined:hover, .lorem__info-underlined:focus {
   color: #C9AB63;
   background-size: 0 2px, 100% 2px;
+  outline: none;
 }
 .lorem__info-text {
   font-size: 18px;
@@ -6060,6 +6068,12 @@ progress {
   color: #C9AB63;
   -webkit-box-shadow: 0 5px 0 #C9AB63;
           box-shadow: 0 5px 0 #C9AB63;
+}
+.lorem__info-btn:focus {
+  outline: none;
+  color: #C9AB63;
+  background-color: white;
+  border: 1px solid #C9AB63;
 }
 .lorem__info-btn:active {
   -webkit-transform: translateY(5px);
@@ -6167,10 +6181,11 @@ progress {
     padding: 22px 20px;
   }
 }
-.faq__questions-item:hover {
+.faq__questions-item:hover, .faq__questions-item:focus {
   color: #0F0F28;
+  outline: none;
 }
-.faq__questions-item:hover::before {
+.faq__questions-item:hover::before, .faq__questions-item:focus::before {
   opacity: 0;
   -webkit-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5);
@@ -6204,10 +6219,11 @@ progress {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-.faq__questions-item.active:hover {
+.faq__questions-item.active:hover, .faq__questions-item.active:focus {
   color: white;
+  outline: none;
 }
-.faq__questions-item.active:hover::before {
+.faq__questions-item.active:hover::before, .faq__questions-item.active:focus::before {
   opacity: 0;
   -webkit-transform: scale(0.5, 0.5);
           transform: scale(0.5, 0.5);
@@ -6226,6 +6242,9 @@ progress {
 @media (max-width: 1400px) {
   .faq__answer {
     margin-bottom: 4px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
   }
 }
 @media (max-width: 768px) {

@@ -37,13 +37,18 @@
       margin-bottom: 20px;
       transition: all 0.3s ease-in-out;
 
-      &:hover,
-      &:focus {
+      &:hover {
         border: 1px solid $gold;
         background-color: #ffff;
         color: $gold;
         box-shadow: 0 5px 0 $gold;
+      }
+
+      &:focus {
         outline: none;
+        color: $gold;
+        background-color: #ffff;
+        border: 1px solid $gold;
       }
 
       &:active {

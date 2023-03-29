@@ -49,6 +49,7 @@
     &:focus {
       color: $gold;
       background-size: 0 2px, 100% 2px;
+      outline: none;
     }
   }
 
@@ -87,6 +88,13 @@
       background-color: #ffff;
       color: $gold;
       box-shadow: 0 5px 0 $gold;
+    }
+
+    &:focus {
+      outline: none;
+      color: $gold;
+      background-color: #ffff;
+      border: 1px solid $gold;
     }
 
     &:active {
