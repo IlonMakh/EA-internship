@@ -14,8 +14,16 @@
     <title>Bootstrap grid</title>
   </head>
   <body>
+
+    <div class="preloader">
+      <div class="loader">
+        <div class = "blob-1"></div>
+        <div class = "blob-2"></div>
+      </div>
+    </div>
+
     <header class="header">
-      <img class="header__logo" src="assets/icons/logo.png" alt="logo" />
+      <a class="header__link" href="javascript:void(0);"><img class="header__logo" src="assets/icons/logo.png" alt="logo" /></a>
     </header>
     <main>
       <section class="advantages">
@@ -427,7 +435,7 @@
           <div class="row">
             <div class="col col-12 col-xxl-6 col-xl-12">
               <div class="lorem__img">
-                <img class="lorem__img-content" src="assets/images/lorem.png" />
+                <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_dgw6g3d8.json"  background="transparent"  speed="1"  style="width: 680px; height: 480px;"  loop autoplay></lottie-player>
               </div>
             </div>
             <div class="col col-12 col-xxl-6 col-xl-12">
@@ -438,6 +446,7 @@
                   experience performing facial cosmetic surgery in Atlanta. They
                   are renowned throughout the state for their expertise. If you
                   would like to take years off your appearance and start looking
+                  <a class="lorem__info-underlined" href="javascript:void(0);">some very very very very very very very very very very very very long link</a>
                   and feeling youthful again, please feel free to browse through
                   our list of procedures to see how we can help you realize your
                   dream.
@@ -470,9 +479,7 @@
                   aria-expanded="false"
                   aria-controls="collapseLorem"
                 >
-                  <a class="lorem__info-btn-a" href="javascript:void(0);"
-                    >learn more</a
-                  >
+                learn more
                 </button>
               </div>
             </div>
@@ -774,5 +781,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/tabScroll.js"></script>
+    <script src="js/preloader.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </body>
 </html>

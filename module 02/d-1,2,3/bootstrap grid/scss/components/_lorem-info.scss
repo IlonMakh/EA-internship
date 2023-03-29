@@ -36,6 +36,22 @@
     }
   }
 
+  &-underlined {
+    color: $gold;
+    background-image: linear-gradient($gold, $gold);
+    background-position: 0 100%, 100% 100%;
+    background-size: 100% 2px, 0 2px;
+    background-repeat: no-repeat;
+    text-decoration: none;
+    transition: all 1s ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: $gold;
+      background-size: 0 2px, 100% 2px;
+    }
+  }
+
   &-text {
     font-size: 18px;
     line-height: 140%;
@@ -48,33 +64,42 @@
       margin-bottom: 32px;
     }
 
+
     @media (max-width: $breakpoint-sm) {
       margin-bottom: 24px;
     }
   }
 
   &-btn {
-    border: none;
+    border: 1px solid transparent;
+    padding: 24px 30px;
+    color: #fff;
+    font-family: 'Geometria-Bold', sans-serif;
+    font-size: 16px;
+    line-height: 100%;
+    text-transform: uppercase;
     background-color: $gold;
+    margin-bottom: 20px;
+    transition: all 0.3s ease-in-out;
 
-    &-a {
-      display: block;
-      padding: 24px 30px;
-      color: #fff;
-      font-family: 'Geometria-Bold', sans-serif;
-      font-size: 16px;
-      line-height: 100%;
-      text-transform: uppercase;
-      text-decoration: none;
+    &:hover {
+      border: 1px solid $gold;
+      background-color: #ffff;
+      color: $gold;
+      box-shadow: 0 5px 0 $gold;
+    }
 
-      @media (max-width: $breakpoint-md) {
-        font-size: 14px;
-        padding: 16px 30px;
-      }
+    &:active {
+      transform: translateY(5px);
+      box-shadow: none;
+    }
 
-      &:hover {
-        color: #fff;
-      }
+    @media (max-width: $breakpoint-md) {
+      padding: 16px 30px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 14px;
     }
   }
 }

@@ -3,6 +3,7 @@
 @import 'bootstrap/reboot-bootstrap';
 @import 'bootstrap/grid-bootstrap';
 @import 'components/header';
+@import 'components/preloader';
 @import 'sections/advantages';
 @import 'sections/offer';
 @import 'sections/team';
@@ -48,7 +49,11 @@ body {
 }
 
 main {
-  width: 100%;
+  width: calc(100% - 298px);
+
+  @media (max-width: 1280px) {
+    width: 100%;
+  }
 }
 
 .tab-content > .tab-pane {
