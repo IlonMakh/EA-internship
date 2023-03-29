@@ -5332,6 +5332,12 @@ progress {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
+@media (max-width: 768px) {
+  .preloader .loader {
+    width: 300px;
+    height: 300px;
+  }
+}
 .preloader .blob-1, .preloader .blob-2 {
   width: 70px;
   height: 70px;
@@ -5342,6 +5348,12 @@ progress {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+}
+@media (max-width: 768px) {
+  .preloader .blob-1, .preloader .blob-2 {
+    width: 40px;
+    height: 40px;
+  }
 }
 .preloader .blob-1 {
   left: 20%;
