@@ -5429,7 +5429,7 @@ progress {
   display: none;
 }
 @media (max-width: 768px) {
-  .header__phone {
+  .header__phone-link {
     padding: 10px 10px;
   }
   .header__phone .phone-num {
