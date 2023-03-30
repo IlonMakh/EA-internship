@@ -23,9 +23,39 @@
     </div>
 
     <header class="header">
+      <button class="header__burger">
+        <img src="assets/icons/burger.svg" alt="menu">
+      </button>
       <a class="header__link" href="javascript:void(0);"><img class="header__logo" src="assets/icons/logo.png" alt="logo" /></a>
+      <nav class="header__nav">
+        <a class="header__nav-logo" href="javascript:void(0)"><img class="header__nav-img" src="assets/icons/logo.png" alt="logo" /></a>
+        <ul>
+          <li><a class="header__nav-link active" href="javascript:void(0)">Home</a></li>
+          <li><a class="header__nav-link" href="javascript:void(0)">About us</a></li>
+          <li><a class="header__nav-link" href="javascript:void(0)">Locations</a></li>
+        </ul>
+        <a class="header__nav-phone" href="tel:(404) 737-5803">(404) 737-5803</a>
+      </nav>
+      <div class="header__phone">
+        <a class="header__phone-link" href="tel:(404) 737-5803"><span class="phone-num">(404) 737-5803</span><img class="phone-img" src="assets/icons/phone.svg" alt="phone"></a>
+      </div>
+      <button class="header__close"><img src="assets/icons/close.svg" alt="close"></button>
     </header>
     <main>
+      <section class="promo">
+        <div class="container">
+          <div class="row">
+            <div class="col col-12">
+              <div class="promo__info">
+                <h1 class="promo__info-title">State of the art surgery center</h1>
+                <p class="promo__info-text">Achieve your most beautiful self</p>
+                <p class="promo__info-subtitle">Schedule complimentary Cosmetic Consultation</p>
+                <button class="promo__info-btn" type="button" data-toggle="modal" data-target="#staticBackdrop">Schedule now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section class="advantages">
         <div class="container">
           <div class="row">
@@ -782,6 +812,8 @@
     ></script>
     <script src="js/tabScroll.js"></script>
     <script src="js/preloader.js"></script>
+    <script src="js/sizes.js"></script>
+    <script src="js/burger.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   </body>
 </html>

@@ -4,6 +4,7 @@
 @import 'bootstrap/grid-bootstrap';
 @import 'components/header';
 @import 'components/preloader';
+@import 'sections/promo';
 @import 'sections/advantages';
 @import 'sections/offer';
 @import 'sections/team';
@@ -45,8 +46,10 @@ body {
 
   @media (max-width: 1280px) {
     flex-direction: column;
+
   }
 }
+
 
 main {
   width: calc(100% - 298px);

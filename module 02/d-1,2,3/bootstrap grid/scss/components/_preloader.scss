@@ -1,7 +1,7 @@
 .preloader {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  @include width-100vw;
+  @include height-100vh;
   background-color: #fff;
   z-index: 10;
   transition: 1s all ease;
