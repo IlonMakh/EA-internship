@@ -7101,3 +7101,63 @@ main {
 .collapse.show {
   display: block;
 }
+
+.modal-dialog {
+  margin-top: 0 auto;
+  margin-right: 0 auto;
+}
+
+.modal-title {
+  font-size: 32px;
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #0F0F28;
+  position: relative;
+}
+.modal-title::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 2px;
+  background-color: #C9AB63;
+  position: absolute;
+  bottom: -10px;
+  left: calc(50% - 50px);
+}
+@media (max-width: 768px) {
+  .modal-title {
+    font-size: 24px;
+  }
+}
+@media (max-width: 576px) {
+  .modal-title {
+    font-size: 18px;
+  }
+}
+
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.modal-content {
+  border-radius: 0;
+  border: 2px solid #C9AB63;
+}
+
+.modal-header {
+  border-bottom: none;
+}
