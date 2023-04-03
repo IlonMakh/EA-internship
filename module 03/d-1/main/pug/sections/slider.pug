@@ -1,0 +1,19 @@
+- var slides = [{product: 'Домашний кинотеатр под ключ', img: '../../assets/images/slide1.jpg'}, {product: 'Система “Умный дом” под ключ', img: '../../assets/images/slide2.jpg'}, { product: 'Система “Мультирум” под ключ', img: '../../assets/images/slide3.jpg'}];
+
+section.splide
+  .splide__track
+    ul.splide__list
+      each value in slides
+        li.splide__slide 
+          .splide__slide-info
+            h3.splide__slide-info-title.
+              #{value.product}
+            a.splide__slide-info-link(href="javascript:void(0);") Оставить заявку
+          .splide__slide-img
+            img.slide__slide-img-content(src=value.img)
+  .splide__arrows
+    button.splide__arrow.splide__arrow--prev
+      include ../../assets/images/left.svg
+    .splide__arrows-page 1/3
+    button.splide__arrow.splide__arrow--next
+      include ../../assets/images/right.svg

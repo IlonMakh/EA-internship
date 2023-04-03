@@ -1,0 +1,120 @@
+@font-face {
+  font-family: "Days One";
+  src: url("../assets/fonts/DaysOne-Regular.eot");
+  src: local("Days One"), local("DaysOne-Regular"), url("../assets/fonts/DaysOne-Regular.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/DaysOne-Regular.woff2") format("woff2"), url("../assets/fonts/DaysOne-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+.splide {
+  padding: 7.8rem 0;
+  position: relative;
+}
+.splide__track {
+  overflow: visible;
+}
+.splide__slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12.4rem;
+  margin-right: calc((var(--vw, 1vw) * 100 - 144rem) / 2);
+}
+.splide__slide-info {
+  width: 60.5rem;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.splide__slide-info-title {
+  font-size: 4.8rem;
+  margin-bottom: 5.5rem;
+}
+.splide__slide-info-link {
+  font-size: 1.8rem;
+  color: white;
+  padding: 1.6rem 3.2rem;
+  background-color: #24B7BA;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border: 0.1rem solid transparent;
+}
+.splide__slide-info-link:hover {
+  color: #24B7BA;
+  border-color: #24B7BA;
+  background-color: white;
+}
+.splide__slide-img {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+.splide__arrows {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 3rem;
+  background-color: white;
+  width: 23.3rem;
+  position: absolute;
+  bottom: 7.8rem;
+  left: calc(50% - 11.65rem);
+}
+.splide__arrows-page {
+  color: #24B7BA;
+  font-size: 3.2rem;
+}
+.splide__arrows .splide__arrow {
+  color: #24B7BA;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.splide__arrows .splide__arrow:disabled {
+  color: #5A5A5A;
+}
+.splide__arrows .splide__arrow:disabled:hover {
+  color: #5A5A5A;
+}
+.splide__arrows .splide__arrow:hover {
+  color: #1c8d8f;
+}
+.splide__pagination {
+  display: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "Days One", sans-serif;
+  color: #252525;
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 144rem;
+  margin: 0 auto;
+}

@@ -1,0 +1,9 @@
+$black: #252525;
+$blue: #24B7BA;
+$gray: #5A5A5A;
+
+$container-size: 144rem;
+
+@mixin slider-gap {
+  margin-right: calc(((var(--vw, 1vw) * 100) - $container-size) / 2);
+}
