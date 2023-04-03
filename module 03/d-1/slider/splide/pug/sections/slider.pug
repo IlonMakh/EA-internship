@@ -1,0 +1,8 @@
+- var imagesLinks = ['../../assets/images/img1.png', '../../assets/images/img2.png', '../../assets/images/img3.png', '../../assets/images/img4.png', '../../assets/images/img5.png'];
+
+section.splide(aria-label="Splide Basic HTML Example")
+  .splide__track
+    ul.splide__list
+      each value in imagesLinks
+        li.splide__slide 
+          img.splide__slide-img(src=value)

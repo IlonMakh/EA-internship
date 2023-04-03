@@ -1,0 +1,7 @@
+- var imagesLinks = ['../../assets/images/img1.png', '../../assets/images/img2.png', '../../assets/images/img3.png', '../../assets/images/img4.png', '../../assets/images/img5.png'];
+
+.swiper
+  .swiper-wrapper
+    each value in imagesLinks
+      .swiper-slide 
+        img.swiper__slide-img(src=value)
