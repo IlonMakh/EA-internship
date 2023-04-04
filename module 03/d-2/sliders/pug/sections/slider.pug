@@ -1,0 +1,20 @@
+- var slides = [{title: 'Determine Value', text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text", img: './assets/images/img.png'}, {title: 'Build Value', text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text", img: './assets/images/img.png'}, {title: 'Realize Value', text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text", img: './assets/images/img.png'}, {title: 'Test Value', text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.\nLorem Ipsum has been the industry's standard dummy text", img: './assets/images/img.png'}];
+
+  section.splide
+    .splide__progress 
+      ul.splide__pagination
+      .my-slider-progress
+        .my-slider-progress-bar
+    .splide__track
+      ul.splide__list
+        each slide in slides
+          li.splide__slide 
+            .splide__slide-content
+              .splide__slide-info
+                h4.splide__slide-title #{slide.title}
+                p.splide__slide-text #{slide.text}
+              .splide__slide-img
+                img.splide__slide-img-content(src=slide.img)
+                button.splide__slide-btn
+                  include ../../assets/images/play.svg
+

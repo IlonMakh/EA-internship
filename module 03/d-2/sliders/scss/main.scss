@@ -1,0 +1,18 @@
+@import './fonts';
+@import './variables';
+@import './sections/sliders';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: 'Proxima Nova Rg', sans-serif;
+  font-size: 2.4rem;
+}

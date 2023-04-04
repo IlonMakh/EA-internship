@@ -1,0 +1,148 @@
+.splide {
+  margin: 0 auto;
+  margin-top: 5rem;
+  width: 88.5vw;
+
+  &__progress {
+    position: absolute;
+    height: 27rem;
+    width: .4rem;
+    left: 9.2rem;
+    top: calc(50% - 27rem / 2);
+
+    .my-slider-progress {
+      background: #D0CFD4;
+      height: 100%;
+    
+      &-bar {
+        background: #111111;
+        width: .4rem;
+        transition: height 0.4s ease;
+        height: 100%;
+      }
+    }
+  }
+
+  &__pagination {
+    gap: 6.8rem;
+    left: -0.9rem;
+    padding: 0;
+    top: -1rem;
+    height: fit-content;
+
+    li {
+      position: relative;
+    }
+
+    &__page {
+      width: 1.6rem;
+      height: 1.6rem;
+      background: #ffff;
+      border: 0.2rem solid #D0CFD4;
+      opacity: 1;
+      transition: all 0.3s ease-in-out;
+
+
+      &.is-active,
+      &:hover {
+        background: #111111;
+        border: 0.2rem solid #FFFFFF;
+        opacity: 1;
+        transform: none;
+      }
+
+      &.is-active {
+        .splide__pagination__title {
+          font-family: 'Proxima Nova Lt', sans-serif;
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    &__title {
+      width: 9.7rem;
+      position: absolute;
+      left: 3.2rem;
+      top: 0;
+      font-size: 1.4rem;
+      line-height: 140%;
+      transition: all 0.3s ease-in;
+
+      &:hover {
+        font-family: 'Proxima Nova Lt', sans-serif;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &__slide {
+    &-content {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      gap: 8rem;
+    }
+
+    &-info {
+      max-width: 52rem;
+    }
+
+    &-title {
+      font-family: 'Proxima Nova Lt', sans-serif;
+      font-size: 9rem;
+      margin-bottom: 2rem;
+      line-height: 100%;
+    }
+
+    &-text {
+      white-space: pre-wrap;
+      line-height: 130%;
+    }
+
+    &-img {
+      position: relative;
+      &-content {
+        border-radius: 5rem;
+      }
+    }
+
+    &-btn {
+      width: 26.9rem;
+      height: 26.9rem;
+      position: absolute;
+      top: calc(50% - 26.9rem / 2);
+      left: calc(50% - 26.9rem / 2);
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+
+      circle {
+        stroke-dasharray: 691;
+        stroke-dashoffset: 691;
+        animation: reverse-clock-animation 0.5s ease-in-out forwards;
+      }
+
+      &:hover circle{
+        animation: clock-animation 0.5s ease-in-out forwards;
+      }
+    }
+  }
+}
+
+@keyframes clock-animation {
+  0% {
+    stroke-dashoffset: 691;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes reverse-clock-animation {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset:691;
+  }
+}
