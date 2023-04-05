@@ -1,3 +1,5 @@
+include ../partials/button
+
 mixin main-popup-youtube()
     .popup-youtube
         .popup-youtube__body
@@ -5,3 +7,8 @@ mixin main-popup-youtube()
                 button.popup-youtube__close
                     include ../../assets/images/close.svg
                 .player#player
+                .popup-youtube__controllers
+                  +button('controller yt__plus10', '+10s')
+                  +button('controller yt__plus20', '+20s')
+                  +button('controller yt__minus10', '-10s')
+                  +button('controller yt__minus20', '-20s')

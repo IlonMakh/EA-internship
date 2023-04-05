@@ -16,6 +16,11 @@
   opacity: 1;
   visibility: visible;
 }
+.popup-youtube.open .popup-youtube__body {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
 .popup-youtube__body {
   min-height: 100%;
   display: -webkit-box;
@@ -28,6 +33,11 @@
       -ms-flex-pack: center;
           justify-content: center;
   padding: 3rem 1rem;
+  -webkit-transform: translate(0, 100%);
+          transform: translate(0, 100%);
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
 }
 .popup-youtube__content {
   position: relative;
@@ -85,6 +95,50 @@
   height: 100%;
   border-radius: 0.5rem;
 }
+.popup-youtube__controllers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 2rem;
+  position: absolute;
+  width: 37rem;
+  bottom: -5rem;
+  left: calc(50% - 18.5rem);
+}
+@media (max-width: 767px) {
+  .popup-youtube__controllers {
+    width: 34rem;
+    bottom: -4rem;
+    left: calc(50% - 17rem);
+  }
+}
+.popup-youtube .controller {
+  background-color: #FF1E00;
+  color: white;
+  border: 0.2rem solid #FF1E00;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  border-radius: 0.7rem;
+  font-size: 1.6rem;
+}
+.popup-youtube .controller:hover {
+  background-color: white;
+  color: #FF1E00;
+}
+@media (max-width: 767px) {
+  .popup-youtube .controller {
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
+  }
+}
 
 .popup-local {
   position: fixed;
@@ -101,6 +155,11 @@
 .popup-local.open {
   opacity: 1;
   visibility: visible;
+}
+.popup-local.open .popup-local__content {
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
 }
 .popup-local__body {
   min-height: 100%;
@@ -121,6 +180,11 @@
   height: auto;
   aspect-ratio: 131/74;
   border-radius: 0.5rem;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  -webkit-transform: translate(0, 100%);
+          transform: translate(0, 100%);
 }
 @media (max-width: 1024px) {
   .popup-local__content {
@@ -220,6 +284,50 @@
   .popup-local__play-img {
     width: 6.2rem;
     height: 6.2rem;
+  }
+}
+.popup-local__controllers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 2rem;
+  position: absolute;
+  width: 37rem;
+  bottom: -5rem;
+  left: calc(50% - 18.5rem);
+}
+@media (max-width: 767px) {
+  .popup-local__controllers {
+    width: 34rem;
+    bottom: -4rem;
+    left: calc(50% - 17rem);
+  }
+}
+.popup-local .controller {
+  background-color: #FF1E00;
+  color: white;
+  border: 0.2rem solid #FF1E00;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  border-radius: 0.7rem;
+  font-size: 1.6rem;
+}
+.popup-local .controller:hover {
+  background-color: white;
+  color: #FF1E00;
+}
+@media (max-width: 767px) {
+  .popup-local .controller {
+    padding: 0.5rem 1rem;
+    font-size: 1.4rem;
   }
 }
 
