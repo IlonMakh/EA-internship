@@ -10,7 +10,7 @@ mixin main-popup-local()
                         img.popup-local__play-img(src='./assets/images/play.png' alt='play-btn')
                     video.popup-local__video-content#local-video(preload='auto' playsinline)
                         source(src="./assets/video/local.mp4" type="video/mp4")
-                .popup-youtube__controllers
+                .popup-local__controllers
                     +button('controller lc__plus10', '+10s')
                     +button('controller lc__plus20', '+20s')
                     +button('controller lc__minus10', '-10s')
