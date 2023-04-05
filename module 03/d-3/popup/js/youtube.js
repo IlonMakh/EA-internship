@@ -39,20 +39,12 @@ function rewind (operator, value) {
   const currentTime = player.getCurrentTime();
   const duration = player.getDuration();
   const diff = duration - currentTime; 
-  if (operator === 'minus' && currentTime > 10 && value === 10) {
-    player.seekTo(currentTime - 10, true);
+  if (operator === 'minus' && currentTime > value) {
+    player.seekTo(currentTime - value, true);
     player.playVideo();
   }
-  if (operator === 'minus' && currentTime > 20 && value === 20) {
-    player.seekTo(currentTime - 20, true);
-    player.playVideo();
-  }
-  if (operator === 'plus' && diff > 10 && value === 10) {
-    player.seekTo(currentTime + 10, true);
-    player.playVideo();
-  }
-  if (operator === 'plus' && diff > 20 && value === 20) {
-    player.seekTo(currentTime + 20, true);
+  if (operator === 'plus' && diff > value) {
+    player.seekTo(currentTime + value, true);
     player.playVideo();
   }
 }

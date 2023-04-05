@@ -12,11 +12,7 @@ window.addEventListener('DOMContentLoaded', () => {
   })
 
   video?.addEventListener('click', () => {
-    if (video.paused) {
-      video.play();
-    } else {
-      video.pause();
-    }
+    video.paused ? video.play() : video.pause();
     playBtn.classList.toggle('hidden');
   })
 
@@ -29,17 +25,11 @@ window.addEventListener('DOMContentLoaded', () => {
     const currentTime = video.currentTime;
     const duration = video.duration;
     const diff = duration - currentTime; 
-    if (operator === 'minus' && currentTime > 10 && value === 10) {
-      video.currentTime -= 10;
+    if (operator === 'minus' && currentTime > value) {
+      video.currentTime -= value;
     }
-    if (operator === 'minus' && currentTime > 20 && value === 20) {
-      video.currentTime -= 20;
-    }
-    if (operator === 'plus' && diff > 10 && value === 10) {
-      video.currentTime += 10;
-    }
-    if (operator === 'plus' && diff > 20 && value === 20) {
-      video.currentTime += 20;
+    if (operator === 'plus' && diff > value) {
+      video.currentTime += value;
     }
   }
 })
