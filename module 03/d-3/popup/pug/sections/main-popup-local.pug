@@ -1,0 +1,12 @@
+mixin main-popup-local()
+    .popup-local
+        .popup-local__body
+            .popup-local__content
+                .popup-local__substrate
+                .popup-local__video
+                    button.popup-local__close
+                        include ../../assets/images/close.svg
+                    button.popup-local__play
+                        img.popup-local__play-img(src='./assets/images/play.png' alt='play-btn')
+                    video.popup-local__video-content#local-video(preload='auto' playsinline)
+                        source(src="./assets/video/local.mp4" type="video/mp4")

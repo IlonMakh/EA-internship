@@ -1,0 +1,18 @@
+include partials/head
+
+
+doctype html
+html(lang="ru")
+    +head({
+        "title": "Popup",
+        "description": "Popup task"
+})
+
+    body
+        .main
+            block content
+
+        block scripts
+            script(src="./js/popup.js")
+            script(src="./js/youtube.js")
+            script(src="./js/local.js") 

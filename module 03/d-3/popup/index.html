@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <title>Popup</title>
+  <meta charset="utf-8"/>
+  <meta content="Popup task" name="description"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="HandheldFriendly" content="true"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <!-- CSS-->
+  <link rel="stylesheet" href="./css/main.css"/>
+  <body>
+    <div class="main">
+      <div class="buttons">
+        <div class="buttons">
+          <button class="button__youtube">Open YouTube popup</button>
+          <button class="button__local">Open local popup</button>
+        </div>
+      </div>
+      <div class="popup-youtube">
+        <div class="popup-youtube__body">
+          <div class="popup-youtube__content">
+            <button class="popup-youtube__close"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27.5183 25.762L17.2748 15.4873L27.5183 5.21261H27.6197C28.1268 4.70397 28.1268 3.99186 27.6197 3.48321C27.214 3.0763 26.5041 2.97457 25.997 3.27976L15.4493 13.6562L5.20588 3.38149C4.69878 2.87284 3.88742 2.87284 3.38032 3.38149C2.87323 3.89013 2.87323 4.70397 3.38032 5.11088L13.6237 15.3856L3.48174 25.762C3.17748 25.9654 3.07606 26.2706 3.07606 26.6775C3.07606 26.9827 3.17748 27.2879 3.48174 27.5931C3.68458 27.7965 4.09026 28 4.39452 28C4.69878 28 5.00304 27.8983 5.3073 27.5931L15.4493 17.2167L25.6927 27.4914C26.1998 27.8983 26.9097 28 27.4168 27.5931L27.5183 27.4914L27.6197 27.3896C28.0254 26.881 28.0254 26.1689 27.5183 25.762Z" fill="white"/>
+</svg>
+
+            </button>
+            <div class="player" id="player"></div>
+          </div>
+        </div>
+      </div>
+      <div class="popup-local">
+        <div class="popup-local__body">
+          <div class="popup-local__content">
+            <div class="popup-local__substrate"></div>
+            <div class="popup-local__video">
+              <button class="popup-local__close"><svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27.5183 25.762L17.2748 15.4873L27.5183 5.21261H27.6197C28.1268 4.70397 28.1268 3.99186 27.6197 3.48321C27.214 3.0763 26.5041 2.97457 25.997 3.27976L15.4493 13.6562L5.20588 3.38149C4.69878 2.87284 3.88742 2.87284 3.38032 3.38149C2.87323 3.89013 2.87323 4.70397 3.38032 5.11088L13.6237 15.3856L3.48174 25.762C3.17748 25.9654 3.07606 26.2706 3.07606 26.6775C3.07606 26.9827 3.17748 27.2879 3.48174 27.5931C3.68458 27.7965 4.09026 28 4.39452 28C4.69878 28 5.00304 27.8983 5.3073 27.5931L15.4493 17.2167L25.6927 27.4914C26.1998 27.8983 26.9097 28 27.4168 27.5931L27.5183 27.4914L27.6197 27.3896C28.0254 26.881 28.0254 26.1689 27.5183 25.762Z" fill="white"/>
+</svg>
+
+              </button>
+              <button class="popup-local__play"><img class="popup-local__play-img" src="./assets/images/play.png" alt="play-btn"/></button>
+              <video class="popup-local__video-content" id="local-video" preload="auto" playsinline="playsinline">
+                <source src="./assets/video/local.mp4" type="video/mp4"/>
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/popup.js"></script>
+    <script src="./js/youtube.js"></script>
+    <script src="./js/local.js"> </script>
+  </body>
+</html>
