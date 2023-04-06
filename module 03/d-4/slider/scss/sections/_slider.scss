@@ -1,0 +1,146 @@
+.splide {
+  width: 85.72vw;
+  height: 41rem;
+  margin: 0 auto;
+  margin-top: 10rem;
+  
+  &__list {
+    align-items: center;
+  }
+
+  &__arrow {
+    width: 6.4rem;
+    height: 6.4rem;
+    background-color: $gold;
+    padding: 1.6rem;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__arrow--prev {
+    left: calc(33% - 6.4rem/2);
+    opacity: 1;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__arrow--next {
+    right: calc(33% - 6.4rem/2);
+    opacity: 1;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__pagination {
+    bottom: -4.4rem;
+
+    &__page {
+      width: 1.2rem;
+      height: 1.2rem;
+      opacity: 1;
+      border: 0.1rem solid rgba(15, 15, 40, 0.3);
+      background-color: inherit;
+
+      &.is-active {
+        background-color: $gold;
+        border-color: $gold;
+        transform: none;
+      }
+    }
+  }
+
+  &__track {
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      height: 18.4rem;
+      width: 100%;
+      background-color: $dark;
+      position: absolute;
+      top: calc(50% - 18.4rem / 2);
+      z-index: -1;
+
+    }
+  }
+
+  &__slide {
+    transition: all 0.5s ease-in-out;
+    height: 17rem;
+    
+    &-content {
+      height: 17rem;
+
+      .image-compare {
+        height: 100%;
+      }
+    }
+
+    &.is-active {
+      height: 41rem;
+      transition: all 0.5s ease-in-out;
+
+      .splide__slide-content {
+        height: 41rem;
+
+        .icv__img-a {
+          height: 100%;
+        }
+      }
+
+      .icv__control {
+        &::before {
+          content: '';
+          display: block;
+          height: 100%;
+          width: 0.1rem;
+          background-color: #ffff;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translate(50%);
+        }
+
+        &::after {
+          content: '';
+          display: block;
+          height: 8.2rem;
+          width: 0.9rem;
+          background-color: #ffff;
+          position: absolute;
+          top: calc(50% - 8.2rem / 2);
+          left: calc(50% - 0.9rem / 2);
+        }
+      }
+    }
+
+    &:not(.is-active) {
+      .image-compare {
+        width: fit-content;
+        height: 100%;
+
+        .icv__wrapper {
+          width: fit-content;
+          position: static;
+          width: 100px;
+          margin: 0 auto;
+        }
+        
+
+        .icv__control,
+        .icv__img-a {
+          visibility: hidden;
+        }
+
+        .icv__img-b {
+          right: auto;
+        }
+      }
+    }
+  }
+}

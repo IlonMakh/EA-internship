@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <title>Slider</title>
+  <meta charset="utf-8"/>
+  <meta content="Slider task" name="description"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="HandheldFriendly" content="true"/>
+  <meta name="format-detection" content="telephone=no"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <!-- CSS-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css"/>
+  <link rel="stylesheet" href="./css/main.css"/>
+  <body>
+    <div class="main">
+      <section class="splide">
+        <div class="splide__track">
+          <ul class="splide__list">
+            <li class="splide__slide"> 
+              <div class="splide__slide-content">
+                <div class="image-compare"><img src="./assets/images/1before.png"/><img src="./assets/images/1after.png"/></div>
+              </div>
+            </li>
+            <li class="splide__slide"> 
+              <div class="splide__slide-content">
+                <div class="image-compare"><img src="./assets/images/2before.png"/><img src="./assets/images/2after.png"/></div>
+              </div>
+            </li>
+            <li class="splide__slide"> 
+              <div class="splide__slide-content">
+                <div class="image-compare"><img src="./assets/images/3before.png"/><img src="./assets/images/3after.png"/></div>
+              </div>
+            </li>
+            <li class="splide__slide"> 
+              <div class="splide__slide-content">
+                <div class="image-compare"><img src="./assets/images/1before.png"/><img src="./assets/images/1after.png"/></div>
+              </div>
+            </li>
+            <li class="splide__slide"> 
+              <div class="splide__slide-content">
+                <div class="image-compare"><img src="./assets/images/2before.png"/><img src="./assets/images/2after.png"/></div>
+              </div>
+            </li>
+            <li class="splide__slide"> 
+              <div class="splide__slide-content">
+                <div class="image-compare"><img src="./assets/images/3before.png"/><img src="./assets/images/3after.png"/></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="splide__arrows">
+          <button class="splide__arrow splide__arrow--prev"><img src="./assets/images/arrow-left.png"/></button>
+          <button class="splide__arrow splide__arrow--next"><img src="./assets/images/arrow-right.png"/></button>
+        </div>
+      </section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.js"> </script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
