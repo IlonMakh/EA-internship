@@ -20,6 +20,10 @@ body {
   min-height: 100vh;
   position: relative;
   background-color: black;
+
+  @media (max-width: 767px) {
+    font-size: 1.6rem;
+  }
 }
 
 .main {
