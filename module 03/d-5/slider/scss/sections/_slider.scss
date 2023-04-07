@@ -1,0 +1,233 @@
+.wrapper {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  margin: 0 auto;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 160rem;
+    height: 48rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 0.1rem solid rgba(255, 255, 255, 0.2);
+    border-radius: 2rem;
+    bottom: -7rem;
+    left: -6rem;
+    z-index: -1;
+  }
+}
+
+.swiper {
+  padding-top: 5rem;
+  margin: 0 auto;
+  width: 163rem;
+  position: relative;
+  overflow: hidden;
+
+  &-wrapper {
+    height: 51rem;
+    position: relative;
+  }
+
+  &-title {
+    font-family: 'Proxima Nova SemiBold', sans-serif;
+    font-size: 9.6rem;
+    line-height: 100%;
+    text-transform: capitalize;
+    margin-bottom: 8rem;
+  }
+
+  &-slide {
+    height: 100%;
+    width: 33.5rem !important;
+    height: 43rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+
+    &-active {
+      width: 91rem !important;
+      height: 100%;
+
+      .swiper-slide-shadow {
+        height: 32%;
+        bottom: 0;
+        left: 0;
+        top: auto;
+      }
+
+      .swiper-slide-info {
+        gap: 1rem;
+
+        &-name {
+          font-size: 3.6rem;
+        }
+      }
+    }
+
+    &-video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      object-fit: cover;
+      object-position: top left;
+    }
+
+    &-shadow {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    }
+
+    &-btn {
+      width: 8rem;
+      height: 8rem;
+      padding: 2rem 1.7rem 2rem 2.7rem;
+      border-radius: 50%;
+      position: absolute;
+      top: calc(50% - 8rem /2);
+      left: calc(50% - 8rem /2);
+      border: none;
+      background: rgba(0, 0, 0, 0.5);
+      position: relative;
+      color: #F2F2F2;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      opacity: 1;
+      visibility: visible;
+
+      &.played {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      &:hover {
+        color: #05DB6F;
+
+          &::after {
+            opacity: 0;
+        }
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        width: 50%;
+        height: 100%;
+        border-radius: 0 100% 100% 0 / 0 50% 50% 0;
+        background: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 0;
+        right: 0;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+
+    &-info {
+      position: absolute;
+      width: 100%;
+      height: fit-content;
+      bottom: 0;
+      left: 0;
+      padding: 2.6rem;
+      display:flex;
+      align-items: flex-start;
+      justify-content: end;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-transform: capitalize;
+
+      &-name {
+        font-family: 'Proxima Nova Bold', sans-serif;
+        font-size: 2.4rem;
+        line-height: 120%;
+      }
+    }
+  }
+
+  &-button {
+    &-lock {
+      display: block;
+    }
+
+    &-next,
+    &-prev {
+      position: static;
+      width: 6rem;
+      height: 6rem;
+      background-color: transparent;
+      border: 0.1rem solid rgba(255, 255, 255, 0.8);
+      padding: 1.8rem;
+      color:rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      transition: all 0.3s ease-in-out;
+
+      &::after {
+        display: block;
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+
+      &:hover {
+        background-color: #05DB6F;
+      }
+      
+      &:active {
+        background-color: rgba(22, 164, 93, 1);
+      }
+    }
+
+    &-next {
+      &::after {
+        content: url('../assets/images/right-arrow.svg');
+      }
+    }
+
+    &-prev {
+      &::after {
+        content: url('../assets/images/left-arrow.svg');
+      }
+    }
+}
+
+&-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  position: absolute;
+  bottom: 0;
+  right: 28.4rem;
+}
+
+&-pagination {
+  position: static;
+  margin-left: 15rem;
+  gap: 1.4rem;
+  display: flex;
+  align-items: center;
+
+  &-bullet {
+    width: 1.2rem;
+    height: 1.2rem;
+    border:  0.1rem solid #ffff;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+
+    &-active,
+    &:hover {
+      background-color: #ffff;
+      opacity: 1;
+    }
+  }
+}
+
+}

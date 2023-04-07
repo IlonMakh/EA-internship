@@ -1,0 +1,17 @@
+include partials/head
+
+
+doctype html
+html(lang="ru")
+    +head({
+        "title": "Slider",
+        "description": "Video Slider"
+})
+
+    body
+        img.background(src='./assets/images/background.png')
+        .main
+            block content
+
+        block scripts
+            script(src="./js/main.js" type="module")

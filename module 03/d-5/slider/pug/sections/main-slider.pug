@@ -1,0 +1,30 @@
+mixin main-slider()
+
+    -var slides = [{id:'video1', poster: './assets/images/poster1.png', src: './assets/video/video.mp4', name: 'Michael Martin', position: 'Business consultant'}, {id:'video2', poster: './assets/images/poster2.png', src: './assets/video/video.mp4', name: 'Rebecca Henderson', position: 'brand designer'}, {id:'video3', poster: './assets/images/poster3.png', src: './assets/video/video.mp4', name: 'Fernando Gibson', position: 'General Manager'}];
+
+    .wrapper
+        .swiper
+
+            .swiper-title
+                | What our client's say<br>about working with us
+
+            .swiper-wrapper
+                each slide in slides
+                    .swiper-slide
+                        .swiper-slide-shadow
+
+                        .swiper-slide-info
+                            .swiper-slide-info-name #{slide.name}
+                            .swiper-slide-info-position #{slide.position}
+
+                        button.swiper-slide-btn
+                            include ../../assets/images/play.svg
+
+                        video.swiper-slide-video(id = slide.id preload='auto' poster=slide.poster playsinline)
+                            source(src=slide.src, type="video/mp4")
+            
+
+            .swiper-buttons
+                .swiper-button-prev
+                .swiper-button-next
+                .swiper-pagination
