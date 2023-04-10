@@ -1,0 +1,111 @@
+.offer__procedures {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media(max-width: $breakpoint-sm) {
+    margin-left: -$container-padding;
+    margin-right: -$container-padding;
+  }
+
+  &-nav {
+    width: 100%;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    @media (max-width: $breakpoint-sm) {
+      width: calc(100% - $container-padding * 2);
+    }
+
+    &::-webkit-scrollbar {
+      width: 0; 
+    }
+
+    .nav_tabs {
+      margin-bottom: 32px;
+      display: flex;
+      flex-wrap: nowrap;
+    }
+
+    &-btn {
+      font-family: 'Geometria-Bold', sans-serif;
+      font-size: 16px;
+      line-height: 100%;
+      color: #0F0F28;
+      text-transform: capitalize;
+      background-color: inherit;
+      padding: 0 16px;
+      transition: color 0.3s ease-in;
+
+      &:hover,
+      &:focus {
+        color: $gold;
+        outline: none;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        width: calc(100% + 16px*2);
+        height: 2px;
+        background-color: rgba(0, 0, 0, 0.1);
+        position: relative;
+        bottom: -4px;
+        left: -16px;
+      }
+
+      @media(max-width: $breakpoint-md) {
+        font-size: 14px;
+      }
+    }
+    .active {
+      color: $gold;
+      
+      &::after {
+        content: '';
+        display: block;
+        width: calc(100% + 16px*2);
+        height: 2px;
+        background-color: $gold;
+        position: relative;
+        bottom: -4px;
+        left: -16px;
+      }
+    }
+  }
+  
+  .tab-content {
+    width: 100%;
+    ul {
+      display: grid;
+      margin: 0 auto;
+      width: 100%;
+      grid-template-rows: auto;
+      grid-template-columns: 33.3%  33.3%  33.3%;
+
+      @media(max-width: calc($breakpoint-md - 1px)) {
+        grid-template-columns: 50% 50%;
+      }
+
+      li {
+        list-style: none;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 53px 24px;
+        font-family: 'Geometria-Medium', sans-serif;
+        font-size: 16px;
+        line-height: 100%;
+        color: #0F0F28;
+        text-transform: uppercase;
+        word-wrap: break-word;
+        background-color: #ffff;
+
+        @media(max-width: $breakpoint-sm) {
+          font-size: 14px;
+          padding: 33px 20px 33px 42px;
+        }
+      }
+    }
+  }
+}

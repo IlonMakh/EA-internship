@@ -1,0 +1,1 @@
+window.addEventListener("load",(()=>{setTimeout((()=>{const e=document.querySelector(".preloader");e&&!e.classList.contains("done")&&e.classList.add("done")}),1e3)}));

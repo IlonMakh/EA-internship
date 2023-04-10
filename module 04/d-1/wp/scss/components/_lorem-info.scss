@@ -1,0 +1,87 @@
+.lorem__info {
+  padding-left: calc(89px - $container-padding * 2);
+  position: relative;
+  align-self: center;
+
+  @media (max-width: 1400px) {
+    padding-left:24px;
+  }
+  
+
+  &::before {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 100%;
+    background-color: $gold;
+    position: absolute;
+    top: 0;
+    left: 0px;
+  }
+
+  &-title {
+    font-size: 50px;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: #0F0F28;
+    margin-bottom: 32px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 44px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 32px;
+    }
+  }
+
+  &-btn {
+    border: 1px solid transparent;
+    padding: 24px 30px;
+    color: #fff;
+    font-family: 'Geometria-Bold', sans-serif;
+    font-size: 16px;
+    line-height: 100%;
+    text-transform: uppercase;
+    background-color: $gold;
+    margin-bottom: 20px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      border: 1px solid $gold;
+      background-color: #ffff;
+      color: $gold;
+      box-shadow: 0 5px 0 $gold;
+    }
+
+    &:focus {
+      outline: none;
+      color: $gold;
+      background-color: #ffff;
+      border: 1px solid $gold;
+    }
+
+    &:active {
+      transform: translateY(5px);
+      box-shadow: none;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      padding: 16px 30px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 14px;
+    }
+  }
+
+  .text-content {
+    margin-bottom: 30px;
+
+
+    @media (max-width: $breakpoint-sm) {
+      margin-bottom: 24px;
+    }
+  }
+}

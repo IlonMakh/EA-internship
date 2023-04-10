@@ -1,0 +1,132 @@
+.text-content {
+  font-family: 'Geometria', sans-serif;
+  font-size: 18px;
+  color: rgba(15, 15, 40, 0.6);
+  line-height: 140%;
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 16px;
+  }
+
+  p:not(:last-child) {
+    margin-bottom: 30px;
+
+    @media (max-width: $breakpoint-sm) {
+      margin-bottom: 24px;
+    }
+  }
+
+  a {
+    color: $gold;
+    background-image: linear-gradient($gold, $gold);
+    background-position: 0 100%, 100% 100%;
+    background-size: 100% 2px, 0 2px;
+    background-repeat: no-repeat;
+    text-decoration: none;
+    transition: all 1s ease-in-out;
+
+    &:hover,
+    &:focus {
+      color: $gold;
+      background-size: 0 2px, 100% 2px;
+      outline: none;
+    }
+  }
+
+  ul,
+  ol {
+    color: inherit;
+    font-size: inherit;
+
+    li:not(:last-child) {
+      margin-bottom: 5px;
+    }
+  }
+
+  q,
+  blockquote,
+  dfn,
+  i {
+    font-style: italic;
+  }
+
+  b,
+  strong {
+    font-weight: bold;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: rgba(15, 15, 40, 1);
+  }
+
+  h1 {
+    font-size: 46px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 42px;
+    }
+  }
+
+  h2 {
+    font-size: 40px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 36px;
+    }
+  }
+
+  h3 {
+    font-size: 32px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 28px;
+    }
+  }
+
+  h4 {
+    font-size: 26px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 24px;
+    }
+  }
+
+  h5 {
+    font-size: 24px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 20px;
+    }
+  }
+
+  h6 {
+    font-size: 20px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 18px;
+    }
+  }
+
+  &_white {
+    color: rgba(255, 255, 255, 0.8);
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #ffff;
+    }
+  }
+}

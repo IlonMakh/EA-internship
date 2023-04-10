@@ -1,0 +1,43 @@
+@import '../components/tab-panel';
+@import '../components/offer-info';
+
+.offer {
+  margin-bottom: 210px;
+  position: relative;
+
+  @media(max-width: $breakpoint-md) {
+    margin-bottom: 150px;
+  }
+
+  @media(max-width: $breakpoint-sm) {
+    margin-bottom: 80px;
+  }
+
+  .container {
+    .row {
+      align-items: center;
+      row-gap: 40px;
+    }
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 350px;
+    height: 1px;
+    background-color: $gold;
+    left: calc(50% - 350px/2);
+    bottom: -124px;
+
+    @media(max-width: $breakpoint-md) {
+      bottom: -50px;
+    }
+
+    @media(max-width: $breakpoint-sm) {
+      bottom: -40px;
+      width: 220px;
+      left: calc(50% - 220px/2);
+    }
+  }
+}
