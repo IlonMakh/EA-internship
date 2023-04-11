@@ -1,0 +1,190 @@
+/* ------------------------------------------------------------ *\
+	Generic
+\* ------------------------------------------------------------ */
+
+@import "../../../../resources/scss/generic/variables";
+@import "../../../../resources/scss/generic/functions";
+@import "../../../../resources/scss/generic/mixins";
+
+/* ------------------------------------------------------------ *\
+	Blocks: Section Gallery
+\* ------------------------------------------------------------ */
+
+.gallery {
+  margin-top: 80px;
+  margin-bottom: 50px;
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+
+    @supports (display: grid) {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 320px);
+      grid-gap: 28px;
+    }
+
+    @media (max-width: 1280px) {
+      gap: 16px;
+  
+      @supports (display: grid) {
+        grid-gap: 16px;
+      }
+    }
+
+    @media (max-width: $breakpoint-lg) {
+      margin-top: 40px;
+      margin-bottom: 30px;
+
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      @supports (display: grid) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(6, 320px);
+        grid-gap:8px;
+      }
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+  }
+}
+
+.gallery__item {
+  transition: all 0.3s ease-in-out;
+  position: relative;
+
+  &:hover {
+    transform: scale(0.95);
+  }
+
+  &:hover &-link {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 45.42%, rgba(0, 0, 0, 0.9) 100%);
+  }
+
+  width: 379px;
+  height: 320px;
+
+  @supports (display: grid ) {
+    width: 100%;
+    height: 100%;
+  }
+
+  &_3 {
+    grid-area: 1 / 1 / 3 / 1;
+  }
+
+  &_6 {
+    grid-area: 1 / 3 / 1 / 5;
+  }
+
+  &_9 {
+    grid-area: 3 / 3 / 3 / 5;
+  }
+
+  &-link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 27.42%, rgba(0, 0, 0, 0.8) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: end;
+    gap: 8px;
+    padding: 16px 16px;
+    text-decoration: none;
+    transition: backgroud 1s ease-in-out;
+  }
+
+  &-title,
+  &-subtitle {
+    display: block;
+  }
+
+  &-title {
+    font-family: 'Geometria-Bold', sans-serif;
+    color: #ffff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    display: block;
+    max-width: 280px;
+
+    @media (max-width: $breakpoint-lg) {
+      max-width: 240px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      max-width: 180px;
+    }
+  }
+
+  &-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  @media (max-width: $breakpoint-lg) {
+    width: 350px;
+    height: 320px;
+
+    @supports (display: grid ) {
+      width: 100%;
+      height: 100%;
+    }
+
+    &-link {
+      gap: 8px;
+      padding: 24px 24px;
+    }
+
+    &-title {
+      font-size: 24px;
+    }
+
+    &-subtitle {
+      font-size: 18px;
+    }
+
+    &_3 {
+      grid-area: 2 / 1 / 2 / 3;
+    }
+
+    &_6 {
+      grid-area: 4 / 1 / 4 / 3;
+    }
+
+    &_9 {
+      grid-area: 6 / 1 / 6 / 3;
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    width: 328px;
+    height: 200px;
+
+    &-link {
+      padding: 16px 16px;
+    }
+
+    &-title {
+      font-size: 18px;
+    }
+  }
+}

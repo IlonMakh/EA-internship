@@ -1,0 +1,116 @@
+/* ------------------------------------------------------------ *\
+	Generic
+\* ------------------------------------------------------------ */
+
+@import "../../../../resources/scss/generic/variables";
+@import "../../../../resources/scss/generic/functions";
+@import "../../../../resources/scss/generic/mixins";
+
+/* ------------------------------------------------------------ *\
+	Blocks: Section advantages
+\* ------------------------------------------------------------ */
+
+.advantages {
+  margin-top: 105px;
+  margin-bottom: 74px;
+
+  &__title {
+    margin-bottom: 0;
+    text-align: center;
+    font-family: 'Geometria', sans-serif;
+    font-size: 50px;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: #0F0F28;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 1280px) {
+    margin-top: 80px;
+    position: relative;
+
+    &::before  {
+      position: absolute;
+      content: '';
+      display: block;
+      width: 140px;
+      height: 1px;
+      background-color: $gold;
+      left: calc(50% - 140px/2);
+      top: -20px;
+    }
+  }
+
+  @media (max-width: $breakpoint-md) {
+    margin-bottom: 100px;
+
+    &__title {
+      font-size: 44px;
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    margin-bottom: 80px;
+    &__title {
+      font-size: 32px;
+    }
+  }
+}
+
+.advantages__card {
+  background-color: $gold; 
+  color: #fff;
+  padding: 48px 38px 78px 56px;
+  height: 100%;
+
+  &-img {
+    margin-bottom: 56px;
+  }
+
+  &-title {
+    text-transform: uppercase;
+    font-size: 24px;
+    line-height: 100%;
+    margin-bottom: 24px;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .text-content {
+    max-height: 220px;
+    overflow: auto;
+  }
+
+
+  @media (max-width: $breakpoint-md) {
+    padding: 20px 20px 34px;
+
+    &-img {
+      width: 64px;
+      margin-bottom: 20px;
+    }
+
+    &-title {
+      margin-bottom: 20px;
+    }
+  
+    &-text {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding-bottom: 30px;
+    text-align: center;
+
+    &-text {
+      text-align: left;
+    }
+  }
+
+  .simplebar-scrollbar::before {
+    background-color: #0F0F28
+  }
+}

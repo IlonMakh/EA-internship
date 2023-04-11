@@ -1,0 +1,250 @@
+/* ------------------------------------------------------------ *\
+	Generic
+\* ------------------------------------------------------------ */
+
+@import "../../../../resources/scss/generic/variables";
+@import "../../../../resources/scss/generic/functions";
+@import "../../../../resources/scss/generic/mixins";
+
+/* ------------------------------------------------------------ *\
+	Blocks: Section Team
+\* ------------------------------------------------------------ */
+
+.team {
+  margin-bottom: 62px;
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 2px;
+    row-gap: 4px;
+    align-items: stretch;
+    justify-content: center;
+    margin-bottom: 32px;
+
+    @media (max-width: $breakpoint-md) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__collapse {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+
+    &-btn {
+      border: 1px solid transparent;
+      padding: 24px 30px;
+      color: #fff;
+      font-family: 'Geometria-Bold', sans-serif;
+      font-size: 16px;
+      line-height: 100%;
+      text-transform: uppercase;
+      background-color: $gold;
+      margin-bottom: 20px;
+      transition: all 0.3s ease-in-out;
+
+      &:hover {
+        border: 1px solid $gold;
+        background-color: #ffff;
+        color: $gold;
+        box-shadow: 0 5px 0 $gold;
+      }
+
+      &:focus {
+        outline: none;
+        color: $gold;
+        background-color: #ffff;
+        border: 1px solid $gold;
+      }
+
+      &:active {
+        transform: translateY(5px);
+        box-shadow: none;
+      }
+
+      @media (max-width: $breakpoint-md) {
+        padding: 16px 30px;
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        font-size: 14px;
+      }
+    }
+  }
+
+}
+
+.team__card {
+  width: 343px;
+  min-height: 520px;
+  overflow: hidden;
+  color: #fff;
+  border-bottom: 4px solid $gold;
+  position: relative;
+
+  @media (max-width: $breakpoint-xl) {
+    width: 227px;
+    min-height: 340px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    width: 320px;
+  }
+
+  &-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    padding: 0 60px;
+    width: 100%;
+    height: 100%;
+    background-color: #2B2B58;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+
+    .text-content {
+      max-height: calc(100% - 40px);
+      height: fit-content;
+      overflow: auto;
+      padding: 20px 0;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+
+      h5 {
+        font-size: 16px;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: 14px;
+        }
+      }
+    }
+
+    @media (max-width: $breakpoint-xl) {
+      padding: 0 18px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      padding: 0 48px;
+    }
+
+    .team__card-info-title {
+      font-family: 'Geometria-Bold', sans-serif;
+      font-size: 16px;
+      line-height: 100%;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+
+      @media (max-width: $breakpoint-xl) {
+        font-size: 14px;
+      }
+    }
+
+    .team__card-info-text {
+      font-size: 18px;
+      line-height: 100%;
+      color: rgba(255, 255, 255, 0.8);
+
+      @media (max-width: $breakpoint-xl) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 73%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(180deg, rgba(43, 43, 88, 0) 0%, #1D1D4E 100%);
+  }
+
+  &-title {
+    font-family: 'Geometria-Bold', sans-serif;
+    font-size: 16px;
+    line-height: 100%;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    position: absolute;
+    bottom: 56px;
+    z-index: 2;
+
+    @media (max-width: $breakpoint-xl) {
+      font-size: 14px;
+      bottom: 52px;
+    }
+  }
+
+  &-img {
+    width: 100%;
+  }
+
+  &:hover {
+    .team__card-info {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.team__info {
+  text-align: center;
+  margin-bottom: 60px;
+
+  @media (max-width: $breakpoint-md) {
+    margin-bottom: 36px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    margin-bottom: 30px;
+  }
+
+  &-suptitle {
+    font-family: 'Geometria-Medium', sans-serif;
+    font-size: 16px;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: #C9AB63;
+    margin-bottom: 16px;
+
+    @media (max-width: $breakpoint-md) {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 14px;
+    }
+  }
+
+  &-title {
+    font-size: 50px;
+    line-height: 100%;
+    text-transform: uppercase;
+    color:  #0F0F28;;
+    margin-bottom: 32px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 44px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 32px;
+    }
+  }
+}

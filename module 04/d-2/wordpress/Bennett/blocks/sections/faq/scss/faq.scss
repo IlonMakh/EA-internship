@@ -1,0 +1,252 @@
+/* ------------------------------------------------------------ *\
+	Generic
+\* ------------------------------------------------------------ */
+
+@import "../../../../resources/scss/generic/variables";
+@import "../../../../resources/scss/generic/functions";
+@import "../../../../resources/scss/generic/mixins";
+
+/* ------------------------------------------------------------ *\
+	Blocks: Section faq
+\* ------------------------------------------------------------ */
+
+.faq {
+  margin-top: 100px;
+  text-align: center;
+  position: relative;
+
+  .collapse-question {
+    margin-bottom: 4px;
+  }
+
+  @media(min-width:1400px) {
+    .tab-content,
+    .tab-pane {
+      height: 100%;
+      width: 100%;
+    }
+
+    .collapse-question {
+      display: none;
+    }
+}
+  
+  .nav-pills {
+    display:none;
+}
+
+@media(min-width:1400px) {
+    .nav-pills {
+        display: flex;
+    }
+    .tab-pane .border {
+        display:none;
+    }  
+    .tab-pane .collapse{
+        display:block;
+    }
+}
+
+@media(max-width:1399px){
+    .tab-content > .tab-pane {
+        display: block !important;
+        opacity: 1;
+    }
+}
+
+  &__title {
+    font-size: 50px;
+    color: #0F0F28;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    position: relative;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 44px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 32px;
+      margin-bottom: 24px;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: 105px;
+      height: 2px;
+      background-color: $gold;
+      position: absolute;
+      top: -25px;
+      left: calc(50% - 105px /2);
+
+      @media (max-width: $breakpoint-md) {
+        top: -8px;
+        width: 98px;
+        left: calc(50% - 98px /2);
+      }
+    }
+
+    @media(max-width: $breakpoint-md) {
+      font-size: 44px;
+      margin-bottom: 24px;
+    }
+
+    @media(max-width: $breakpoint-sm) {
+      font-size: 32px;
+    }
+  }
+}
+
+.faq__answer {
+  width: 100%;
+  height: 100%;
+  padding: 56px;
+  background-color: $gold;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  line-height: 140%;
+  text-align: left;
+
+  @media (max-width: 1400px) {
+    margin-bottom: 4px;
+    height: fit-content;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 16px;
+    padding: 32px;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 14px;
+    padding: 24px;
+  }
+
+  &-question {
+    margin-bottom: 20px;
+    font-family: 'Geometria-Medium', sans-serif;
+    font-size: 16px;
+    line-height: 120%;
+    opacity: 0.4;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 14px;
+    }
+  }
+
+  &-answer p:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  .text-content {
+    max-height: 350px;
+    overflow: auto;
+  }
+
+  .simplebar-scrollbar::before {
+    background-color: #0F0F28
+  }
+}
+
+.faq__questions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &-item {
+    display: block;
+    width: 100%;
+    border: 1px solid #E7E7E9;
+    background-color: transparent;
+    padding: 30px 20px;
+    font-size: 20px;
+    line-height: 120%;
+    color: #0F0F28;
+    text-align: left;
+    border-right: 4px solid #E9DDC1;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+
+    &:not(.active)::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-color: #ffff;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:not(.active)::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background-color: #E9DDC1;
+      transition: all 0.3s ease-in-out;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 16px;
+      padding: 22px 20px;
+    }
+
+    &:hover,
+    &:focus {
+      color: #0F0F28;
+      outline: none;
+
+      &::before {
+        opacity: 0 ;
+        transform: scale(0.5,0.5);
+      }
+    }
+  }
+
+
+  &-item.active {
+    border-right: 4px solid $gold;
+    transition: all 0.3s ease-in-out;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-color: #ffff;
+      transition: all 0.3s ease-in-out;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background-color: $gold;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover,
+    &:focus {
+      color: #ffff;
+      outline: none;
+
+      &::before {
+        opacity: 0 ;
+        transform: scale(0.5,0.5);
+      }
+    }
+  }
+}

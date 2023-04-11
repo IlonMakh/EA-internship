@@ -1,0 +1,135 @@
+/* ------------------------------------------------------------ *\
+	Generic
+\* ------------------------------------------------------------ */
+
+@import "../../../../resources/scss/generic/variables";
+@import "../../../../resources/scss/generic/functions";
+@import "../../../../resources/scss/generic/mixins";
+
+/* ------------------------------------------------------------ *\
+	Blocks: Section Promo
+\* ------------------------------------------------------------ */
+
+.promo {
+  @include height-100vh;
+  min-height: 580px;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 54%;
+    height: 100%;
+    background: linear-gradient(90deg, #0F0F28 0%, rgba(15, 15, 40, 0) 100%);
+    position: absolute;
+    top: 0;
+    left: -1px;
+    z-index: 0;
+  }
+
+  .container,
+  .row,
+  .col {
+    height: 100%;
+  }
+
+  .row {
+    width: 100%;
+  }
+
+  .col {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.promo__info {
+  position: relative;
+  z-index: 1;
+  color: #ffff;
+  font-size: 16px;
+  max-width: 880px;
+  padding-left: 24px;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 100%;
+    background-color: $gold;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &-title {
+    font-size: 80px;
+    line-height: 100%;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-family: 'Geometria', sans-serif;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 44px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 32px;
+    }
+  }
+
+  .text-content {
+    margin-bottom: 40px;
+
+    @media (max-width: $breakpoint-md) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &-subtitle {
+    margin-bottom: 16px;
+  }
+
+  &-subtitle,
+  &-btn {
+    font-family: 'Geometria-Bold', sans-serif;
+    font-size: 16px;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+
+  &-btn {
+    border: 1px solid transparent;
+    background-color: $gold;
+    padding: 24px 30px;
+    color: #ffff;
+    transition: all 0.3s ease-in-out;
+
+      &:hover {
+        border: 1px solid $gold;
+        background-color: #ffff;
+        color: $gold;
+        box-shadow: 0 5px 0 $gold;
+      }
+
+      &:focus {
+        outline: none;
+        color: $gold;
+        background-color: #ffff;
+        border: 1px solid $gold;
+      }
+
+      &:active {
+        transform: translateY(5px);
+        box-shadow: none;
+      }
+
+      @media (max-width: $breakpoint-md) {
+        padding: 16px 30px;
+      }
+
+      @media (max-width: $breakpoint-sm) {
+        font-size: 14px;
+      }
+  }
+}

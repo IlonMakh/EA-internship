@@ -1,0 +1,83 @@
+/* ------------------------------------------------------------ *\
+	Generic
+\* ------------------------------------------------------------ */
+
+@import "../../../../resources/scss/generic/variables";
+@import "../../../../resources/scss/generic/functions";
+@import "../../../../resources/scss/generic/mixins";
+
+/* ------------------------------------------------------------ *\
+	Blocks: Section Preloader
+\* ------------------------------------------------------------ */
+
+.preloader {
+  position: fixed;
+  height: calc(var(--vh, 1vh) * 100);
+  width: calc(var(--vw, 1vw) * 100);
+  background-color: #fff;
+  z-index: 10;
+  transition: 1s all ease;
+  opacity: 1;
+  visibility: visible;
+}
+
+.preloader.done {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .loader {
+    width:400px;
+    height:400px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+  }
+
+  @media (max-width: 768px) {
+    .loader {
+      width:300px;
+      height:300px;
+    }
+    }
+
+  .blob-1,.blob-2 {
+    width:70px;
+    height:70px;
+    position:absolute;
+    background:#0F0F28;
+    border-radius:50%;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+  }
+
+  @media (max-width: 768px) {
+    .blob-1,.blob-2 {
+      width:40px;
+      height:40px;
+    }
+  }
+
+  .blob-1 {
+    left:20%;
+    animation:osc-l 2.5s ease infinite;
+  }
+
+  .blob-2 {
+    left:80%;
+    animation:osc-r 2.5s ease infinite;
+    background:#C9AB63;
+  }
+
+  @keyframes osc-l {
+    0%{left:20%;}
+    50%{left:50%;}
+    100%{left:20%;}
+  }
+
+  @keyframes osc-r {
+    0%{left:80%;}
+    50%{left:50%;}
+    100%{left:80%;}
+  }

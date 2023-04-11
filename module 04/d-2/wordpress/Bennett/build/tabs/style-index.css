@@ -1,0 +1,100 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/@wordpress/scripts/node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./blocks/core/tabs/styles/style.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************/
+.tabs {
+  background: #ffffff;
+}
+.tabs-nav-line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 3.2rem;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+@media (max-width: 767px), screen and (max-width: 812px) and (orientation: landscape) {
+  .tabs-nav-line {
+    margin-bottom: 2.4rem;
+  }
+}
+.tabs-nav-line::-webkit-scrollbar {
+  display: none;
+}
+.tabs-nav-line__item {
+  position: relative;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  padding: 0.7rem 2.4rem;
+  color: rgba(5, 30, 57, 0.6);
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 2.2rem;
+  background-color: transparent;
+  border-left: 2px solid;
+  border-color: rgba(5, 30, 57, 0.1);
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  -o-transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+.tabs-nav-line__item:last-child {
+  border-right: 2px solid;
+  border-color: rgba(5, 30, 57, 0.1);
+}
+.tabs-nav-line__item.active {
+  color: rgba(5, 30, 57, 0.8);
+  background-color: #F6F6F6;
+  border-color: #00AEEF;
+}
+.tabs-nav-line__item.active + .tabs-nav-line__item {
+  border-left-color: #00AEEF;
+}
+.tabs-nav-line__item:hover {
+  color: #003C71;
+}
+.tabs-nav-line__item:hover .item-delete {
+  right: 0;
+}
+.tabs-nav-line__item .item-delete {
+  position: absolute;
+  top: 0;
+  right: -1.2rem;
+  z-index: 1;
+  width: 1.2rem;
+  height: 100%;
+  display: block;
+  border: none;
+  border-radius: 0;
+  background: #ff1847;
+  color: #ffffff;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.tabs-nav-line__item .item-delete:hover {
+  background: red;
+}
+.tabs-nav-line .add_new {
+  border: none;
+  padding: 0.7rem;
+  color: #ffffff;
+  background: #0971CE;
+}
+.tabs-nav-line .add_new:hover {
+  background: #00AEEF;
+}
+
+.tabs-content__tab {
+  display: none;
+}
+.tabs-content__tab.active {
+  display: block;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
