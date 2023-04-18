@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  background-color: @gray;
+  color: @dark;
+}
+
+.container {
+  max-width: 140rem;
+  width: 100%;
+  margin: 0 auto;
+
+  @media (max-width: @breakpoint-xl) {
+    max-width: 90%;
+  }
+}

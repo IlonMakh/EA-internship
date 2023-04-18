@@ -1,22 +1,23 @@
 <template>
   <Header></Header>
   <router-view />
-  <Footer></Footer>
+  <sprites-svg></sprites-svg>
 </template>
 
 <script>
 import Header from './components/Header.vue';
-import Footer from './components/Footer.vue';
+import SpritesSvg from './components/Global/SpritesSvg.vue';
 
 export default {
   name: 'App',
   components: {
     Header,
-    Footer
+    SpritesSvg
+  },
+  data() {
+    return {
+    }
   }
 }
 </script>
 
-<style lang="less">
-@import './less/main.less';
-</style>
