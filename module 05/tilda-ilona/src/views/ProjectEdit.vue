@@ -1,3 +1,3 @@
 <template>
-  <h1>Project edit</h1>
+    <h1>Project edit</h1>
 </template>

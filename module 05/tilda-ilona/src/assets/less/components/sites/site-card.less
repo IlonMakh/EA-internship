@@ -1,113 +1,112 @@
 .sites__item {
-  box-shadow: 0px 0px 8px 0px @dark-gray;
-  width: 46rem;
-  height: 20rem;
-  padding: 2.5rem 1.5rem;
-  background-color: @white;
-  border-radius: 1rem;
-  flex-shrink: 0;
-  .flex-column-left-between;
-  transition: all 0.4s ease-in-out;
-  position: relative;
-  overflow: hidden;
+    box-shadow: 0px 0px 8px 0px @dark-gray;
+    width: 46rem;
+    height: 20rem;
+    padding: 2.5rem 1.5rem;
+    background-color: @white;
+    border-radius: 1rem;
+    flex-shrink: 0;
+    .flex-column-left-between;
+    transition: all 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
 
-  @media (max-width: @breakpoint-xl) {
-    width: 36rem;
-  }
+    @media (max-width: @breakpoint-xl) {
+        width: 36rem;
+    }
 
-  @media (max-width: @breakpoint-m) {
-    width: 32rem;
-    height: 16rem;
-  }
-
-  &:hover {
-    box-shadow: 0px 0px 8px 3px @green;
-    background-color:#ffff;
-  }
-
-  &-menu-btn {
-    width: 2rem;
-    color: @dark-gray;
-    transition: all 0.3s ease-in-out;
+    @media (max-width: @breakpoint-m) {
+        width: 32rem;
+        height: 16rem;
+    }
 
     &:hover {
-      color: @green;
+        box-shadow: 0px 0px 8px 3px @green;
+        background-color: #ffff;
     }
 
-    svg {
-      width: 3rem;
-      height: 3rem;
-    }
-  }
+    &-menu-btn {
+        width: 2rem;
+        color: @dark-gray;
+        transition: all 0.3s ease-in-out;
 
-  &-content,
-  &-footer {
-    .flex-between;
-  }
+        &:hover {
+            color: @green;
+        }
 
-  &-footer {
-    font-size: 1.4rem;
-    color: @dark-gray;
-    font-weight: 500;
-    border-top: 1px solid @green;
-    padding-top: 1rem;
-
-    @media (max-width: @breakpoint-m) {
-      font-size: 1.2rem;
+        svg {
+            width: 3rem;
+            height: 3rem;
+        }
     }
 
-    .sites__item-edit-btn,
-    .sites__item-open-btn {
-      transition: all 0.4s ease-in-out;
-
-      &:hover {
-        color: darken(@dark-gray, 20%);
-      }
-    }
-  }
-
-  &-title {
-    font-size: 3.6rem;
-    text-transform: uppercase;
-    color: @green;
-
-    @media (max-width: @breakpoint-m) {
-      font-size: 2.4rem;
-    }
-  }
-
-  &-menu {
-    position: absolute;
-    background-color: #ffff;
-    width: fit-content;
-    padding: 1rem 1rem 1rem;
-    top: 0.5rem;
-    right: 0.5rem;
-    border: 1px solid @green;
-    .flex-column-left-between;
-    gap: 1rem;
-    border-radius: 0.5rem;
-    transition: all 0.4s ease-in-out;
-    transform: translate(110%);
-
-    &.open {
-      transform: translate(0);
+    &-content,
+    &-footer {
+        .flex-between;
     }
 
-    .site-menu__btn {
-      font-size: 1.4rem;
-      color: @dark-gray;
-      font-weight: 500;
-      transition: all 0.4s ease-in-out;
+    &-footer {
+        font-size: 1.4rem;
+        color: @dark-gray;
+        font-weight: 500;
+        border-top: 1px solid @green;
+        padding-top: 1rem;
 
-      &:hover {
-        color: darken(@dark-gray, 20%);
-      }
+        @media (max-width: @breakpoint-m) {
+            font-size: 1.2rem;
+        }
 
-      @media (max-width: @breakpoint-m) {
-        font-size: 1.2rem;
-      }
+        .sites__item-edit-btn,
+        .sites__item-open-btn {
+            transition: all 0.4s ease-in-out;
+
+            &:hover {
+                color: darken(@dark-gray, 20%);
+            }
+        }
     }
-  }
 
+    &-title {
+        font-size: 3.6rem;
+        text-transform: uppercase;
+        color: @green;
+
+        @media (max-width: @breakpoint-m) {
+            font-size: 2.4rem;
+        }
+    }
+
+    &-menu {
+        position: absolute;
+        background-color: #ffff;
+        width: fit-content;
+        padding: 1rem 1rem 1rem;
+        top: 0.5rem;
+        right: 0.5rem;
+        border: 1px solid @green;
+        .flex-column-left-between;
+        gap: 1rem;
+        border-radius: 0.5rem;
+        transition: all 0.4s ease-in-out;
+        transform: translate(110%);
+
+        &.open {
+            transform: translate(0);
+        }
+
+        .site-menu__btn {
+            font-size: 1.4rem;
+            color: @dark-gray;
+            font-weight: 500;
+            transition: all 0.4s ease-in-out;
+
+            &:hover {
+                color: darken(@dark-gray, 20%);
+            }
+
+            @media (max-width: @breakpoint-m) {
+                font-size: 1.2rem;
+            }
+        }
+    }
 }

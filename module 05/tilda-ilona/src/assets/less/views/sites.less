@@ -1,74 +1,74 @@
 .sites {
-  padding: 5rem 0;
+    padding: 5rem 0;
 
-  .container {
-    @media (max-width: @breakpoint-xl) {
-      max-width: 70%;
-    }
-  }
-
-  &__header {
-    margin-bottom: 3rem;
-    .flex-between;
-  }
-
-  &__add-btn {
-    .flex-center;
-    gap: 1rem;
-    color: darken(@green, 10%);
-    transition: all 0.3s ease-in-out;
-
-    svg {
-      width: 2.4rem;
-      height: 2.4rem;
-      .flex-center;
+    .container {
+        @media (max-width: @breakpoint-xl) {
+            max-width: 70%;
+        }
     }
 
-    span {
-      color: @dark-gray;
-      transition: all 0.3s ease-in-out;
+    &__header {
+        margin-bottom: 3rem;
+        .flex-between;
     }
 
-    &:hover {
-      color: darken(@green, 20%);
+    &__add-btn {
+        .flex-center;
+        gap: 1rem;
+        color: darken(@green, 10%);
+        transition: all 0.3s ease-in-out;
 
-      span {
-        color: @dark;
-      }
+        svg {
+            width: 2.4rem;
+            height: 2.4rem;
+            .flex-center;
+        }
+
+        span {
+            color: @dark-gray;
+            transition: all 0.3s ease-in-out;
+        }
+
+        &:hover {
+            color: darken(@green, 20%);
+
+            span {
+                color: @dark;
+            }
+        }
+
+        @media (max-width: @breakpoint-m) {
+            span {
+                display: none;
+            }
+        }
     }
 
-    @media (max-width: @breakpoint-m) {
-      span {
-        display: none;
-      }
+    &__title {
+        color: @dark-gray;
+        font-weight: 500;
+        font-size: 2rem;
+
+        @media (max-width: @breakpoint-m) {
+            font-size: 1.8rem;
+        }
     }
-  }
 
-  &__title {
-    color: @dark-gray;
-    font-weight: 500;
-    font-size: 2rem;
+    &__message {
+        font-weight: 500;
+        font-size: 4rem;
+        text-align: center;
+        margin-top: 10rem;
 
-    @media (max-width: @breakpoint-m) {
-      font-size: 1.8rem;
+        @media (max-width: @breakpoint-m) {
+            font-size: 2.4rem;
+            margin-top: 5rem;
+        }
     }
-  }
 
-  &__message {
-    font-weight: 500;
-    font-size: 4rem;
-    text-align: center;
-    margin-top: 10rem;
-
-    @media (max-width: @breakpoint-m) {
-      font-size: 2.4rem;
-      margin-top: 5rem;
+    &__list {
+        .flex-center;
+        flex-wrap: wrap;
+        gap: 3rem;
     }
-  }
-
-  &__list {
-    .flex-center;
-    flex-wrap: wrap;
-    gap: 3rem;
-  }
 }
