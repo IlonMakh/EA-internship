@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Sites from "@/views/Sites.vue";
 import Profile from "@/views/Profile.vue";
 import Project from "@/views/Project.vue";
-import ProjectEdit from "@/views/ProjectEdit.vue";
+import PageEdit from "@/views/PageEdit.vue";
 import ProjectPreview from "@/views/ProjectPreview.vue";
 
 const routes = [
@@ -15,16 +15,22 @@ const routes = [
         component: Profile,
     },
     {
-        path: "/project:id",
+        path: "/project/:id",
         component: Project,
+        name: 'project',
+        props: true,
     },
     {
-        path: "/project-edit:id",
-        component: ProjectEdit,
+        path: "/project/:projectId/page-edit/:id",
+        component: PageEdit,
+        name: 'page-edit',
+        props: true,
     },
     {
-        path: "/project-preview:id",
+        path: "/project-preview/:id",
         component: ProjectPreview,
+        name: 'preview',
+        props: true,
     },
 ];
 

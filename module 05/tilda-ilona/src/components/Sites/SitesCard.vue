@@ -1,5 +1,5 @@
 <template>
-    <div class="sites__item">
+    <div @click="goToProject" class="sites__item">
         <div class="sites__item-content">
             <h5 class="sites__item-title">{{ site.title }}</h5>
             <button class="sites__item-menu-btn" @click.stop="openPopup">
@@ -16,8 +16,10 @@
             ></sites-card-menu>
         </div>
         <div class="sites__item-footer">
-            <button class="sites__item-edit-btn">Редактировать сайт</button>
-            <button class="sites__item-open-btn">Открыть сайт</button>
+            <button @click="goToProject" class="sites__item-edit-btn">Редактировать сайт</button>
+            <button @click.stop class="sites__item-open-btn">
+                Открыть сайт
+            </button>
         </div>
     </div>
 </template>
@@ -51,6 +53,23 @@ export default {
 
         removeItem(index) {
             this.$emit("remove", index);
+        },
+
+        goToProject() {
+            console.log(this.site);
+            this.$router.push({
+                name: 'project',
+                params: {
+                    id: this.site.id,
+                    site: JSON.stringify(this.site),
+                },
+            })
+        },
+    },
+
+    computed: {
+        stringSite() {
+            return JSON.stringify(this.site);
         },
     },
 

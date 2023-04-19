@@ -1,0 +1,126 @@
+.project {
+    padding: 5rem 0;
+    background-color: @white;
+    min-height: calc(100vh - 60px);
+
+    @media (max-width: @breakpoint-m) {
+        font-size: 1.4rem;
+        padding: 3rem 0;
+    }
+
+    &__title {
+        font-size: 4.8rem;
+        color: @green;
+        text-transform: uppercase;
+
+        @media (max-width: @breakpoint-l) {
+            font-size: 3.6rem;
+        }
+    }
+
+    &__header {
+        margin-bottom: 4rem;
+        &-top {
+            .flex-between;
+            margin-bottom: 5rem;
+
+            .project__domain-btn,
+            .project__preview-btn {
+                .flex-center;
+                gap: 1rem;
+                transition: all 0.3s ease-in-out;
+
+                span {
+                    color: @dark-gray;
+                    transition: all 0.3s ease-in-out;
+                }
+
+                &:hover {
+                    color: darken(@green, 10%);
+
+                    span {
+                        color: @dark;
+                    }
+                }
+            }
+
+            svg {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+
+        &-bottom {
+            .flex-between;
+
+            @media (max-width: @breakpoint-l) {
+                .flex-between;
+                flex-wrap: wrap;
+            }
+
+            @media (max-width: @breakpoint-s) {
+                .flex-center;
+                gap: 3rem;
+                flex-wrap: wrap;
+            }
+
+            .project__add-btn {
+                .flex-center;
+                color: white;
+                gap: 1rem;
+                background-color: @green;
+                padding: 1rem 3rem;
+                border-radius: 2rem;
+                transition: all 0.3s ease-in-out;
+
+                svg {
+                    width: 2rem;
+                    height: 2rem;
+                }
+
+                @media (max-width: @breakpoint-m) {
+                    padding: 0.8rem;
+                    border-radius: 50%;
+                    span {
+                        display: none;
+                    }
+                }
+
+                &:hover {
+                    background-color: darken(@green, 10%);
+                }
+            }
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    &__message {
+        font-weight: 500;
+        font-size: 4rem;
+        text-align: center;
+        margin-top: 10rem;
+
+        @media (max-width: @breakpoint-m) {
+            font-size: 2.4rem;
+            margin-top: 5rem;
+        }
+    }
+
+    &__pages-title {
+        font-weight: 500;
+        font-size: 2rem;
+        color: @dark-gray;
+        margin-bottom: 2rem;
+
+        @media (max-width: @breakpoint-m) {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+    }
+}

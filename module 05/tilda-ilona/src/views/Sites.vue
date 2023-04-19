@@ -34,18 +34,66 @@ export default {
                 {
                     id: 0,
                     title: "My project 0",
+                    pages: [
+                        {
+                            title: "page 0",
+                            id: 0,
+                            img: "@/assets/images/cat.jpg",
+                        },
+                        {
+                            title: "page 1",
+                            id: 1,
+                            img: "@/assets/images/cat.jpg",
+                        },
+                    ],
                 },
                 {
                     id: 1,
                     title: "My project 1",
+                    pages: [
+                        {
+                            title: "page 0",
+                            id: 0,
+                            img: "@/assets/images/cat.jpg",
+                        },
+                        {
+                            title: "page 1",
+                            id: 1,
+                            img: "@/assets/images/cat.jpg",
+                        },
+                    ],
                 },
                 {
                     id: 2,
                     title: "My project 2",
+                    pages: [
+                        {
+                            title: "page 0",
+                            id: 0,
+                            img: "@/assets/images/cat.jpg",
+                        },
+                        {
+                            title: "page 1",
+                            id: 1,
+                            img: "@/assets/images/cat.jpg",
+                        },
+                    ],
                 },
                 {
                     id: 3,
                     title: "My project 3",
+                    pages: [
+                        {
+                            title: "page 0",
+                            id: 0,
+                            img: "@/assets/images/cat.jpg",
+                        },
+                        {
+                            title: "page 1",
+                            id: 1,
+                            img: "@/assets/images/cat.jpg",
+                        },
+                    ],
                 },
             ],
         };

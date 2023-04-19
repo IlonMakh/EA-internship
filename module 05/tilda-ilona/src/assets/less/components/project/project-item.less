@@ -1,0 +1,104 @@
+.project__list-item {
+    .flex-between;
+    padding: 4rem 2rem;
+    width: 100%;
+    box-shadow: 0px 0px 8px 0px @dark-gray;
+    transition: all 0.3s ease-in-out;
+    border-radius: 2rem;
+
+    @media (max-width: @breakpoint-m) {
+        padding: 3rem 2rem;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 8px 0px @green;
+
+        .item-info__title {
+            color: @green;
+        }
+    }
+
+    &-info {
+        .flex-center;
+        gap: 3rem;
+
+        @media (max-width: @breakpoint-m) {
+            gap: 2rem;
+        }
+
+        .item-info__img {
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+
+            @media (max-width: @breakpoint-m) {
+                width: 5rem;
+                height: 5rem;
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+
+            &:hover {
+                transform: scale(0.9);
+            }
+        }
+
+        .item-info__title {
+            font-size: 3.2rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: @dark-gray;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+
+            @media (max-width: @breakpoint-m) {
+                font-size: 2.4rem;
+            }
+        }
+    }
+
+    &-menu {
+        .flex-center;
+        gap: 2rem;
+
+        @media (max-width: @breakpoint-m) {
+            gap: 1rem;
+        }
+    }
+
+
+    .item-menu__settings,
+    .item-menu__delete {
+        .flex-center;
+        gap: 1rem;
+        transition: all 0.3s ease-in-out;
+
+        span {
+            color: @dark-gray;
+            transition: all 0.3s ease-in-out;
+
+            @media (max-width: @breakpoint-m) {
+                display: none;
+            }
+        }
+
+        svg {
+            width: 2rem;
+            height: 2rem;
+        }
+
+        &:hover {
+            color: darken(@green, 10%);
+
+            span {
+                color: darken(@green, 10%);
+            }
+        }
+    }
+}
