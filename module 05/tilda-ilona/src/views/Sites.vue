@@ -24,6 +24,7 @@
 
 <script>
 import SitesList from "@/components/Sites/SitesList.vue";
+import idGenerator from "@/helpers/idGenerator.js";
 
 export default {
     name: "sites-page",
@@ -32,68 +33,20 @@ export default {
         return {
             sites: [
                 {
-                    id: 0,
+                    id: idGenerator(),
                     title: "My project 0",
-                    pages: [
-                        {
-                            title: "page 0",
-                            id: 0,
-                            img: "@/assets/images/cat.jpg",
-                        },
-                        {
-                            title: "page 1",
-                            id: 1,
-                            img: "@/assets/images/cat.jpg",
-                        },
-                    ],
                 },
                 {
-                    id: 1,
+                    id: idGenerator(),
                     title: "My project 1",
-                    pages: [
-                        {
-                            title: "page 0",
-                            id: 0,
-                            img: "@/assets/images/cat.jpg",
-                        },
-                        {
-                            title: "page 1",
-                            id: 1,
-                            img: "@/assets/images/cat.jpg",
-                        },
-                    ],
                 },
                 {
-                    id: 2,
+                    id: idGenerator(),
                     title: "My project 2",
-                    pages: [
-                        {
-                            title: "page 0",
-                            id: 0,
-                            img: "@/assets/images/cat.jpg",
-                        },
-                        {
-                            title: "page 1",
-                            id: 1,
-                            img: "@/assets/images/cat.jpg",
-                        },
-                    ],
                 },
                 {
-                    id: 3,
+                    id: idGenerator(),
                     title: "My project 3",
-                    pages: [
-                        {
-                            title: "page 0",
-                            id: 0,
-                            img: "@/assets/images/cat.jpg",
-                        },
-                        {
-                            title: "page 1",
-                            id: 1,
-                            img: "@/assets/images/cat.jpg",
-                        },
-                    ],
                 },
             ],
         };
@@ -102,7 +55,7 @@ export default {
         createSite() {
             const length = this.sites.length;
             this.sites.push({
-                id: length ? this.sites[length - 1].id + 1 : 0,
+                id: idGenerator(),
                 title: `My project ${length ? length : 0}`,
             });
         },

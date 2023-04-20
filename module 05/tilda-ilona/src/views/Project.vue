@@ -46,6 +46,7 @@
 import ProjectPagesList from "@/components/Project/ProjectPagesList.vue";
 import DomainModal from "@/components/Modal/DomainModal.vue";
 import SettingsModal from "@/components/Modal/SettingsModal.vue";
+import idGenerator from "@/helpers/idGenerator.js";
 
 export default {
     name: "project-page",
@@ -62,12 +63,12 @@ export default {
             pages: [
                 {
                     title: "page 0",
-                    id: 0,
+                    id: idGenerator(),
                     img: "../images/cat.jpg",
                 },
                 {
                     title: "page 1",
-                    id: 1,
+                    id: idGenerator(),
                     img: "../images/cat.jpg",
                 },
             ],
@@ -95,7 +96,7 @@ export default {
         createPage() {
             const length = this.pages.length;
             this.pages.push({
-                id: length ? this.pages[length - 1].id + 1 : 0,
+                id: idGenerator(),
                 title: `page ${length ? length : 0}`,
                 img: "../images/cat.jpg",
             });
