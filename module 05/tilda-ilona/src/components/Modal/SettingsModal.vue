@@ -23,7 +23,12 @@
                     Бейдж
                 </button>
             </div>
-            <component :is="activeTab"></component>
+            <component
+                :is="activeTab"
+                @saveBadge="saveBadge"
+                @saveTitle="saveTitle"
+                @closeSettings="closeSettings"
+            ></component>
         </div>
     </div>
 </template>
@@ -45,6 +50,14 @@ export default {
     methods: {
         closeSettings() {
             this.$emit("closeSettings");
+        },
+
+        saveBadge(img) {
+            this.$emit("saveBadge", img);
+        },
+
+        saveTitle(title) {
+            this.$emit("saveTitle", title);
         },
     },
 };

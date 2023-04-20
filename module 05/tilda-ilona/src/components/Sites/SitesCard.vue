@@ -16,7 +16,9 @@
             ></sites-card-menu>
         </div>
         <div class="sites__item-footer">
-            <button @click="goToProject" class="sites__item-edit-btn">Редактировать сайт</button>
+            <button @click="goToProject" class="sites__item-edit-btn">
+                Редактировать сайт
+            </button>
             <button @click.stop class="sites__item-open-btn">
                 Открыть сайт
             </button>
@@ -56,20 +58,12 @@ export default {
         },
 
         goToProject() {
-            console.log(this.site);
             this.$router.push({
-                name: 'project',
+                name: "project",
                 params: {
                     id: this.site.id,
-                    site: JSON.stringify(this.site),
                 },
-            })
-        },
-    },
-
-    computed: {
-        stringSite() {
-            return JSON.stringify(this.site);
+            });
         },
     },
 

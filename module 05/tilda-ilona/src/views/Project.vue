@@ -28,8 +28,16 @@
                     @openSettings="openSettings"
                 ></project-pages-list>
             </div>
-            <domain-modal v-if="isDomainOpen" @closeDomain="closeDomain"></domain-modal>
-            <settings-modal v-if="isSettingsOpen" @closeSettings="closeSettings"></settings-modal>
+            <domain-modal
+                v-if="isDomainOpen"
+                @closeDomain="closeDomain"
+            ></domain-modal>
+            <settings-modal
+                v-if="isSettingsOpen"
+                @closeSettings="closeSettings"
+                @saveTitle="saveTitle"
+                @saveBadge="saveBadge"
+            ></settings-modal>
         </section>
     </main>
 </template>
@@ -50,6 +58,7 @@ export default {
         return {
             isDomainOpen: false,
             isSettingsOpen: false,
+            activeIndex: 0,
             pages: [
                 {
                     title: "page 0",
@@ -66,7 +75,6 @@ export default {
     },
 
     methods: {
-
         openDomain() {
             this.isDomainOpen = true;
         },
@@ -75,8 +83,9 @@ export default {
             this.isDomainOpen = false;
         },
 
-        openSettings() {
+        openSettings(index) {
             this.isSettingsOpen = true;
+            this.activeIndex = index;
         },
 
         closeSettings() {
@@ -88,12 +97,20 @@ export default {
             this.pages.push({
                 id: length ? this.pages[length - 1].id + 1 : 0,
                 title: `page ${length ? length : 0}`,
-                img: '../images/cat.jpg',
+                img: "../images/cat.jpg",
             });
         },
 
         deletePage(index) {
             this.pages.splice(index, 1);
+        },
+
+        saveBadge(img) {
+            this.pages[this.activeIndex].img = img;
+        },
+
+        saveTitle(title) {
+            this.pages[this.activeIndex].title = title;
         },
     },
 };

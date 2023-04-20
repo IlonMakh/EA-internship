@@ -5,8 +5,23 @@
                 <svg><use xlink:href="#close"></use></svg>
             </button>
             <form class="domain-modal__form">
-                <input class="domain-modal__input" type="text" placeholder="Имя домена">
-                <button class="domain-modal__save" @click.self.prevent="closeDomain">Сохранить</button>
+                <div class="domain-modal__item">
+                    <div class="domain-modal__error" v-show="!isValid">
+                        Некорректное имя домена
+                    </div>
+                    <input
+                        class="domain-modal__input"
+                        type="text"
+                        placeholder="Имя домена"
+                        v-model="domainValue"
+                    />
+                </div>
+                <button
+                    class="domain-modal__save"
+                    @click.self.prevent="saveAndClose"
+                >
+                    Сохранить
+                </button>
             </form>
         </div>
     </div>
@@ -14,12 +29,31 @@
 
 <script>
 export default {
-    name: 'domain-modal',
+    name: "domain-modal",
+
+    data() {
+        return {
+            isValid: true,
+            domainValue: "",
+        };
+    },
 
     methods: {
         closeDomain() {
             this.$emit("closeDomain");
         },
-    }
+
+        saveAndClose() {
+            this.checkDomain();
+            if (this.isValid) {
+                this.$emit("closeDomain");
+            }
+        },
+
+        checkDomain() {
+            const regExp = /^([\wёa-я-]{2,}\.)+[\wёa-я-]{2,}$/i;
+            this.isValid = this.domainValue.match(regExp);
+        },
+    },
 };
 </script>

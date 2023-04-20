@@ -59,7 +59,7 @@
         &:hover {
             color: @green;
         }
-        
+
         svg {
             width: 2.4rem;
             height: 2.4rem;
@@ -76,11 +76,12 @@
         padding: 2rem 3rem;
         cursor: default;
         width: 60rem;
-        height: 43rem;
+        height: 48rem;
 
         @media (max-width: @breakpoint-m) {
             padding: 2rem;
             width: 40rem;
+            height: 43rem;
         }
 
         @media (max-width: @breakpoint-s) {
@@ -91,7 +92,11 @@
 
     &__form {
         .flex-column-center;
-        gap: 1rem;
+        gap: 2rem;
+
+        @media (max-width: @breakpoint-m) {
+            gap: 1rem;
+        }
 
         &-item {
             .flex-column-center;

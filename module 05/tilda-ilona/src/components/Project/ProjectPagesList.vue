@@ -9,7 +9,9 @@
             @openSettings="openSettings"
         ></project-pages-list-item>
     </div>
-    <div class="project__message" v-else>В этом проекте пока нет ни одной страницы. Добавьте новую!</div>
+    <div class="project__message" v-else>
+        В этом проекте пока нет ни одной страницы. Добавьте новую!
+    </div>
 </template>
 
 <script>
