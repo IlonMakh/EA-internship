@@ -1,0 +1,205 @@
+.page-edit__modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s ease-in-out;
+
+    &.open {
+        visibility: visible;
+        opacity: 1;
+
+        .page-edit__modal-content {
+            transform: translate(0);
+        }
+    }
+
+    &-content {
+        width: 50vw;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: @white;
+        cursor: default;
+        .flex-between;
+        transform: translate(-100%);
+        transition: all 0.4s ease-in-out;
+
+        @media (max-width: @breakpoint-l) {
+            width: 65vw;
+        }
+
+        @media (max-width: 1080px) {
+            width: 75vw;
+        }
+
+        @media (max-width: @breakpoint-m) {
+            width: 100vw;
+        }
+    }
+
+    &-menu {
+        min-width: 45%;
+        min-height: 100%;
+        background-color: lighten(@gray, 10%);
+        padding: 2rem;
+        .flex-column-center;
+        justify-content: start;
+        gap: 2rem;
+
+        @media (max-width: @breakpoint-l) {
+            padding: 2rem 1rem;
+        }
+
+        @media (max-width: @breakpoint-m) {
+            padding: 4rem 2rem;
+        }
+
+        svg {
+            width: 2.4rem;
+            height: 2.4rem;
+        }
+    }
+
+    &-panel {
+        .flex-center;
+        justify-content: left;
+        gap: 1rem;
+        margin-bottom: 2rem;
+
+        @media (max-width: @breakpoint-s) {
+            .flex-between;
+            flex-wrap: wrap;
+        }
+    }
+
+    &-input {
+        padding: 1rem 0.5rem;
+        width: auto;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        border-bottom: 1px solid @green;
+        border-radius: 1rem;
+        text-align: center;
+
+        @media (max-width: @breakpoint-s) {
+            order: 1;
+            width: 100%;
+        }
+        
+
+        font-size: 1.6rem;
+        font-family: "Roboto", sans-serif;
+        transition: all 0.3s ease-in-out;
+
+        @media (max-width: @breakpoint-m) {
+            font-size: 1.2rem;
+        }
+
+        &::placeholder {
+            font-size: 1.6rem;
+            color: @gray;
+            font-family: "Roboto", sans-serif;
+
+            @media (max-width: @breakpoint-m) {
+                font-size: 1.2rem;
+            }
+        }
+
+        &:hover,
+        &:focus {
+            background-color: #ffff;
+        }
+    }
+
+    &-blocks {
+        min-width: 55%;
+        min-height: 100%;
+        .flex-column-center;
+        justify-content: start;
+        gap: 2rem;
+        padding: 2rem;
+
+        @media (max-width: @breakpoint-l) {
+            padding: 2rem 1rem;
+        }
+
+        @media (max-width: @breakpoint-m) {
+            padding: 4rem 2rem;
+            font-size: 1.4rem;
+        }
+
+        @media (max-width: @breakpoint-s) {
+            font-size: 1.2rem;
+        }
+    }
+
+    &-search,
+    &-close {
+        color: @dark-gray;
+    }
+
+    &-tab {
+        font-size: 1.8rem;
+        font-weight: 500;
+        transition: all 0.3s ease-in-out;
+
+        @media (max-width: @breakpoint-m) {
+            font-size: 1.6rem;
+        }
+
+        @media (max-width: @breakpoint-s) {
+            font-size: 1.4rem;
+        }
+
+        &.active {
+            color: darken(@green, 10%);
+            border-bottom: 1px solid @green;
+        }
+
+        &:hover {
+            color: darken(@green, 10%);
+        }
+    }
+
+    .blocks__item {
+        width: 100%;
+        .flex-column-center;
+        gap: 1rem;
+        border-top: 1px solid @green;
+        border-bottom: 1px solid @green;
+        padding: 1rem 0;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        text-align: center;
+
+        &:hover {
+            background-color: #ffff;
+
+            .blocks__item-title {
+                color: @green;
+            }
+        }
+
+        &-title {
+            font-weight: 500;
+            font-size: 1.8rem;
+            transition: all 0.3s ease-in-out;
+
+            @media (max-width: @breakpoint-m) {
+                font-size: 1.6rem;
+            }
+
+            @media (max-width: @breakpoint-s) {
+                font-size: 1.4rem;
+            }
+        }
+    }
+}

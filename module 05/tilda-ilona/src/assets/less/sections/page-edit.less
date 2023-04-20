@@ -1,0 +1,107 @@
+.page-edit {
+    .container {
+        .flex-column-center;
+    }
+    &__add {
+        margin-top: 10rem;
+        background-color: @green;
+        color: #ffff;
+        padding: 1rem 3rem;
+        width: 30rem;
+        border-radius: 2rem;
+        transition: all 0.3s ease-in-out;
+        font-weight: 500;
+
+        &-more {
+            color: @dark-gray;
+            background-color: transparent;
+            border-radius: 50%;
+            margin-top: -1.2rem;
+            position: relative;
+            z-index: 0;
+            transition: all 0.3s ease-in-out;
+            opacity: 0.3;
+
+            &:hover {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
+
+            svg {
+                width: 2.4rem;
+                height: 2.4rem;
+                transform: scale(2.3);
+
+                @media (max-width: @breakpoint-m) {
+                    transform: scale(1.4);
+                }
+            }
+        }
+
+        @media (max-width: @breakpoint-m) {
+            padding: 1rem 2rem;
+            font-size: 1.4rem;
+        }
+
+        &:hover {
+            background-color: darken(@green, 10%);
+        }
+    }
+
+    .block__cover {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        .flex-column-center;
+        font-size: 2rem;
+        font-weight: 500;
+        text-align: center;
+        line-height: 140%;
+
+        @media (max-width: @breakpoint-m) {
+            font-size: 1.6rem;
+        }
+
+        @media (max-width: @breakpoint-s) {
+            font-size: 1.4rem;
+        }
+
+        p {
+            outline: none;
+        }
+
+        &-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.8;
+        }
+    }
+
+    .block__text {
+        position: relative;
+        width: 100vw;
+        padding: 5rem 0;
+        .flex-column-center;
+        font-size: 2rem;
+        font-weight: 500;
+        text-align: center;
+        line-height: 140%;
+        background-color: @white;
+
+        p {
+            outline: none;
+        }
+
+        @media (max-width: @breakpoint-m) {
+            font-size: 1.6rem;
+        }
+
+        @media (max-width: @breakpoint-s) {
+            font-size: 1.4rem;
+        }
+    }
+}

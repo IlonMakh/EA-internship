@@ -1,0 +1,71 @@
+.header-edit {
+    .container {
+        .flex-between;
+
+        @media (max-width: @breakpoint-s) {
+            .flex-center;
+            flex-wrap: wrap;
+            column-gap: 3rem;
+            row-gap: 1rem
+        }
+    }
+    padding: 2rem 0;
+    border-bottom: 2px solid @green;
+    border-bottom-right-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    background-color: @white;
+    font-weight: 500;
+
+    @media (max-width: @breakpoint-m) {
+        font-size: 1.4rem;
+    }
+
+    &__controls {
+        .flex-center;
+        gap: 2rem;
+
+        @media (max-width: @breakpoint-s) {
+            gap: 1rem;
+        }
+    }
+
+    &__preview,
+    &__menu {
+        transition: all 0.3s ease-in-out;
+
+        @media (max-width: @breakpoint-s) {
+            font-size: 1.4rem;
+        }
+        &:hover {
+            color: @green;
+        }
+    }
+
+    &__breadcrumps {
+        .flex-center;
+        gap: 1rem;
+
+        
+        @media (max-width: @breakpoint-s) {
+            font-size: 1.4rem;
+            gap: 0.5rem;
+        }
+
+        svg {
+            width: 2rem;
+            height: 2rem;
+            margin-top: -0.4rem;
+        }
+
+        a {
+            &:hover {
+                color: @green;
+            }
+            &:not(:last-child) {
+                &::after {
+                    content: "/";
+                }
+            }
+        }
+    }
+}
