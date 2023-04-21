@@ -40,11 +40,11 @@ export default {
         return {
             isPopupOpen: false,
             text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-            hic natus rerum sint expedita repellendus molestiae quisquam animi
+            hic natus rerum sint помогите мне нужен стейт менеджер expedita repellendus molestiae quisquam animi
             porro neque facilis sequi voluptate rem eligendi delectus esse
             explicabo, quod fuga! Если сзади смешной кот, то это просто я, когда увидела очередную порцию заданий на день.Lorem ipsum dolor sit amet consectetur
             adipisicing elit. Obcaecati hic natus rerum sint expedita
-            repellendus molestiae quisquam animi porro neque facilis sequi
+            repellendus molestiae quisquam animi помогите porro neque facilis sequi
             voluptate rem eligendi delectus esse explicabo, quod fuga!`,
             img: "/images/cat3.jpg",
 

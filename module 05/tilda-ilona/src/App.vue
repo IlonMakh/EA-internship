@@ -1,6 +1,6 @@
 <template>
-    <HeaderApp v-if="$route.name !== 'page-edit'"></HeaderApp>
-    <page-edit-header v-else></page-edit-header>
+    <HeaderApp v-if="$route.name !== 'page-edit' && $route.name !== 'page-preview'"></HeaderApp>
+    <page-edit-header v-else-if="$route.name == 'page-edit'"></page-edit-header>
     <router-view />
     <sprites-svg></sprites-svg>
 </template>
