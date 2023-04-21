@@ -1,6 +1,8 @@
 .header-edit {
+    position: relative;
     .container {
         .flex-between;
+        position: relative;
 
         @media (max-width: @breakpoint-s) {
             .flex-center;
@@ -26,6 +28,7 @@
 
         @media (max-width: @breakpoint-s) {
             gap: 1rem;
+            width: 100%;
         }
     }
 
@@ -65,6 +68,47 @@
                 &::after {
                     content: "/";
                 }
+            }
+        }
+    }
+
+    &__dropdown {
+        border: 1px solid @green;
+        border-top: none;
+        background-color: @white;
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        position: absolute;
+        bottom: -9.5rem;
+        right: -1rem;
+        padding: 1rem;
+        .flex-column-center;
+        gap: 0.5rem;
+        font-size: 1.4rem;
+        color: @dark-gray;
+        transform: translateY(-50%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+        z-index: 1;
+
+        @media (max-width: @breakpoint-s) {
+            font-size: 1.2rem;
+            bottom: -8.9rem;
+            right: 30%;
+        }
+
+        &.open {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        &-link {
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                color: @dark;
             }
         }
     }

@@ -46,7 +46,7 @@ export default {
             adipisicing elit. Obcaecati hic natus rerum sint expedita
             repellendus molestiae quisquam animi porro neque facilis sequi
             voluptate rem eligendi delectus esse explicabo, quod fuga!`,
-            img: "@/assets/images/cat3.jpg",
+            img: "/images/cat3.jpg",
 
             blocks: [],
         };
