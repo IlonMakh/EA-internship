@@ -6,15 +6,22 @@
             {{ text }}
         </p>
     </div>
+    <blocks-menu :blockId="blockId"></blocks-menu>
 </section>
 </template>
 
 <script>
+import BlocksMenu from './BlocksMenu.vue';
+
 export default {
-    name: "edit-cover-block",
+    name: "cover-block",
     props: {
         text: String,
         image: String,
+        blockId: Number,
+    },
+    components: {
+        BlocksMenu
     },
 
     data() {

@@ -11,7 +11,6 @@ export default {
     props: {
         index: Number,
     },
-    data() {},
     methods: {
         removeItem() {
             this.$emit("remove", this.index);

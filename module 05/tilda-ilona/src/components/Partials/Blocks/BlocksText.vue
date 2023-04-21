@@ -5,14 +5,21 @@
             {{ text }}
         </p>
     </div>
+    <blocks-menu :blockId="blockId"></blocks-menu>
 </section>
 </template>
 
 <script>
+import BlocksMenu from './BlocksMenu.vue';
+
 export default {
-    name: "edit-text-block",
+    name: "text-block",
+    components: {
+        BlocksMenu
+    },
     props: {
         text: String,
+        blockId: Number,
     },
 
     data() {

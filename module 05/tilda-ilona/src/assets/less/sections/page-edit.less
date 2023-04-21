@@ -104,4 +104,45 @@
             font-size: 1.4rem;
         }
     }
+
+    .block__cover,
+    .block__text {
+        &:hover {
+            .block__menu {
+                .flex-center;
+                gap: 1rem;
+
+                @media (max-width: @breakpoint-m) {
+                    gap: 0.5rem;
+                }
+            }
+        }
+    }
+
+    .block__menu {
+        display: none;
+        position: absolute;
+        top: 2rem;
+        right: 5rem;
+
+        @media (max-width: @breakpoint-m) {
+            right: 2rem;
+        }
+
+        &-btn {
+            opacity: 0.5;
+            color: @dark-gray;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                color: darken(@green, 10%);
+                opacity: 0.9;
+            }
+        }
+
+        svg {
+            width: 2.4rem;
+            height: 2.4rem;
+        }
+    }
 }

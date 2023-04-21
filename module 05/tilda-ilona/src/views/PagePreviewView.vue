@@ -1,32 +1,32 @@
 <template>
-    <div class="page-preview">
-        <section class="block__cover">
-            <img class="block__cover-img" src="/images/cat3.jpg" />
-            <div class="container">
-                <p class="block__cover-content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-                    hic natus rerum sint expedita repellendus molestiae quisquam animi
-                    porro neque facilis sequi voluptate rem eligendi delectus esse
-                    explicabo, quod fuga! Если сзади смешной кот, то это просто я, когда увидела очередную порцию заданий на день.Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Obcaecati hic natus rerum sint expedita
-                    repellendus molestiae quisquam animi porro neque facilis sequi
-                    voluptate rem eligendi delectus esse explicabo, quod fuga!
-                </p>
-            </div>
-        </section>
-        <section class="block__text">
-            <div class="container">
-                <p class="block__text-content">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-                    hic natus rerum sint expedita repellendus molestiae quisquam animi
-                    porro neque facilis sequi voluptate rem eligendi delectus esse
-                    explicabo, quod fuga! Если сзади смешной кот, то это просто я, когда увидела очередную порцию заданий на день.Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Obcaecati hic natus rerum sint expedita
-                    repellendus molestiae quisquam animi porro neque facilis sequi
-                    voluptate rem eligendi delectus esse explicabo, quod fuga!
-                </p>
-            </div>
-        </section>
-        <button class="page-preview__back" @click="$router.go(-1)">Вернуться к редактированию</button>
+<div class="page-preview">
+    <div v-if="blocks.length" class="page-edit__blocks">
+        <div v-for="(block, index) in blocks" :key="index" class="block-wrapper">
+            <blocks-text v-if="block.type === 'text'" :text="block.text"></blocks-text>
+            <blocks-cover v-else-if="block.type === 'cover'" :image="block.img" :text="block.text"></blocks-cover>
+        </div>
     </div>
+    <button class="page-preview__back" @click="$router.go(-1)">
+        Вернуться к редактированию
+    </button>
+</div>
 </template>
+
+<script>
+import BlocksCover from "@/components/Partials/Blocks/BlocksCover.vue";
+import BlocksText from "@/components/Partials/Blocks/BlocksText.vue";
+import { useEditViewStore } from "@/store/modules/pageEditView";
+import { mapState } from "pinia";
+
+export default {
+    name: "page-edit-view",
+    components: {
+        BlocksCover,
+        BlocksText,
+    },
+
+    computed: {
+        ...mapState(useEditViewStore, ["blocks"]),
+    },
+};
+</script>

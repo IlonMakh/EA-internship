@@ -4,8 +4,8 @@
         <div class="container">
             <div v-if="blocks.length" class="page-edit__blocks">
                 <div v-for="(block, index) in blocks" :key="index" class="block-wrapper">
-                    <page-edit-blocks-text v-if="(block.type === 'text')" :text="block.text"></page-edit-blocks-text>
-                    <page-edit-blocks-cover v-else-if="(block.type === 'cover')" :image="block.img" :text="block.text"></page-edit-blocks-cover>
+                    <blocks-text v-if="block.type === 'text'" :blockId="block.blockId" :text="block.text"></blocks-text>
+                    <blocks-cover v-else-if="block.type === 'cover'" :image="block.img" :blockId="block.blockId" :text="block.text"></blocks-cover>
                 </div>
             </div>
             <button v-show="!blocks.length" class="page-edit__add" @click="openPopup">
@@ -18,41 +18,35 @@
             </button>
         </div>
     </section>
-    <page-edit-modal :class="isPopupOpen ? 'open' : ''" @closeModal="closePopup" @addBlock="addBlock"></page-edit-modal>
+    <page-edit-library :class="isPopupOpen ? 'open' : ''" @closeModal="closePopup" @addBlock="addBlock2"></page-edit-library>
 </main>
 </template>
 
 <script>
-import PageEditModal from "@/components/Sections/PageEditView/PageEditModal.vue";
-import PageEditBlocksCover from "@/components/Sections/PageEditView/PageEditBlocks/PageEditBlocksCover.vue";
-import PageEditBlocksText from "@/components/Sections/PageEditView/PageEditBlocks/PageEditBlocksText.vue";
+import PageEditLibrary from "@/components/Sections/PageEditView/PageEditLibrary.vue";
+import BlocksCover from "@/components/Partials/Blocks/BlocksCover.vue";
+import BlocksText from "@/components/Partials/Blocks/BlocksText.vue";
+import { useEditViewStore } from "@/store/modules/pageEditView";
+import { mapState, mapActions } from "pinia";
 
 export default {
     name: "page-edit-view",
     components: {
-        PageEditModal,
-        PageEditBlocksCover,
-        PageEditBlocksText
+        PageEditLibrary,
+        BlocksCover,
+        BlocksText,
     },
     props: {},
 
     data() {
         return {
             isPopupOpen: false,
-            text: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati
-            hic natus rerum sint помогите мне нужен стейт менеджер expedita repellendus molestiae quisquam animi
-            porro neque facilis sequi voluptate rem eligendi delectus esse
-            explicabo, quod fuga! Если сзади смешной кот, то это просто я, когда увидела очередную порцию заданий на день.Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Obcaecati hic natus rerum sint expedita
-            repellendus molestiae quisquam animi помогите porro neque facilis sequi
-            voluptate rem eligendi delectus esse explicabo, quod fuga!`,
-            img: "/images/cat3.jpg",
-
-            blocks: [],
         };
     },
 
     methods: {
+        ...mapActions(useEditViewStore, ["addBlock"]),
+
         openPopup() {
             this.isPopupOpen = true;
         },
@@ -61,20 +55,13 @@ export default {
             this.isPopupOpen = false;
         },
 
-        addBlock(type) {
-            if (type === "text") {
-                this.blocks.push({
-                    text: this.text,
-                    type
-                });
-            } else if (type === "cover") {
-                this.blocks.push({
-                    text: this.text,
-                    img: this.img,
-                    type
-                });
-            }
+        addBlock2(type) {
+            this.addBlock(type);
         },
+    },
+
+    computed: {
+        ...mapState(useEditViewStore, ["blocks"]),
     },
 };
 </script>

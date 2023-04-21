@@ -15,11 +15,8 @@
                     </svg>
                 </button>
             </div>
-            <button :class="activeTab === 'PageEditModalText' ? 'active' : ''" class="page-edit__modal-tab" @click="activeTab = 'PageEditModalText'">
-                Текстовые блоки
-            </button>
-            <button :class="activeTab === 'PageEditModalCover' ? 'active' : ''" class="page-edit__modal-tab" @click="activeTab = 'PageEditModalCover'">
-                Обложки
+            <button v-for="tab in tabs" :key="tab.name" :class="activeTab === tab.name ? 'active' : ''" class="page-edit__modal-tab" @click="activeTab = tab.name">
+                {{ tab.title }}
             </button>
         </div>
         <component :is="activeTab" @addBlock="addBlock"></component>
@@ -28,20 +25,30 @@
 </template>
 
 <script>
-import PageEditModalText from "./PageEditModal/PageEditModalText.vue";
-import PageEditModalCover from "./PageEditModal/PageEditModalCover.vue";
+import PageEditLibraryText from "./PageEditLibrary/PageEditLibraryText.vue";
+import PageEditLibraryCover from "./PageEditLibrary/PageEditLibraryCover.vue";
 
 export default {
     name: "edit-modal",
     components: {
-        PageEditModalText,
-        PageEditModalCover
+        PageEditLibraryText,
+        PageEditLibraryCover
     },
     props: {},
 
     data() {
         return {
-            activeTab: "PageEditModalText",
+            activeTab: "PageEditLibraryText",
+
+            tabs: [{
+                    name: "PageEditLibraryText",
+                    title: "Текстовые блоки",
+                },
+                {
+                    name: "PageEditLibraryCover",
+                    title: "Обложки",
+                },
+            ],
         };
     },
 
