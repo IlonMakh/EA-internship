@@ -19,7 +19,7 @@
                 {{ tab.title }}
             </button>
         </div>
-        <component :is="activeTab" @addBlock="addBlock"></component>
+        <component :is="activeTab"></component>
     </div>
 </div>
 </template>
@@ -56,10 +56,6 @@ export default {
         closeModal() {
             this.$emit("closeModal");
         },
-
-        addBlock(type) {
-            this.$emit("addBlock", type);
-        }
     },
 };
 </script>

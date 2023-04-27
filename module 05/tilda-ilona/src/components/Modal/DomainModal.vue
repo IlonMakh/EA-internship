@@ -22,6 +22,10 @@
 </template>
 
 <script>
+import { useSitesStore } from "@/store/modules/sites";
+import { useModalsStore } from "@/store/modules/modals";
+import { mapActions, mapState } from "pinia";
+
 export default {
     name: "domain-modal",
 
@@ -33,14 +37,14 @@ export default {
     },
 
     methods: {
-        closeDomain() {
-            this.$emit("closeDomain");
-        },
+        ...mapActions(useSitesStore, ["changeDomain"]),
+        ...mapActions(useModalsStore, ["closeDomain"]),
 
         saveAndClose() {
             this.checkDomain();
             if (this.isValid) {
-                this.$emit("closeDomain");
+                this.changeDomain(this.activeSiteId, this.domainValue);
+                this.closeDomain();
             }
         },
 
@@ -48,6 +52,10 @@ export default {
             const regExp = /^([\wёa-я-]{2,}\.)+[\wёa-я-]{2,}$/i;
             this.isValid = this.domainValue.match(regExp);
         },
+    },
+
+    computed: {
+        ...mapState(useSitesStore, ["activeSiteId"]),
     },
 };
 </script>

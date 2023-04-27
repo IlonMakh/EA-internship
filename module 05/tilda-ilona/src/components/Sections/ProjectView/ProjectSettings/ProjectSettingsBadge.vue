@@ -27,6 +27,11 @@
 </template>
 
 <script>
+import { useSitesStore } from "@/store/modules/sites";
+import { usePagesStore } from "@/store/modules/pages";
+import { useModalsStore } from "@/store/modules/modals";
+import { mapActions, mapState } from "pinia";
+
 export default {
     name: "settings-badge-tab",
 
@@ -37,10 +42,18 @@ export default {
     },
 
     methods: {
+        ...mapActions(usePagesStore, ['changeBadge']),
+        ...mapActions(useModalsStore, ['closeSettings']),
+
         saveBadge() {
-            this.$emit("saveBadge", this.activeBadge);
-            this.$emit("closeSettings");
+            this.changeBadge(this.activeSiteId, this.activePageId, this.activeBadge);
+            this.closeSettings();
         },
+    },
+
+    computed: {
+        ...mapState(useSitesStore, ["activeSiteId"]),
+        ...mapState(usePagesStore, ["activePageId"]),
     },
 };
 </script>

@@ -11,7 +11,7 @@
                     <span>Создать новый сайт</span>
                 </button>
             </div>
-            <sites-list v-if="sites.length" :sites="sites" @remove="deleteSite"></sites-list>
+            <sites-list v-if="sites.length"></sites-list>
             <div v-else class="sites__message">
                 У вас еще нет сайтов. Создайте новый!
             </div>
@@ -22,7 +22,9 @@
 
 <script>
 import SitesList from "@/components/Sections/SitesView/SitesList.vue";
-import idGenerator from "@/helpers/idGenerator.js";
+import { useSitesStore } from "@/store/modules/sites";
+import { mapState, mapActions } from "pinia";
+
 
 export default {
     name: "sites-page",
@@ -31,37 +33,14 @@ export default {
     },
     data() {
         return {
-            sites: [{
-                    id: idGenerator(),
-                    title: "My project 0",
-                },
-                {
-                    id: idGenerator(),
-                    title: "My project 1",
-                },
-                {
-                    id: idGenerator(),
-                    title: "My project 2",
-                },
-                {
-                    id: idGenerator(),
-                    title: "My project 3",
-                },
-            ],
         };
     },
     methods: {
-        createSite() {
-            const length = this.sites.length;
-            this.sites.push({
-                id: idGenerator(),
-                title: `My project ${length ? length : 0}`,
-            });
-        },
+        ...mapActions(useSitesStore, ["createSite"]),
+    },
 
-        deleteSite(index) {
-            this.sites.splice(index, 1);
-        },
+    computed: {
+        ...mapState(useSitesStore, ["sites"]),
     },
 };
 </script>

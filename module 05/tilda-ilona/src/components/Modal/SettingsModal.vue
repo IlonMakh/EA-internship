@@ -19,7 +19,7 @@
                 Бейдж
             </button>
         </div>
-        <component :is="activeTab" :page="page" @saveBadge="saveBadge" @saveTitle="saveTitle" @closeSettings="closeSettings"></component>
+        <component :is="activeTab" :page="page"></component>
     </div>
 </div>
 </template>
@@ -27,15 +27,16 @@
 <script>
 import ProjectSettingsMain from "../Sections/ProjectView/ProjectSettings/ProjectSettingsMain.vue";
 import ProjectSettingsBadge from "../Sections/ProjectView/ProjectSettings/ProjectSettingsBadge.vue";
+import { useSitesStore } from "@/store/modules/sites";
+import { usePagesStore } from "@/store/modules/pages";
+import { useModalsStore } from "@/store/modules/modals";
+import { mapActions, mapState } from "pinia";
 
 export default {
     name: "settings-modal",
     components: {
         ProjectSettingsMain,
         ProjectSettingsBadge
-    },
-    props: {
-        page: Object,
     },
 
     data() {
@@ -45,17 +46,16 @@ export default {
     },
 
     methods: {
-        closeSettings() {
-            this.$emit("closeSettings");
-        },
+        ...mapActions(usePagesStore, ['getActivePage']),
+        ...mapActions(useModalsStore, ['closeSettings']),
+    },
 
-        saveBadge(img) {
-            this.$emit("saveBadge", img);
-        },
-
-        saveTitle(title) {
-            this.$emit("saveTitle", title);
-        },
+    computed: {
+        ...mapState(useSitesStore, ["activeSiteId"]),
+        ...mapState(usePagesStore, ["activePageId"]),
+        page() {
+            return this.getActivePage(this.activeSiteId, this.activePageId);
+        }
     },
 };
 </script>

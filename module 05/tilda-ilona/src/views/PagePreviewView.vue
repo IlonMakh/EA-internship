@@ -1,7 +1,7 @@
 <template>
 <div class="page-preview">
-    <div v-if="blocks.length" class="page-edit__blocks">
-        <div v-for="(block, index) in blocks" :key="index" class="block-wrapper">
+    <div v-if="pageBlocks.length" class="page-edit__blocks">
+        <div v-for="(block, index) in pageBlocks" :key="index" class="block-wrapper">
             <blocks-text v-if="block.type === 'text'" :text="block.text"></blocks-text>
             <blocks-cover v-else-if="block.type === 'cover'" :image="block.img" :text="block.text"></blocks-cover>
         </div>
@@ -15,8 +15,10 @@
 <script>
 import BlocksCover from "@/components/Partials/Blocks/BlocksCover.vue";
 import BlocksText from "@/components/Partials/Blocks/BlocksText.vue";
-import { useEditViewStore } from "@/store/modules/pageEditView";
-import { mapState } from "pinia";
+import { useBlocksStore } from "@/store/modules/blocks";
+import { useSitesStore } from "@/store/modules/sites";
+import { usePagesStore } from "@/store/modules/pages";
+import { mapState, mapActions } from "pinia";
 
 export default {
     name: "page-edit-view",
@@ -24,9 +26,16 @@ export default {
         BlocksCover,
         BlocksText,
     },
+    methods: {
+        ...mapActions(useBlocksStore, ["getPageBlocks"]),
+    },
 
     computed: {
-        ...mapState(useEditViewStore, ["blocks"]),
+        ...mapState(useSitesStore, ["activeSiteId"]),
+        ...mapState(usePagesStore, ["activePageId"]),
+        pageBlocks() {
+            return this.getPageBlocks(this.activeSiteId, this.activePageId);
+        }
     },
 };
 </script>

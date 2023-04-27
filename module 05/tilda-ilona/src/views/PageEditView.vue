@@ -2,31 +2,35 @@
 <main>
     <section class="page-edit">
         <div class="container">
-            <div v-if="blocks.length" class="page-edit__blocks">
-                <div v-for="(block, index) in blocks" :key="index" class="block-wrapper">
+            <div v-if="pageBlocks.length" class="page-edit__blocks">
+                <div v-for="(block, index) in pageBlocks" :key="index" class="block-wrapper">
                     <blocks-text v-if="block.type === 'text'" :blockId="block.blockId" :text="block.text"></blocks-text>
                     <blocks-cover v-else-if="block.type === 'cover'" :image="block.img" :blockId="block.blockId" :text="block.text"></blocks-cover>
                 </div>
             </div>
-            <button v-show="!blocks.length" class="page-edit__add" @click="openPopup">
+            <button v-show="!pageBlocks.length" class="page-edit__add" @click="openPopup">
                 Добавить блок
             </button>
-            <button v-show="blocks.length" class="page-edit__add-more" @click="openPopup">
+            <button v-show="pageBlocks.length" class="page-edit__add-more" @click="openPopup">
                 <svg>
                     <use xlink:href="#plus"></use>
                 </svg>
             </button>
         </div>
     </section>
-    <page-edit-library :class="isPopupOpen ? 'open' : ''" @closeModal="closePopup" @addBlock="addBlock2"></page-edit-library>
+    <page-edit-library :class="isPopupOpen ? 'open' : ''" @closeModal="closePopup"></page-edit-library>
+    <page-edit-block-content v-if="isContentOpen" :block="block"></page-edit-block-content>
 </main>
 </template>
 
 <script>
 import PageEditLibrary from "@/components/Sections/PageEditView/PageEditLibrary.vue";
+import PageEditBlockContent from "@/components/Sections/PageEditView/PageEditBlockContent.vue";
 import BlocksCover from "@/components/Partials/Blocks/BlocksCover.vue";
 import BlocksText from "@/components/Partials/Blocks/BlocksText.vue";
-import { useEditViewStore } from "@/store/modules/pageEditView";
+import { useBlocksStore } from "@/store/modules/blocks";
+import { useSitesStore } from "@/store/modules/sites";
+import { usePagesStore } from "@/store/modules/pages";
 import { mapState, mapActions } from "pinia";
 
 export default {
@@ -35,6 +39,7 @@ export default {
         PageEditLibrary,
         BlocksCover,
         BlocksText,
+        PageEditBlockContent
     },
     props: {},
 
@@ -45,7 +50,7 @@ export default {
     },
 
     methods: {
-        ...mapActions(useEditViewStore, ["addBlock"]),
+        ...mapActions(useBlocksStore, ["getPageBlocks", "getActiveBlock"]),
 
         openPopup() {
             this.isPopupOpen = true;
@@ -54,14 +59,18 @@ export default {
         closePopup() {
             this.isPopupOpen = false;
         },
-
-        addBlock2(type) {
-            this.addBlock(type);
-        },
     },
 
     computed: {
-        ...mapState(useEditViewStore, ["blocks"]),
+        ...mapState(useSitesStore, ["activeSiteId"]),
+        ...mapState(usePagesStore, ["activePageId"]),
+        ...mapState(useBlocksStore, ["isContentOpen", "activeBlockId"]),
+        block() {
+            return this.getActiveBlock(this.activeSiteId, this.activePageId, this.activeBlockId);
+        },
+        pageBlocks() {
+            return this.getPageBlocks(this.activeSiteId, this.activePageId);
+        }
     },
 };
 </script>

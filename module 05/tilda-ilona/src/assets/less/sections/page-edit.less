@@ -112,6 +112,10 @@
                 .flex-center;
                 gap: 1rem;
 
+                &-content {
+                    display: block;
+                }
+
                 @media (max-width: @breakpoint-m) {
                     gap: 0.5rem;
                 }
@@ -143,6 +147,25 @@
         svg {
             width: 2.4rem;
             height: 2.4rem;
+        }
+
+        &-content {
+            position: absolute;
+            display: none;
+            top: 2rem;
+            left: 5rem;
+            padding: 1rem 2rem;
+            font-size: 1.6rem;
+            background-color: @dark-gray;
+            opacity: 0.5;
+            color: @white;
+            border-radius: 2rem;
+            transition: all 0.3s ease-in-out;
+
+            &:hover {
+                opacity: 0.9;
+                background-color: darken(@green, 10%);
+            }
         }
     }
 }

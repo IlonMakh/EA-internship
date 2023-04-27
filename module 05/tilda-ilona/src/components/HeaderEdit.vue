@@ -28,24 +28,20 @@
             <router-link to="/" class="header-edit__dropdown-link">Мои сайты</router-link>
             <router-link to="/profile" class="header-edit__dropdown-link">Профиль</router-link>
         </div>
-        <settings-modal :page="page" v-show="isSettingsOpen" @closeSettings="closeSettings"></settings-modal>
     </div>
 </header>
 </template>
 
 <script>
 import clickOutSide from "@mahdikhashan/vue3-click-outside";
-import SettingsModal from "@/components/Modal/SettingsModal.vue";
+import { useModalsStore } from "@/store/modules/modals";
+import { mapActions} from "pinia";
 
 export default {
     name: "edit-page-header",
-    components: {
-        SettingsModal,
-    },
     data() {
         return {
             isDropdownOpen: false,
-            isSettingsOpen: false,
             page: {
                 title: "page 0",
                 id: this.$route.params.id,
@@ -68,20 +64,14 @@ export default {
         };
     },
     methods: {
+        ...mapActions(useModalsStore, ['openSettings']),
+
         toggleDropdown() {
             this.isDropdownOpen = !this.isDropdownOpen;
         },
 
         closeDropdown() {
             this.isDropdownOpen = false;
-        },
-
-        openSettings() {
-            this.isSettingsOpen = true;
-        },
-
-        closeSettings() {
-            this.isSettingsOpen = false;
         },
     },
 
