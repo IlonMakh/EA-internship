@@ -22,7 +22,7 @@
             </button>
         </div>
         <div :class="isDropdownOpen ? 'open' : ''" class="header-edit__dropdown" v-click-out-side="closeDropdown">
-            <button class="header-edit__dropdown-link" @click="openGlobalModal('settings')">
+            <button class="header-edit__dropdown-link" @click="openGlobalModal('settings'), setActiveImage(activePage.badge)">
                 Настройки сайта
             </button>
             <router-link to="/" class="header-edit__dropdown-link">Мои сайты</router-link>
@@ -35,7 +35,9 @@
 <script>
 import clickOutSide from "@mahdikhashan/vue3-click-outside";
 import { useModalsStore } from "@/store/modules/modals";
-import { mapActions} from "pinia";
+import { useSitesStore } from "@/store/modules/sites";
+import { usePagesStore } from "@/store/modules/pages";
+import { mapActions, mapState } from "pinia";
 
 export default {
     name: "edit-page-header",
@@ -64,7 +66,8 @@ export default {
         };
     },
     methods: {
-        ...mapActions(useModalsStore, ['openGlobalModal']),
+        ...mapActions(useModalsStore, ['openGlobalModal', 'setActiveImage']),
+        ...mapActions(usePagesStore, ['getActivePage']),
 
         toggleDropdown() {
             this.isDropdownOpen = !this.isDropdownOpen;
@@ -72,6 +75,14 @@ export default {
 
         closeDropdown() {
             this.isDropdownOpen = false;
+        },
+    },
+
+    computed: {
+        ...mapState(useSitesStore, ["activeSiteId"]),
+        ...mapState(usePagesStore, ["activePageId"]),
+        activePage() {
+            return this.getActivePage(this.activeSiteId, this.activePageId);
         },
     },
 

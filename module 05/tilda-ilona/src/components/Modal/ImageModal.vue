@@ -16,8 +16,8 @@
                 <h6 class="image-modal__active-title">
                     Активное изображение:
                 </h6>
-                <img v-if="$route.name == 'project'" :src="selectImg || activePage.badge" />
-                <img v-else-if="$route.name == 'page-edit'" :src="selectImg || activeBlock.img" />
+                <img v-if="isSettingsOpen" :src="selectImg || activePage.badge" />
+                <img v-else :src="selectImg || activeBlock.img" />
             </div>
             <div class="image-modal__buttons">
                 <button class="image-modal__save" @click.self="setActiveImage(selectImg || activeImage), closeGlobalModal('image')">
@@ -88,7 +88,7 @@ export default {
         ...mapState(useSitesStore, ["activeSiteId"]),
         ...mapState(usePagesStore, ["activePageId"]),
         ...mapState(useBlocksStore, ["activeBlockId"]),
-        ...mapState(useModalsStore, ["activeImage"]),
+        ...mapState(useModalsStore, ["activeImage", "isSettingsOpen"]),
         activePage() {
             return this.getActivePage(this.activeSiteId, this.activePageId);
         },
