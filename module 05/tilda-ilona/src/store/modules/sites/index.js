@@ -19,6 +19,10 @@ export const useSitesStore = defineStore('sites',{
         activeSiteId: '',
     }),
     actions: {
+        getActiveSite(siteId) {
+            return this.sites.find(site => site.id === siteId);
+        },
+
         createSite() {
             const length = this.sites.length;
             this.sites.push({

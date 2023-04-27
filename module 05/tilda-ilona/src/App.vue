@@ -7,6 +7,7 @@
 
     <settings-modal v-if="isSettingsOpen && activePageId"></settings-modal>
     <domain-modal v-if="isDomainOpen"></domain-modal>
+    <image-modal v-if="isImageOpen"></image-modal>
 
     <sprites-svg></sprites-svg>
 </template>
@@ -17,6 +18,7 @@ import SpritesSvg from "./components/Global/SpritesSvg.vue";
 import HeaderEdit from "./components/HeaderEdit.vue";
 import SettingsModal from "@/components/Modal/SettingsModal.vue";
 import DomainModal from "@/components/Modal/DomainModal.vue";
+import ImageModal from "@/components/Modal/ImageModal.vue";
 import { useModalsStore } from "@/store/modules/modals";
 import { usePagesStore } from "@/store/modules/pages";
 import { mapState} from "pinia";
@@ -28,10 +30,11 @@ export default {
         SpritesSvg,
         HeaderEdit,
         SettingsModal,
-        DomainModal
+        DomainModal,
+        ImageModal,
     },
     computed: {
-        ...mapState(useModalsStore, ["isSettingsOpen", "isDomainOpen"]),
+        ...mapState(useModalsStore, ["isSettingsOpen", "isDomainOpen", "isImageOpen"]),
         ...mapState(usePagesStore, ["activePageId"]),
     },
 };

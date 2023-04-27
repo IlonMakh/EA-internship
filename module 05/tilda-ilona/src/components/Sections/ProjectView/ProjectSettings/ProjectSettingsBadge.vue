@@ -1,26 +1,12 @@
 <template>
 <div class="badge">
-    <div class="badge-image">
-        <img :src="activeBadge" />
-    </div>
-    <div class="badge-buttons">
-        <button class="badge-buttons__item" @click="activeBadge = '/images/cat.jpg'">
-            <img src="@/assets/images/cat.jpg" alt="cat1" />
-        </button>
-        <button class="badge-buttons__item" @click="activeBadge = '/images/cat2.jpeg'">
-            <img src="@/assets/images/cat2.jpeg" alt="cat2" />
-        </button>
-        <button class="badge-buttons__item" @click="activeBadge = '/images/cat3.jpg'">
-            <img src="@/assets/images/cat3.jpg" alt="cat3" />
-        </button>
-        <button class="badge-buttons__item" @click="activeBadge = '/images/cat4.jpg'">
-            <img src="@/assets/images/cat4.jpg" alt="cat4" />
-        </button>
-        <button class="badge-buttons__item" @click="activeBadge = '/images/cat5.jpg'">
-            <img src="@/assets/images/cat5.jpg" alt="cat5" />
+    <div class="badge-button">
+        <img :src="activeImage">
+        <button class="badge-button__item" @click="openGlobalModal('image')">
+            Изменить бейдж
         </button>
     </div>
-    <button class="settings-modal__save" @click="saveBadge">
+    <button class="settings-modal__save" @click.prevent="saveBadge">
         Сохранить изменения
     </button>
 </div>
@@ -37,23 +23,23 @@ export default {
 
     data() {
         return {
-            activeBadge: "/images/cat.jpg",
         };
     },
 
     methods: {
         ...mapActions(usePagesStore, ['changeBadge']),
-        ...mapActions(useModalsStore, ['closeSettings']),
+        ...mapActions(useModalsStore, ['closeGlobalModal', "openGlobalModal"]),
 
         saveBadge() {
-            this.changeBadge(this.activeSiteId, this.activePageId, this.activeBadge);
-            this.closeSettings();
-        },
+            this.changeBadge(this.activeSiteId, this.activePageId, this.activeImage);
+            this.closeGlobalModal("settings");
+        }
     },
 
     computed: {
         ...mapState(useSitesStore, ["activeSiteId"]),
         ...mapState(usePagesStore, ["activePageId"]),
+        ...mapState(useModalsStore, ["activeImage"]),
     },
 };
 </script>

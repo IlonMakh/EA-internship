@@ -40,11 +40,11 @@ export default {
 
     methods: {
         ...mapActions(usePagesStore, ['changeInfo']),
-        ...mapActions(useModalsStore, ['closeSettings']),
+        ...mapActions(useModalsStore, ['closeGlobalModal']),
 
         saveInfo() {
             this.changeInfo(this.activeSiteId, this.activePageId, {title: this.titleValue, description: this.descriptionValue, adress: this.adressValue});
-            this.closeSettings();
+            this.closeGlobalModal("settings");
         },
     },
 

@@ -12,6 +12,10 @@
 
 <script>
 import BlocksMenu from './BlocksMenu.vue';
+import { useBlocksStore } from "@/store/modules/blocks";
+import { useSitesStore } from "@/store/modules/sites";
+import { usePagesStore } from "@/store/modules/pages";
+import { mapActions, mapState } from "pinia";
 
 export default {
     name: "cover-block",
@@ -31,9 +35,20 @@ export default {
     },
 
     methods: {
+        ...mapActions(useBlocksStore, ["editBlock"]),
+
         checkContent($event) {
             this.textContent = $event.target.innerText;
+            this.editBlock(this.activeSiteId, this.activePageId, this.blockId, {
+                text: this.textContent,
+                img: this.image,
+            });
         }
+    },
+
+    computed: {
+        ...mapState(useSitesStore, ["activeSiteId"]),
+        ...mapState(usePagesStore, ["activePageId"]),
     },
 };
 </script>

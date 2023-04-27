@@ -21,11 +21,12 @@
         </svg>
     </button>
 </div>
-<button class="block__menu-content" @click="setActiveBlock(blockId), openContent($event)">Контент</button>
+<button class="block__menu-content" @click="setActiveBlock(blockId), setActiveImage(activeBlock.img), openContent($event)">Контент</button>
 </template>
 
 <script>
 import { useBlocksStore } from "@/store/modules/blocks";
+import { useModalsStore } from "@/store/modules/modals";
 import { useSitesStore } from "@/store/modules/sites";
 import { usePagesStore } from "@/store/modules/pages";
 import { mapActions, mapState } from "pinia";
@@ -43,13 +44,20 @@ export default {
             "raiseBlock",
             "lowerBlock",
             "setActiveBlock",
+            "getActiveBlock",
             "openContent"
         ]),
+
+        ...mapActions(useModalsStore, ['setActiveImage']),
     },
 
     computed: {
         ...mapState(useSitesStore, ["activeSiteId"]),
         ...mapState(usePagesStore, ["activePageId"]),
+        ...mapState(useBlocksStore, ["activeBlockId"]),
+        activeBlock() {
+            return this.getActiveBlock(this.activeSiteId, this.activePageId, this.activeBlockId);
+        }
     },
 };
 </script>

@@ -1,9 +1,9 @@
 <template>
-<div class="settings-modal" @click.self="closeSettings">
+<div class="settings-modal" @click.self="closeGlobalModal('settings')">
     <div class="settings-modal__content">
         <div class="settings-modal__header">
             <h5 class="settings-modal__title">Настройки страницы</h5>
-            <button class="settings-modal__close" @click="closeSettings">
+            <button class="settings-modal__close" @click="closeGlobalModal('settings')">
                 <svg>
                     <use xlink:href="#close"></use>
                 </svg>
@@ -47,7 +47,7 @@ export default {
 
     methods: {
         ...mapActions(usePagesStore, ['getActivePage']),
-        ...mapActions(useModalsStore, ['closeSettings']),
+        ...mapActions(useModalsStore, ['closeGlobalModal']),
     },
 
     computed: {

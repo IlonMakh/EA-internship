@@ -8,7 +8,7 @@ export const useBlocksStore = defineStore("blocks", {
         defaultText: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecatihic natus rerum sint expedita repellendus molestiae quisquam animi porro neque facilis sequi voluptate rem eligendi delectus esse explicabo, quod fuga! Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati hic natus rerum sint expedita repellendus molestiae quisquam animi porro neque facilis sequi voluptate rem eligendi delectus esse explicabo, quod fuga!`,
 
         defaultImg: "/images/cat3.jpg",
-        activeBlockId: '',
+        activeBlockId: "",
         isContentOpen: false,
     }),
 
@@ -110,7 +110,9 @@ export const useBlocksStore = defineStore("blocks", {
                     (block) => block.blockId === blockId
                 );
 
-                const copy = Object.assign({}, pageBlocks.items[index], { blockId: idGenerator() });
+                const copy = Object.assign({}, pageBlocks.items[index], {
+                    blockId: idGenerator(),
+                });
                 pageBlocks.items.splice(index, 0, copy);
                 console.log(pageBlocks.items);
             }
@@ -157,11 +159,11 @@ export const useBlocksStore = defineStore("blocks", {
                     (block) => block.blockId === blockId
                 );
 
-                if (pageBlocks.items[index].type === 'text') {
+                if (pageBlocks.items[index].type === "text") {
                     pageBlocks.items[index].text = info.text;
-                } else if (pageBlocks.items[index].type === 'cover') {
+                } else if (pageBlocks.items[index].type === "cover") {
                     pageBlocks.items[index].text = info.text;
-                    pageBlocks.items[index].img= info.img;
+                    pageBlocks.items[index].img = info.img;
                 }
             }
         },

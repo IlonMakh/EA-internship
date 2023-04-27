@@ -22,7 +22,7 @@
             </button>
         </div>
         <div :class="isDropdownOpen ? 'open' : ''" class="header-edit__dropdown" v-click-out-side="closeDropdown">
-            <button class="header-edit__dropdown-link" @click="openSettings">
+            <button class="header-edit__dropdown-link" @click="openGlobalModal('settings')">
                 Настройки сайта
             </button>
             <router-link to="/" class="header-edit__dropdown-link">Мои сайты</router-link>
@@ -64,7 +64,7 @@ export default {
         };
     },
     methods: {
-        ...mapActions(useModalsStore, ['openSettings']),
+        ...mapActions(useModalsStore, ['openGlobalModal']),
 
         toggleDropdown() {
             this.isDropdownOpen = !this.isDropdownOpen;

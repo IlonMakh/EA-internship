@@ -10,12 +10,16 @@
 </template>
 
 <script>
-import BlocksMenu from './BlocksMenu.vue';
+import BlocksMenu from "./BlocksMenu.vue";
+import { useBlocksStore } from "@/store/modules/blocks";
+import { useSitesStore } from "@/store/modules/sites";
+import { usePagesStore } from "@/store/modules/pages";
+import { mapActions, mapState } from "pinia";
 
 export default {
     name: "text-block",
     components: {
-        BlocksMenu
+        BlocksMenu,
     },
     props: {
         text: String,
@@ -29,9 +33,19 @@ export default {
     },
 
     methods: {
+        ...mapActions(useBlocksStore, ["editBlock"]),
+
         checkContent($event) {
             this.textContent = $event.target.innerText;
-        }
+            this.editBlock(this.activeSiteId, this.activePageId, this.blockId, {
+                text: this.textContent,
+            });
+        },
+    },
+
+    computed: {
+        ...mapState(useSitesStore, ["activeSiteId"]),
+        ...mapState(usePagesStore, ["activePageId"]),
     },
 };
 </script>

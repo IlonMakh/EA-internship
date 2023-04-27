@@ -19,7 +19,7 @@
                 }" class="item-info__title" @click="setActivePage(page.id)">{{ page.title }}</router-link>
     </div>
     <div class="project__list-item-menu">
-        <button class="item-menu__settings" @click="setActivePage(page.id), openSettings($event)">
+        <button class="item-menu__settings" @click="toSettings">
             <svg>
                 <use xlink:href="#settings"></use>
             </svg>
@@ -48,12 +48,22 @@ export default {
         index: Number,
     },
     methods: {
-        ...mapActions(usePagesStore, ["setActivePage", "deletePage"]),
-        ...mapActions(useModalsStore, ["openSettings"]),
+        ...mapActions(usePagesStore, ["setActivePage", "deletePage", "getActivePage"]),
+        ...mapActions(useModalsStore, ["openGlobalModal", "setActiveImage"]),
+
+        toSettings() {
+            this.setActivePage(this.page.id);
+            this.openGlobalModal("settings");
+            this.setActiveImage(this.activePage.badge);
+        }
     },
 
     computed: {
         ...mapState(useSitesStore, ["activeSiteId"]),
+        ...mapState(usePagesStore, ["activePageId"]),
+        activePage() {
+            return this.getActivePage(this.activeSiteId, this.activePageId);
+        }
     },
 };
 </script>

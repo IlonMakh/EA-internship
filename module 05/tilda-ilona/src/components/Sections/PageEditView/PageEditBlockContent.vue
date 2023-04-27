@@ -9,40 +9,22 @@
             <div v-if="block.type === 'cover'" class="block-edit__modal-cover">
                 <div class="block-image">
                     <p class="block-edit__modal-label">Фоновая картинка</p>
-                    <img :src="activeImg" />
-                </div>
-                <div class="img-buttons">
-                    <button class="img-buttons__item" @click="activeImg = '/images/cat.jpg'">
-                        <img src="@/assets/images/cat.jpg" alt="cat1" />
-                    </button>
-                    <button class="img-buttons__item" @click="activeImg = '/images/cat2.jpeg'">
-                        <img src="@/assets/images/cat2.jpeg" alt="cat2" />
-                    </button>
-                    <button class="img-buttons__item" @click="activeImg = '/images/cat3.jpg'">
-                        <img src="@/assets/images/cat3.jpg" alt="cat3" />
-                    </button>
-                    <button class="img-buttons__item" @click="activeImg = '/images/cat4.jpg'">
-                        <img src="@/assets/images/cat4.jpg" alt="cat4" />
-                    </button>
-                    <button class="img-buttons__item" @click="activeImg = '/images/cat5.jpg'">
-                        <img src="@/assets/images/cat5.jpg" alt="cat5" />
-                    </button>
+                    <div class="block-edit__modal-change">
+                        <img :src="activeImage" />
+                        <button class="block-edit__modal-change-btn" @click="openGlobalModal('image')">
+                            Изменить изображение
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="block-edit__modal-buttons">
-            <button class="block-edit__modal-save" @click="
-                    editBlock(activeSiteId, activePageId, block.blockId, {
-                        text: textValue,
-                        img: activeImg,
-                    }),
-                        closeContent($event)
-                ">
-            Сохранить
-        </button>
-        <button class="block-edit__modal-cancel" @click="closeContent">
-            Отмена
-        </button>
+            <button class="block-edit__modal-save" @click="saveContent">
+                Сохранить
+            </button>
+            <button class="block-edit__modal-cancel" @click="closeContent">
+                Отмена
+            </button>
         </div>
     </div>
 </div>
@@ -52,6 +34,7 @@
 import { useSitesStore } from "@/store/modules/sites";
 import { usePagesStore } from "@/store/modules/pages";
 import { useBlocksStore } from "@/store/modules/blocks";
+import { useModalsStore } from "@/store/modules/modals";
 import { mapActions, mapState } from "pinia";
 
 export default {
@@ -63,7 +46,6 @@ export default {
     data() {
         return {
             textValue: this.block.text,
-            activeImg: this.block.img || "",
         };
     },
 
@@ -73,11 +55,22 @@ export default {
             "closeContent",
             "editBlock",
         ]),
+
+        ...mapActions(useModalsStore, ["openGlobalModal"]),
+
+        saveContent() {
+            this.editBlock(this.activeSiteId, this.activePageId, this.block.blockId, {
+                    text: this.textValue,
+                    img: this.activeImage,
+                }),
+                this.closeContent();
+        },
     },
 
     computed: {
         ...mapState(useSitesStore, ["activeSiteId"]),
         ...mapState(usePagesStore, ["activePageId"]),
+        ...mapState(useModalsStore, ["activeImage"]),
     },
 };
 </script>

@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="project__header">
                     <div class="project__header-top">
-                        <button class="project__domain-btn" @click="openDomain">
+                        <button class="project__domain-btn" @click="openGlobalModal('domain')">
                             <svg>
                                 <use xlink:href="#domain"></use>
                             </svg>
@@ -18,7 +18,7 @@
                         </button>
                     </div>
                     <div class="project__header-bottom">
-                        <h3 class="project__title">Project Test</h3>
+                        <h3 class="project__title">{{ activeSite.title }}</h3>
                         <button class="project__add-btn" @click="createPage(activeSiteId)">
                             <svg>
                                 <use xlink:href="#plus2"></use>
@@ -51,13 +51,17 @@ export default {
 
     methods: {
         ...mapActions(usePagesStore, ["getSitePages", "createPage"]),
-        ...mapActions(useModalsStore, ["openDomain"]),
+        ...mapActions(useModalsStore, ["openGlobalModal"]),
+        ...mapActions(useSitesStore, ["getActiveSite"]),
     },
 
     computed: {
         ...mapState(useSitesStore, ["activeSiteId"]),
         sitePages() {
             return this.getSitePages(this.activeSiteId);
+        },
+        activeSite() {
+            return this.getActiveSite(this.activeSiteId);
         }
     },
 };

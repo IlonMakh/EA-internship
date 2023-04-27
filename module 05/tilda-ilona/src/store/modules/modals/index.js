@@ -1,25 +1,48 @@
 import { defineStore } from "pinia";
 
-export const useModalsStore = defineStore('modals',{
+export const useModalsStore = defineStore("modals", {
     state: () => ({
         isSettingsOpen: false,
         isDomainOpen: false,
+        isImageOpen: false,
+
+        activeImage: "",
     }),
     actions: {
-        openSettings() {
-            this.isSettingsOpen = true;
+        setActiveImage(img) {
+            this.activeImage = img;
         },
 
-        closeSettings() {
-            this.isSettingsOpen = false;
+        openGlobalModal(type) {
+            switch (type) {
+                case "settings":
+                    this.isSettingsOpen = true;
+                    break;
+
+                case "domain":
+                    this.isDomainOpen = true;
+                    break;
+
+                case "image":
+                    this.isImageOpen = true;
+                    break;
+            }
         },
 
-        openDomain() {
-            this.isDomainOpen = true;
-        },
+        closeGlobalModal(type) {
+            switch (type) {
+                case "settings":
+                    this.isSettingsOpen = false;
+                    break;
 
-        closeDomain() {
-            this.isDomainOpen = false;
+                case "domain":
+                    this.isDomainOpen = false;
+                    break;
+
+                case "image":
+                    this.isImageOpen = false;
+                    break;
+            }
         },
     },
 });

@@ -1,7 +1,7 @@
 <template>
-<div class="domain-modal" @click.self="closeDomain">
+<div class="domain-modal" @click.self="closeGlobalModal('domain')">
     <div class="domain-modal__content">
-        <button class="domain-modal__close" @click="closeDomain">
+        <button class="domain-modal__close" @click="closeGlobalModal('domain')">
             <svg>
                 <use xlink:href="#close"></use>
             </svg>
@@ -38,13 +38,13 @@ export default {
 
     methods: {
         ...mapActions(useSitesStore, ["changeDomain"]),
-        ...mapActions(useModalsStore, ["closeDomain"]),
+        ...mapActions(useModalsStore, ["closeGlobalModal"]),
 
         saveAndClose() {
             this.checkDomain();
             if (this.isValid) {
                 this.changeDomain(this.activeSiteId, this.domainValue);
-                this.closeDomain();
+                this.closeGlobalModal("domain");
             }
         },
 
