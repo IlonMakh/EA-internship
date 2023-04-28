@@ -1,7 +1,7 @@
 <template>
 <div class="sites__item-menu">
-    <button class="site-menu__btn">Переименовать</button>
-    <button class="site-menu__btn" @click.stop="deleteSite(index)">Удалить</button>
+    <button class="site-menu__btn" @click.stop.prevent>Переименовать</button>
+    <button class="site-menu__btn" @click.stop.prevent="deleteSite(index)">Удалить</button>
 </div>
 </template>
 

@@ -52,7 +52,7 @@ export default {
     methods: {
         ...mapActions(usePagesStore, ["getSitePages", "createPage"]),
         ...mapActions(useModalsStore, ["openGlobalModal"]),
-        ...mapActions(useSitesStore, ["getActiveSite"]),
+        ...mapActions(useSitesStore, ["setActiveSite", "getActiveSite"]),
     },
 
     computed: {

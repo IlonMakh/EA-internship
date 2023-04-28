@@ -62,8 +62,8 @@ export default {
             this.editBlock(this.activeSiteId, this.activePageId, this.block.blockId, {
                     text: this.textValue,
                     img: this.activeImage,
-                }),
-                this.closeContent();
+            }),
+            this.closeContent();
         },
     },
 

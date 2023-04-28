@@ -27,12 +27,14 @@
 <script>
 import PageEditLibraryText from "./PageEditLibrary/PageEditLibraryText.vue";
 import PageEditLibraryCover from "./PageEditLibrary/PageEditLibraryCover.vue";
+import PageEditLibrarySlider from "./PageEditLibrary/PageEditLibrarySlider.vue";
 
 export default {
     name: "edit-modal",
     components: {
         PageEditLibraryText,
-        PageEditLibraryCover
+        PageEditLibraryCover,
+        PageEditLibrarySlider
     },
     props: {},
 
@@ -47,6 +49,10 @@ export default {
                 {
                     name: "PageEditLibraryCover",
                     title: "Обложки",
+                },
+                {
+                    name: "PageEditLibrarySlider",
+                    title: "Слайдеры",
                 },
             ],
         };

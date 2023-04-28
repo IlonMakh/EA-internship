@@ -106,7 +106,8 @@
     }
 
     .block__cover,
-    .block__text {
+    .block__text,
+    .block__slider {
         &:hover {
             .block__menu {
                 .flex-center;
@@ -165,6 +166,53 @@
             &:hover {
                 opacity: 0.9;
                 background-color: darken(@green, 10%);
+            }
+        }
+    }
+
+    .block__slider {
+        position: relative;
+        width: 100vw;
+        padding: 3rem;
+        background-color: @white;
+
+        &:hover {
+            .block__menu-content {
+                display: none;
+            }
+        }
+
+        .swiper {
+            z-index: 0;
+
+            &-wrapper {
+                width: 100% !important;
+                z-index: 0;
+            }
+
+            &-slide {
+                width: 22.8% !important;
+                height: 40rem;
+                cursor: pointer;
+                
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                @media (max-width: @breakpoint-l) {
+                    height: 35rem;
+                }
+
+                @media (max-width: @breakpoint-m) {
+                    width: 23% !important;
+                    height: 28rem;
+                }
+
+                @media (max-width: @breakpoint-s) {
+                    height: 23rem;
+                }
             }
         }
     }

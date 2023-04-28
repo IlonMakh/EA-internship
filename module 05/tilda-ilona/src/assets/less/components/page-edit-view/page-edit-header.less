@@ -4,7 +4,7 @@
         .flex-between;
         position: relative;
 
-        @media (max-width: @breakpoint-s) {
+        @media (max-width: @breakpoint-m) {
             .flex-center;
             flex-wrap: wrap;
             column-gap: 3rem;
@@ -33,7 +33,8 @@
     }
 
     &__preview,
-    &__menu {
+    &__menu,
+    &__cancel {
         transition: all 0.3s ease-in-out;
 
         @media (max-width: @breakpoint-s) {
@@ -92,10 +93,19 @@
         transition: all 0.3s ease-in-out;
         z-index: 1;
 
+        @media (max-width: @breakpoint-m) {
+            right: 0%;
+        }
+
+        @media (max-width: 604px) {
+            bottom: -8.9rem;
+            right: 20%;
+        }
+
         @media (max-width: @breakpoint-s) {
             font-size: 1.2rem;
             bottom: -8.9rem;
-            right: 30%;
+            right: 17%;
         }
 
         &.open {

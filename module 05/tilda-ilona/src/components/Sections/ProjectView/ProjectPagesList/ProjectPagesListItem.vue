@@ -7,7 +7,7 @@
                         projectId: this.$route.params.id,
                         id: this.page.id,
                     },
-                }" class="item-info__img" @click="setActivePage(page.id), setActiveImage(page.badge)">
+                }" class="item-info__img" @click="setParams">
             <img :src="page.badge" />
         </router-link>
         <router-link :to="{
@@ -16,7 +16,7 @@
                         projectId: this.$route.params.id,
                         id: this.page.id,
                     },
-                }" class="item-info__title" @click="setActivePage(page.id), setActiveImage(page.badge)">{{ page.title }}</router-link>
+                }" class="item-info__title" @click="setParams">{{ page.title }}</router-link>
     </div>
     <div class="project__list-item-menu">
         <button class="item-menu__settings" @click="toSettings">
@@ -55,6 +55,11 @@ export default {
             this.setActivePage(this.page.id);
             this.openGlobalModal("settings");
             this.setActiveImage(this.page.badge);
+        },
+
+        setParams() {
+            this.setActivePage(this.page.id);
+            this.setActiveImage(this.page.badge)
         }
     },
 

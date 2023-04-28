@@ -17,7 +17,7 @@
                     Активное изображение:
                 </h6>
                 <img v-if="isSettingsOpen" :src="selectImg || activePage.badge" />
-                <img v-else :src="selectImg || activeBlock.img" />
+                <img v-else :src="selectImg || activeBlock?.img || activeImage" />
             </div>
             <div class="image-modal__buttons">
                 <button class="image-modal__save" @click.self="setActiveImage(selectImg || activeImage), closeGlobalModal('image')">
@@ -53,6 +53,9 @@ export default {
             selectImg: "",
             images: [],
             searchValue: "cat",
+            apiUrl: "https://api.unsplash.com/search/photos?",
+            accessId: "zZLvByVzrsS0XqGaJaZDUYAJBsk0fe7tHGO5Y-4FnHw",
+            count: '10',
         };
     },
 
@@ -61,22 +64,26 @@ export default {
         ...mapActions(useBlocksStore, ["getActiveBlock", "changeImg"]),
         ...mapActions(useModalsStore, ["closeGlobalModal", "setActiveImage"]),
 
-        searchImages() {
-            fetch(
-                    `https://api.unsplash.com/search/photos?query=${this.searchValue}&client_id=zZLvByVzrsS0XqGaJaZDUYAJBsk0fe7tHGO5Y-4FnHw&count=10`
-                )
-                .then((response) => response.json())
-                .then((data) => {
-                    this.images = data.results;
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+        async searchImages() {
+            const params = new URLSearchParams({
+                query: this.searchValue,
+                client_id: this.accessId,
+                count: this.count,
+            });
+
+            try {
+                const response = await fetch(this.apiUrl + params);
+                const data = await response.json();
+                this.images = data.results;
+            } catch (error) {
+                console.log(error);
+            }
         },
 
         uploadImage() {
             const file = this.$refs.fileInput.files[0];
             const reader = new FileReader();
+
             reader.readAsDataURL(file);
             reader.onload = () => {
                 this.selectImg = reader.result;

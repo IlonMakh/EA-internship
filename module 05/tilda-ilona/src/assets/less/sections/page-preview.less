@@ -84,4 +84,44 @@
             display: none;
         }
     }
+
+    .block__slider {
+        position: relative;
+        width: 100vw;
+        padding: 3rem;
+        background-color: @white;
+
+        .swiper {
+            z-index: 0;
+
+            &-wrapper {
+                width: 100% !important;
+                z-index: 0;
+            }
+
+            &-slide {
+                width: 31% !important;
+                height: 40rem;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+                @media (max-width: @breakpoint-l) {
+                    width: 32%;
+                    height: 35rem;
+                }
+
+                @media (max-width: @breakpoint-m) {
+                    width: 32% !important;
+                    height: 28rem;
+                }
+
+                @media (max-width: @breakpoint-s) {
+                    height: 23rem;
+                }
+            }
+        }
+    }
 }

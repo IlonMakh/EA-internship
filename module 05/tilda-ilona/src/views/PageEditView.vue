@@ -6,6 +6,7 @@
                 <div v-for="(block, index) in pageBlocks" :key="index" class="block-wrapper">
                     <blocks-text v-if="block.type === 'text'" :blockId="block.blockId" :text="block.text"></blocks-text>
                     <blocks-cover v-else-if="block.type === 'cover'" :image="block.img" :blockId="block.blockId" :text="block.text"></blocks-cover>
+                    <blocks-slider v-else-if="block.type === 'slider'" :blockId="block.blockId"></blocks-slider>
                 </div>
             </div>
             <button v-show="!pageBlocks.length" class="page-edit__add" @click="openPopup">
@@ -28,6 +29,7 @@ import PageEditLibrary from "@/components/Sections/PageEditView/PageEditLibrary.
 import PageEditBlockContent from "@/components/Sections/PageEditView/PageEditBlockContent.vue";
 import BlocksCover from "@/components/Partials/Blocks/BlocksCover.vue";
 import BlocksText from "@/components/Partials/Blocks/BlocksText.vue";
+import BlocksSlider from "@/components/Partials/Blocks/BlocksSlider.vue";
 import { useBlocksStore } from "@/store/modules/blocks";
 import { useSitesStore } from "@/store/modules/sites";
 import { usePagesStore } from "@/store/modules/pages";
@@ -39,7 +41,8 @@ export default {
         PageEditLibrary,
         BlocksCover,
         BlocksText,
-        PageEditBlockContent
+        PageEditBlockContent,
+        BlocksSlider,
     },
     props: {},
 

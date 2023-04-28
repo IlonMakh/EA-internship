@@ -10,6 +10,7 @@
             </router-link>
         </div>
         <div class="header-edit__controls">
+            <button class="header-edit__cancel" @click="undoAction">Отменить</button>
             <router-link :to="{
                         name: 'page-preview',
                         params: {
@@ -37,6 +38,7 @@ import clickOutSide from "@mahdikhashan/vue3-click-outside";
 import { useModalsStore } from "@/store/modules/modals";
 import { useSitesStore } from "@/store/modules/sites";
 import { usePagesStore } from "@/store/modules/pages";
+import { useBlocksStore } from "@/store/modules/blocks";
 import { mapActions, mapState } from "pinia";
 
 export default {
@@ -68,6 +70,7 @@ export default {
     methods: {
         ...mapActions(useModalsStore, ['openGlobalModal', 'setActiveImage']),
         ...mapActions(usePagesStore, ['getActivePage']),
+        ...mapActions(useBlocksStore, ['undoAction']),
 
         toggleDropdown() {
             this.isDropdownOpen = !this.isDropdownOpen;

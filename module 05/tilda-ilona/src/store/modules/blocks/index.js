@@ -4,9 +4,8 @@ import idGenerator from "@/helpers/idGenerator";
 export const useBlocksStore = defineStore("blocks", {
     state: () => ({
         blocks: [],
-
+        stateHistory: [],
         defaultText: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecatihic natus rerum sint expedita repellendus molestiae quisquam animi porro neque facilis sequi voluptate rem eligendi delectus esse explicabo, quod fuga! Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati hic natus rerum sint expedita repellendus molestiae quisquam animi porro neque facilis sequi voluptate rem eligendi delectus esse explicabo, quod fuga!`,
-
         defaultImg: "/images/cat3.jpg",
         activeBlockId: "",
         isContentOpen: false,
@@ -21,6 +20,7 @@ export const useBlocksStore = defineStore("blocks", {
             const pageBlocks = this.blocks.find(
                 (item) => item.siteId === siteId && item.pageId === pageId
             );
+
             if (pageBlocks) {
                 const activeBlock = pageBlocks.items.find(
                     (item) => item.blockId === blockId
@@ -33,6 +33,7 @@ export const useBlocksStore = defineStore("blocks", {
             const pageBlocks = this.blocks.find(
                 (item) => item.siteId === siteId && item.pageId === pageId
             );
+
             if (pageBlocks) {
                 return pageBlocks.items;
             } else {
@@ -41,9 +42,11 @@ export const useBlocksStore = defineStore("blocks", {
         },
 
         addBlock(siteId, pageId, type) {
+            this.saveState();
             const pageBlocks = this.blocks.find(
                 (item) => item.siteId === siteId && item.pageId === pageId
             );
+
             if (pageBlocks) {
                 if (type === "text") {
                     pageBlocks.items.push({
@@ -55,6 +58,12 @@ export const useBlocksStore = defineStore("blocks", {
                     pageBlocks.items.push({
                         text: this.defaultText,
                         img: this.defaultImg,
+                        type,
+                        blockId: idGenerator(),
+                    });
+                } else if (type === "slider") {
+                    pageBlocks.items.push({
+                        images: new Array(4).fill(this.defaultImg),
                         type,
                         blockId: idGenerator(),
                     });
@@ -85,14 +94,28 @@ export const useBlocksStore = defineStore("blocks", {
                             },
                         ],
                     });
+                } else if (type === "slider") {
+                    this.blocks.push({
+                        siteId,
+                        pageId,
+                        items: [
+                            {
+                                images: new Array(4).fill(this.defaultImg),
+                                type,
+                                blockId: idGenerator(),
+                            },
+                        ],
+                    });
                 }
             }
         },
 
         deleteBlock(siteId, pageId, blockId) {
+            this.saveState();
             const pageBlocks = this.blocks.find(
                 (item) => item.siteId === siteId && item.pageId === pageId
             );
+
             if (pageBlocks) {
                 const index = pageBlocks.items.findIndex(
                     (block) => block.blockId === blockId
@@ -102,32 +125,36 @@ export const useBlocksStore = defineStore("blocks", {
         },
 
         copyBlock(siteId, pageId, blockId) {
+            this.saveState();
             const pageBlocks = this.blocks.find(
                 (item) => item.siteId === siteId && item.pageId === pageId
             );
+
             if (pageBlocks) {
                 const index = pageBlocks.items.findIndex(
                     (block) => block.blockId === blockId
                 );
-
                 const copy = Object.assign({}, pageBlocks.items[index], {
                     blockId: idGenerator(),
                 });
+
                 pageBlocks.items.splice(index, 0, copy);
-                console.log(pageBlocks.items);
             }
         },
 
         raiseBlock(siteId, pageId, blockId) {
+            this.saveState();
             const pageBlocks = this.blocks.find(
                 (item) => item.siteId === siteId && item.pageId === pageId
             );
+
             if (pageBlocks) {
                 const index = pageBlocks.items.findIndex(
                     (block) => block.blockId === blockId
                 );
                 if (index) {
                     const block = pageBlocks.items[index];
+
                     pageBlocks.items.splice(index, 1);
                     pageBlocks.items.splice(index - 1, 0, block);
                 }
@@ -135,15 +162,18 @@ export const useBlocksStore = defineStore("blocks", {
         },
 
         lowerBlock(siteId, pageId, blockId) {
+            this.saveState();
             const pageBlocks = this.blocks.find(
                 (item) => item.siteId === siteId && item.pageId === pageId
             );
+
             if (pageBlocks) {
                 const index = pageBlocks.items.findIndex(
                     (block) => block.blockId === blockId
                 );
                 if (index !== pageBlocks.items.length - 1) {
                     const block = pageBlocks.items[index];
+
                     pageBlocks.items.splice(index, 1);
                     pageBlocks.items.splice(index + 1, 0, block);
                 }
@@ -151,9 +181,11 @@ export const useBlocksStore = defineStore("blocks", {
         },
 
         editBlock(siteId, pageId, blockId, info) {
+            this.saveState();
             const pageBlocks = this.blocks.find(
                 (item) => item.siteId === siteId && item.pageId === pageId
             );
+
             if (pageBlocks) {
                 const index = pageBlocks.items.findIndex(
                     (block) => block.blockId === blockId
@@ -164,6 +196,13 @@ export const useBlocksStore = defineStore("blocks", {
                 } else if (pageBlocks.items[index].type === "cover") {
                     pageBlocks.items[index].text = info.text;
                     pageBlocks.items[index].img = info.img;
+                } else if (pageBlocks.items[index].type === "slider") {
+                    pageBlocks.items[index].images[info.index] = info.img;
+                        if (info.index !== info.changeIndex) {
+                            const image = pageBlocks.items[index].images.splice(info.index, 1);
+                            
+                            pageBlocks.items[index].images.splice(info.changeIndex, 0, image[0]);
+                        }
                 }
             }
         },
@@ -174,6 +213,16 @@ export const useBlocksStore = defineStore("blocks", {
 
         closeContent() {
             this.isContentOpen = false;
+        },
+
+        saveState() {
+            this.stateHistory.push(JSON.stringify(this.blocks));
+        },
+
+        undoAction() {
+            if (this.stateHistory.length) {
+                this.blocks = JSON.parse(this.stateHistory.pop());
+            }
         },
     },
 });

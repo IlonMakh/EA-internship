@@ -1,8 +1,8 @@
 <template>
-<div class="sites__item" @click="goToProject($event), setActiveSite(site.id)">
+<router-link :to="{ name: 'project', params: { id: site.id } }" class="sites__item" @click="setActiveSite(site.id)">
     <div class="sites__item-content">
         <h5 class="sites__item-title">{{ site.title }}</h5>
-        <button class="sites__item-menu-btn" @click.stop="openPopup">
+        <button class="sites__item-menu-btn" @click.prevent.stop="openPopup">
             <svg>
                 <use xlink:href="#dots" />
             </svg>
@@ -10,12 +10,12 @@
         <sites-card-menu :class="isPopupOpen ? 'open' : ''" :index="index" :key="index" v-click-out-side="closePopup"></sites-card-menu>
     </div>
     <div class="sites__item-footer">
-        <router-link :to="{ name: 'project', params: { id: site.id } }" class="sites__item-edit-btn" @click="setActiveSite(site.id)">Редактировать сайт</router-link>
-        <button class="sites__item-open-btn" @click.stop>
+        <router-link :to="{ name: 'project', params: { id: site.id } }" class="sites__item-edit-btn"  @click="setActiveSite(site.id)">Редактировать сайт</router-link>
+        <button class="sites__item-open-btn" @click.prevent.stop>
             Открыть сайт
         </button>
     </div>
-</div>
+</router-link>
 </template>
 
 <script>

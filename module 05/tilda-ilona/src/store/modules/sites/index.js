@@ -25,6 +25,7 @@ export const useSitesStore = defineStore('sites',{
 
         createSite() {
             const length = this.sites.length;
+
             this.sites.push({
                 id: idGenerator(),
                 title: `My project ${length ? length : 0}`,
@@ -41,6 +42,7 @@ export const useSitesStore = defineStore('sites',{
 
         changeDomain(id, domain) {
             const index = this.sites.findIndex(site => site.id === id);
+            
             this.sites[index].domain = domain;
         }
     },

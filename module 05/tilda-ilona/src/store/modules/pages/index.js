@@ -35,6 +35,7 @@ export const usePagesStore = defineStore("pages", {
 
         getSitePages(id) {
             const sitePages = this.pages.find((item) => item.siteId === id);
+
             if (sitePages) {
                 return sitePages.items;
             } else {
@@ -44,6 +45,7 @@ export const usePagesStore = defineStore("pages", {
 
         getActivePage(siteId, pageId) {
             const sitePages = this.pages.find((item) => item.siteId === siteId);
+
             if (sitePages) {
                 return sitePages.items.find(item => item.id === pageId);
             }
@@ -51,8 +53,10 @@ export const usePagesStore = defineStore("pages", {
 
         createPage(id) {
             const sitePages = this.pages.find((item) => item.siteId === id);
+
             if (sitePages) {
                 const length = sitePages.items.length;
+                
                 sitePages.items.push({
                     id: idGenerator(),
                     title: `page ${length ? length : 0}`,
@@ -78,24 +82,30 @@ export const usePagesStore = defineStore("pages", {
 
         deletePage(siteId, pageId) {
             const sitePages = this.pages.find((item) => item.siteId === siteId);
+
             if (sitePages) {
                 const index = sitePages.items.findIndex(item => item.id === pageId);
+
                 sitePages.items.splice(index, 1);
             }
         },
 
         changeBadge(siteId, pageId, img) {
             const sitePages = this.pages.find((item) => item.siteId === siteId);
+
             if (sitePages) {
                 const index = sitePages.items.findIndex(item => item.id === pageId);
+
                 sitePages.items[index].badge = img;
             }
         },
 
         changeInfo(siteId, pageId, info) {
             const sitePages = this.pages.find((item) => item.siteId === siteId);
+
             if (sitePages) {
                 const index = sitePages.items.findIndex(item => item.id === pageId);
+
                 sitePages.items[index].title = info.title;
                 sitePages.items[index].description = info.description;
                 sitePages.items[index].adress = info.adress;
