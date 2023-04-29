@@ -1,5 +1,5 @@
 <template>
-<div class="block-edit__modal" @click.self="closeContent">
+<div class="block-edit__modal" @click.self="cancelSave">
     <div class="block-edit__modal-content">
         <div class="wrapper">
             <div v-if="block.type === 'youtube' || block.type === 'vimeo' || block.type === 'youtube-p' || block.type === 'vimeo-p'" class="block-edit__modal-video">
@@ -31,7 +31,7 @@
             <button class="block-edit__modal-save" @click="saveContent">
                 Сохранить
             </button>
-            <button class="block-edit__modal-cancel" @click="closeContent">
+            <button class="block-edit__modal-cancel" @click="cancelSave">
                 Отмена
             </button>
         </div>
@@ -90,6 +90,11 @@ export default {
 
             this.setActiveVideo(videoUrl);
         },
+
+        cancelSave() {
+            this.closeContent();
+            this.setActiveVideo(null);
+        }
     },
 
     computed: {
