@@ -194,11 +194,11 @@ export const useBlocksStore = defineStore("blocks", {
                 const index = pageBlocks.items.findIndex(
                     (block) => block.blockId === blockId
                 );
-                const copy = Object.assign({}, pageBlocks.items[index], {
-                    blockId: idGenerator(),
-                });
-
+                const copy = JSON.parse(JSON.stringify(pageBlocks.items[index]));
+                
+                copy.blockId = idGenerator();
                 pageBlocks.items.splice(index, 0, copy);
+                console.log(this.blocks);
             }
         },
 

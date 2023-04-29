@@ -1,7 +1,5 @@
 <template>
-    <HeaderApp
-        v-if="$route.name !== 'page-edit' && $route.name !== 'page-preview'"
-    ></HeaderApp>
+    <HeaderApp v-if="$route.name !== 'page-edit' && $route.name !== 'page-preview'"></HeaderApp>
     <header-edit v-else-if="$route.name == 'page-edit'"></header-edit>
     <router-view />
 

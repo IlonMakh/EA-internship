@@ -1,20 +1,17 @@
 <template>
-    <section class="block__popup-youtube">
-        <div class="container">
-            <div class="block__popup-youtube-text">
-                Для открытия окна c Youtube видео <span class="block__popup-youtube-btn"  @click="openPopup">кликните здесь</span>
-            </div>
+<section class="block__popup-youtube">
+    <div class="container">
+        <div class="block__popup-youtube-text">
+            Для открытия окна c Youtube видео <span class="block__popup-youtube-btn" @click="openPopup">кликните здесь</span>
         </div>
-        <blocks-menu :blockId="blockId"></blocks-menu>
-        <div v-if="isPopupOpen" class="popup-youtube" @click.self="closePopup">
-            <div class="popup-youtube__content">
-                <Youtube
-            class="youtube-player"
-            :src="`https://www.youtube.com/watch?v=${videoId}`"
-        />
-            </div>
+    </div>
+    <blocks-menu :blockId="blockId"></blocks-menu>
+    <div v-if="isPopupOpen" class="popup-youtube" @click.self="closePopup">
+        <div class="popup-youtube__content">
+            <Youtube class="youtube-player" :src="`https://www.youtube.com/watch?v=${videoId}`" />
         </div>
-    </section>
+    </div>
+</section>
 </template>
 
 <script>

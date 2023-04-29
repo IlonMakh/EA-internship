@@ -1,13 +1,10 @@
 <template>
-    <section class="block__youtube">
-        <div class="container">
-            <Youtube
-            class="youtube-player"
-            :src="`https://www.youtube.com/watch?v=${videoId}`"
-        />
-        </div>
-        <blocks-menu :blockId="blockId"></blocks-menu>
-    </section>
+<section class="block__youtube">
+    <div class="container">
+        <Youtube class="youtube-player" :src="`https://www.youtube.com/watch?v=${videoId}`" />
+    </div>
+    <blocks-menu :blockId="blockId"></blocks-menu>
+</section>
 </template>
 
 <script>
@@ -25,10 +22,8 @@ export default {
         BlocksMenu,
     },
     data() {
-        return {
-        };
+        return {};
     },
-    methods: {
-    },
+    methods: {},
 };
 </script>

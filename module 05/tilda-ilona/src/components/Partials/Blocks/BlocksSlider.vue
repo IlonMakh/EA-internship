@@ -1,26 +1,13 @@
 <template>
-    <section class="block__slider">
-        <div class="container">
-            <swiper
-                :slides-per-view="$route.name === 'page-edit' ? 4 : 3"
-                :space-between="space"
-                :centered-slide="true"
-            >
-                <swiper-slide
-                    v-for="(image, index) in activeBlock.images"
-                    :key="index"
-                    ><img :src="image" @click="openSlide(image, index)"
-                /></swiper-slide>
-            </swiper>
-        </div>
-        <blocks-menu :blockId="blockId"></blocks-menu>
-        <blocks-slider-settings
-            v-if="isModalOpen"
-            :block="activeBlock"
-            :index="activeIndex"
-            @closeModal="closeModal"
-        ></blocks-slider-settings>
-    </section>
+<section class="block__slider">
+    <div class="container">
+        <swiper :slides-per-view="$route.name === 'page-edit' ? 4 : 3" :space-between="space" :centered-slide="true">
+            <swiper-slide v-for="(image, index) in activeBlock.images" :key="index"><img :src="image" @click="openSlide(image, index)" /></swiper-slide>
+        </swiper>
+    </div>
+    <blocks-menu :blockId="blockId"></blocks-menu>
+    <blocks-slider-settings v-if="isModalOpen" :block="activeBlock" :index="activeIndex" @closeModal="closeModal"></blocks-slider-settings>
+</section>
 </template>
 
 <script>

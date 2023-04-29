@@ -1,17 +1,17 @@
 <template>
-    <section class="block__popup-vimeo">
-        <div class="container">
-            <div class="block__popup-vimeo-text">
-                Для открытия окна c Vimeo видео <span class="block__popup-vimeo-btn"  @click="openPopup">кликните здесь</span>
-            </div>
+<section class="block__popup-vimeo">
+    <div class="container">
+        <div class="block__popup-vimeo-text">
+            Для открытия окна c Vimeo видео <span class="block__popup-vimeo-btn" @click="openPopup">кликните здесь</span>
         </div>
-        <blocks-menu :blockId="blockId"></blocks-menu>
-        <div v-if="isPopupOpen" class="popup-vimeo" @click.self="closePopup">
-            <div class="popup-vimeo__content">
-                <vue-vimeo-player class="vimeo-player" :video-id='videoId'></vue-vimeo-player>
-            </div>
+    </div>
+    <blocks-menu :blockId="blockId"></blocks-menu>
+    <div v-if="isPopupOpen" class="popup-vimeo" @click.self="closePopup">
+        <div class="popup-vimeo__content">
+            <vue-vimeo-player class="vimeo-player" :video-id='videoId'></vue-vimeo-player>
         </div>
-    </section>
+    </div>
+</section>
 </template>
 
 <script>
