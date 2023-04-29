@@ -2,7 +2,11 @@
 <div class="block-edit__modal" @click.self="closeContent">
     <div class="block-edit__modal-content">
         <div class="wrapper">
-            <div class="block-edit__modal-text">
+            <div v-if="block.type === 'youtube' || block.type === 'vimeo' || block.type === 'youtube-p' || block.type === 'vimeo-p'" class="block-edit__modal-video">
+                <label class="block-edit__modal-label" for="video">Id видео</label>
+                <input v-model="videoValue" class="block-edit__modal-input" id="video" name="video" />
+            </div>
+            <div v-if="block.type === 'text' || block.type === 'cover'" class="block-edit__modal-text">
                 <label class="block-edit__modal-label" for="text">Текст</label>
                 <textarea v-model="textValue" class="block-edit__modal-textarea" id="text" name="text"></textarea>
             </div>
@@ -46,6 +50,7 @@ export default {
     data() {
         return {
             textValue: this.block.text,
+            videoValue: this.block.videoId,
         };
     },
 
@@ -62,6 +67,7 @@ export default {
             this.editBlock(this.activeSiteId, this.activePageId, this.block.blockId, {
                     text: this.textValue,
                     img: this.activeImage,
+                    videoId: this.videoValue,
             }),
             this.closeContent();
         },

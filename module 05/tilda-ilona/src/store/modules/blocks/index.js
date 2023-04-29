@@ -7,6 +7,8 @@ export const useBlocksStore = defineStore("blocks", {
         stateHistory: [],
         defaultText: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecatihic natus rerum sint expedita repellendus molestiae quisquam animi porro neque facilis sequi voluptate rem eligendi delectus esse explicabo, quod fuga! Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati hic natus rerum sint expedita repellendus molestiae quisquam animi porro neque facilis sequi voluptate rem eligendi delectus esse explicabo, quod fuga!`,
         defaultImg: "/images/cat3.jpg",
+        defaultYoutube: "lqYAcBwvZkQ",
+        defaultVimeo: "458037431",
         activeBlockId: "",
         isContentOpen: false,
     }),
@@ -67,6 +69,18 @@ export const useBlocksStore = defineStore("blocks", {
                         type,
                         blockId: idGenerator(),
                     });
+                } else if (type === "youtube" || type === "youtube-p") {
+                    pageBlocks.items.push({
+                        videoId: this.defaultYoutube,
+                        type,
+                        blockId: idGenerator(),
+                    });
+                } else if (type === "vimeo" || type === "vimeo-p") {
+                    pageBlocks.items.push({
+                        videoId: this.defaultVimeo,
+                        type,
+                        blockId: idGenerator(),
+                    });
                 }
             } else {
                 if (type === "text") {
@@ -104,6 +118,30 @@ export const useBlocksStore = defineStore("blocks", {
                                 type,
                                 blockId: idGenerator(),
                             },
+                        ],
+                    });
+                } else if (type === "youtube" || type === "youtube-p") {
+                    this.blocks.push({
+                        siteId,
+                        pageId,
+                        items: [
+                            {
+                                videoId: this.defaultYoutube,
+                                type,
+                                blockId: idGenerator(),
+                            }
+                        ],
+                    });
+                } else if (type === "vimeo" || type === "vimeo-p") {
+                    this.blocks.push({
+                        siteId,
+                        pageId,
+                        items: [
+                            {
+                                videoId: this.defaultVimeo,
+                                type,
+                                blockId: idGenerator(),
+                            }
                         ],
                     });
                 }
@@ -203,6 +241,8 @@ export const useBlocksStore = defineStore("blocks", {
                             
                             pageBlocks.items[index].images.splice(info.changeIndex, 0, image[0]);
                         }
+                } else if (pageBlocks.items[index].type === "youtube" || pageBlocks.items[index].type === "vimeo" || pageBlocks.items[index].type === "youtube-p" || pageBlocks.items[index].type === "vimeo-p") {
+                    pageBlocks.items[index].videoId = info.videoId;
                 }
             }
         },

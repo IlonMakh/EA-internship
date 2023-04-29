@@ -7,6 +7,10 @@
                     <blocks-text v-if="block.type === 'text'" :blockId="block.blockId" :text="block.text"></blocks-text>
                     <blocks-cover v-else-if="block.type === 'cover'" :image="block.img" :blockId="block.blockId" :text="block.text"></blocks-cover>
                     <blocks-slider v-else-if="block.type === 'slider'" :blockId="block.blockId"></blocks-slider>
+                    <blocks-vimeo v-else-if="block.type === 'vimeo'" :blockId="block.blockId" :videoId="block.videoId"></blocks-vimeo>
+                    <blocks-youtube v-else-if="block.type === 'youtube'" :blockId="block.blockId" :videoId="block.videoId"></blocks-youtube>
+                    <blocks-popup-vimeo v-else-if="block.type === 'vimeo-p'" :blockId="block.blockId" :videoId="block.videoId"></blocks-popup-vimeo>
+                    <blocks-popup-youtube v-else-if="block.type === 'youtube-p'" :blockId="block.blockId" :videoId="block.videoId"></blocks-popup-youtube>
                 </div>
             </div>
             <button v-show="!pageBlocks.length" class="page-edit__add" @click="openPopup">
@@ -30,6 +34,10 @@ import PageEditBlockContent from "@/components/Sections/PageEditView/PageEditBlo
 import BlocksCover from "@/components/Partials/Blocks/BlocksCover.vue";
 import BlocksText from "@/components/Partials/Blocks/BlocksText.vue";
 import BlocksSlider from "@/components/Partials/Blocks/BlocksSlider.vue";
+import BlocksYoutube from "@/components/Partials/Blocks/BlocksYoutube.vue";
+import BlocksPopupYoutube from "@/components/Partials/Blocks/BlocksPopupYoutube.vue";
+import BlocksPopupVimeo from "@/components/Partials/Blocks/BlocksPopupVimeo.vue";
+import BlocksVimeo from "@/components/Partials/Blocks/BlocksVimeo.vue";
 import { useBlocksStore } from "@/store/modules/blocks";
 import { useSitesStore } from "@/store/modules/sites";
 import { usePagesStore } from "@/store/modules/pages";
@@ -43,6 +51,10 @@ export default {
         BlocksText,
         PageEditBlockContent,
         BlocksSlider,
+        BlocksYoutube,
+        BlocksPopupYoutube,
+        BlocksVimeo,
+        BlocksPopupVimeo,
     },
     props: {},
 

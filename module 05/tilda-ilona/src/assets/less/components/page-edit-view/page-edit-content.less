@@ -31,7 +31,8 @@
         }
     }
 
-    &-text {
+    &-text,
+    &-video {
         display: flex;
         .flex-column-left-between;
         gap: 2rem;
@@ -54,6 +55,21 @@
         font-family: "Roboto", sans-serif;
         font-size: 1.6rem;
         text-align: justify;
+
+        @media (max-width: @breakpoint-m) {
+            font-size: 1.4rem;
+        }
+    }
+
+    &-input {
+        width: 100%;
+        background-color: inherit;
+        outline: none;
+        border: 1px solid @gray;
+        border-radius: 1rem;
+        padding: 1rem;
+        font-family: "Roboto", sans-serif;
+        font-size: 1.6rem;
 
         @media (max-width: @breakpoint-m) {
             font-size: 1.4rem;

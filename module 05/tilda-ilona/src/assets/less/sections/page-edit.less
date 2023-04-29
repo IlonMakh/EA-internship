@@ -107,7 +107,11 @@
 
     .block__cover,
     .block__text,
-    .block__slider {
+    .block__slider,
+    .block__youtube,
+    .block__vimeo,
+    .block__popup-vimeo,
+    .block__popup-youtube {
         &:hover {
             .block__menu {
                 .flex-center;
@@ -163,6 +167,10 @@
             border-radius: 2rem;
             transition: all 0.3s ease-in-out;
 
+            @media (max-width: @breakpoint-m) {
+                left: 2rem;
+            }
+
             &:hover {
                 opacity: 0.9;
                 background-color: darken(@green, 10%);
@@ -195,7 +203,7 @@
                 height: 40rem;
                 cursor: pointer;
                 transition: all 0.3s ease-in-out;
-                
+
                 img {
                     width: 100%;
                     height: 100%;
@@ -218,6 +226,156 @@
 
                 @media (max-width: @breakpoint-s) {
                     height: 23rem;
+                }
+            }
+        }
+    }
+
+    .block__vimeo,
+    .block__youtube,
+    .block__popup-vimeo,
+    .block__popup-youtube {
+        width: 100vw;
+        position: relative;
+        padding: 4rem 0;
+        background-color: @white;
+    }
+
+    .block__youtube {
+        .youtube-player {
+            width: 60% !important;
+            height: auto !important;
+            aspect-ratio: 16/9 !important;
+
+            iframe {
+                width: 100% !important;
+                height: 100% !important;
+            }
+        }
+    }
+
+    .block__vimeo {
+        .vimeo-player {
+            width: 60% !important;
+            height: auto !important;
+            aspect-ratio: 16/9 !important;
+
+            iframe {
+                width: 100% !important;
+                height: 100% !important;
+            }
+        }
+    }
+
+    .block__popup-vimeo {
+        &-btn {
+            color: @green;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+
+            &:hover {
+                color: darken(@green, 10%);
+            }
+        }
+
+        &-text {
+            text-align: center;
+
+            @media (max-width: @breakpoint-m) {
+                font-size: 1.4rem;
+            }
+        }
+
+        .popup-vimeo {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            z-index: 1;
+
+            &__content {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                .vimeo-player {
+                    width: 74rem !important;
+                    height: auto !important;
+                    aspect-ratio: 16/9 !important;
+
+                    @media (max-width: @breakpoint-m) {
+                        width: 54rem !important;
+                    }
+
+                    @media (max-width: @breakpoint-s) {
+                        width: 34rem !important;
+                    }
+        
+                    iframe {
+                        width: 100% !important;
+                        height: 100% !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .block__popup-youtube {
+        &-btn {
+            color: @green;
+            cursor: pointer;
+            transition: all 0.4s ease-in-out;
+
+            &:hover {
+                color: darken(@green, 10%);
+            }
+        }
+
+        &-text {
+            text-align: center;
+
+            @media (max-width: @breakpoint-m) {
+                font-size: 1.4rem;
+            }
+        }
+
+        .popup-youtube {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            z-index: 1;
+
+            &__content {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+
+                .youtube-player {
+                    width: 74rem !important;
+                    height: auto !important;
+                    aspect-ratio: 16/9 !important;
+
+                    @media (max-width: @breakpoint-m) {
+                        width: 54rem !important;
+                    }
+
+                    @media (max-width: @breakpoint-s) {
+                        width: 34rem !important;
+                    }
+        
+                    iframe {
+                        width: 100% !important;
+                        height: 100% !important;
+                    }
                 }
             }
         }

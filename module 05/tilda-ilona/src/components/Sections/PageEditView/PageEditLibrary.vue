@@ -28,13 +28,15 @@
 import PageEditLibraryText from "./PageEditLibrary/PageEditLibraryText.vue";
 import PageEditLibraryCover from "./PageEditLibrary/PageEditLibraryCover.vue";
 import PageEditLibrarySlider from "./PageEditLibrary/PageEditLibrarySlider.vue";
+import PageEditLibraryVideo from "./PageEditLibrary/PageEditLibraryVideo.vue";
 
 export default {
     name: "edit-modal",
     components: {
         PageEditLibraryText,
         PageEditLibraryCover,
-        PageEditLibrarySlider
+        PageEditLibrarySlider,
+        PageEditLibraryVideo,
     },
     props: {},
 
@@ -53,6 +55,10 @@ export default {
                 {
                     name: "PageEditLibrarySlider",
                     title: "Слайдеры",
+                },
+                {
+                    name: "PageEditLibraryVideo",
+                    title: "Видео",
                 },
             ],
         };
