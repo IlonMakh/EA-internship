@@ -16,6 +16,10 @@
             <h6 class="blocks__item-title">Popup с Vimeo видео</h6>
             <p class="blocks__item-description">Popup с видео с Vimeo</p>
         </div>
+        <div class="blocks__item" @click="addBlock(activeSiteId, activePageId, 'video')">
+            <h6 class="blocks__item-title">Блок с видео</h6>
+            <p class="blocks__item-description">Блок с возможностью загрузить свое видео</p>
+        </div>
     </div>
     </template>
     

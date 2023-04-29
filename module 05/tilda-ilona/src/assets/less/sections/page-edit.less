@@ -111,7 +111,8 @@
     .block__youtube,
     .block__vimeo,
     .block__popup-vimeo,
-    .block__popup-youtube {
+    .block__popup-youtube,
+    .block__video {
         &:hover {
             .block__menu {
                 .flex-center;
@@ -234,7 +235,8 @@
     .block__vimeo,
     .block__youtube,
     .block__popup-vimeo,
-    .block__popup-youtube {
+    .block__popup-youtube,
+    .block__video {
         width: 100vw;
         position: relative;
         padding: 4rem 0;
@@ -264,6 +266,36 @@
                 width: 100% !important;
                 height: 100% !important;
             }
+        }
+    }
+
+    .block__video {
+        text-align: center;
+        &-upload {
+            &-input {
+                display: none;
+            }
+
+            &-btn {
+                padding: 1rem 2rem;
+                color: @white;
+                background-color: @dark-gray;
+                opacity: 0.6;
+                cursor: pointer;
+                border-radius: 2rem;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    opacity: 0.9;
+                }
+            }
+        }
+
+        &-player {
+            width: 60% ;
+            height: auto;
+            aspect-ratio: 16/9;
+            object-fit: cover;
         }
     }
 

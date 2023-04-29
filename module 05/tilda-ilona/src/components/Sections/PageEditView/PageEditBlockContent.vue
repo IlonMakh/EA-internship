@@ -6,6 +6,11 @@
                 <label class="block-edit__modal-label" for="video">Id видео</label>
                 <input v-model="videoValue" class="block-edit__modal-input" id="video" name="video" />
             </div>
+            <div v-if="block.type === 'video'" class="block-edit__modal-upload">
+                <label class="block-edit__modal-label" for="upload">Изменить видео</label>
+                <input class="block-edit__modal-input" type="file"  id="upload" name="upload" accept="video/*" @change="uploadVideo"/>
+                <p v-if="activeVideo" class="block-edit__modal-upload-message">Видео успешно загружено!</p>
+            </div>
             <div v-if="block.type === 'text' || block.type === 'cover'" class="block-edit__modal-text">
                 <label class="block-edit__modal-label" for="text">Текст</label>
                 <textarea v-model="textValue" class="block-edit__modal-textarea" id="text" name="text"></textarea>
@@ -35,6 +40,7 @@
 </template>
 
 <script>
+import * as filestack from "filestack-js";
 import { useSitesStore } from "@/store/modules/sites";
 import { usePagesStore } from "@/store/modules/pages";
 import { useBlocksStore } from "@/store/modules/blocks";
@@ -51,6 +57,7 @@ export default {
         return {
             textValue: this.block.text,
             videoValue: this.block.videoId,
+            apiKey: "AGbSKHPyQeCvCdadnnIEkz",
         };
     },
 
@@ -59,6 +66,7 @@ export default {
             "getActiveBlock",
             "closeContent",
             "editBlock",
+            "setActiveVideo",
         ]),
 
         ...mapActions(useModalsStore, ["openGlobalModal"]),
@@ -68,8 +76,19 @@ export default {
                     text: this.textValue,
                     img: this.activeImage,
                     videoId: this.videoValue,
+                    videoUrl: this.activeVideo,
             }),
             this.closeContent();
+            this.setActiveVideo(null);
+        },
+
+        async uploadVideo(event) {
+            const file = event.target.files[0];
+            const client = filestack.init(this.apiKey);
+            const response = await client.upload(file);
+            const videoUrl = response.url;
+
+            this.setActiveVideo(videoUrl);
         },
     },
 
@@ -77,6 +96,7 @@ export default {
         ...mapState(useSitesStore, ["activeSiteId"]),
         ...mapState(usePagesStore, ["activePageId"]),
         ...mapState(useModalsStore, ["activeImage"]),
+        ...mapState(useBlocksStore, ["activeVideo"]),
     },
 };
 </script>

@@ -11,6 +11,7 @@
                     <blocks-youtube v-else-if="block.type === 'youtube'" :blockId="block.blockId" :videoId="block.videoId"></blocks-youtube>
                     <blocks-popup-vimeo v-else-if="block.type === 'vimeo-p'" :blockId="block.blockId" :videoId="block.videoId"></blocks-popup-vimeo>
                     <blocks-popup-youtube v-else-if="block.type === 'youtube-p'" :blockId="block.blockId" :videoId="block.videoId"></blocks-popup-youtube>
+                    <blocks-video v-else-if="block.type === 'video'" :blockId="block.blockId" :videoUrl="block.videoUrl"></blocks-video>
                 </div>
             </div>
             <button v-show="!pageBlocks.length" class="page-edit__add" @click="openPopup">
@@ -38,6 +39,7 @@ import BlocksYoutube from "@/components/Partials/Blocks/BlocksYoutube.vue";
 import BlocksPopupYoutube from "@/components/Partials/Blocks/BlocksPopupYoutube.vue";
 import BlocksPopupVimeo from "@/components/Partials/Blocks/BlocksPopupVimeo.vue";
 import BlocksVimeo from "@/components/Partials/Blocks/BlocksVimeo.vue";
+import BlocksVideo from "@/components/Partials/Blocks/BlocksVideo.vue";
 import { useBlocksStore } from "@/store/modules/blocks";
 import { useSitesStore } from "@/store/modules/sites";
 import { usePagesStore } from "@/store/modules/pages";
@@ -55,8 +57,8 @@ export default {
         BlocksPopupYoutube,
         BlocksVimeo,
         BlocksPopupVimeo,
+        BlocksVideo,
     },
-    props: {},
 
     data() {
         return {

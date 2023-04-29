@@ -10,10 +10,14 @@ export const useBlocksStore = defineStore("blocks", {
         defaultYoutube: "lqYAcBwvZkQ",
         defaultVimeo: "458037431",
         activeBlockId: "",
+        activeVideo: "",
         isContentOpen: false,
     }),
 
     actions: {
+        setActiveVideo(video) {
+            this.activeVideo = video;
+        },
         setActiveBlock(blockId) {
             this.activeBlockId = blockId;
         },
@@ -81,6 +85,12 @@ export const useBlocksStore = defineStore("blocks", {
                         type,
                         blockId: idGenerator(),
                     });
+                } else if (type === "video") {
+                    pageBlocks.items.push({
+                        videoUrl: null,
+                        type,
+                        blockId: idGenerator(),
+                    });
                 }
             } else {
                 if (type === "text") {
@@ -139,6 +149,18 @@ export const useBlocksStore = defineStore("blocks", {
                         items: [
                             {
                                 videoId: this.defaultVimeo,
+                                type,
+                                blockId: idGenerator(),
+                            }
+                        ],
+                    });
+                } else if (type === "video") {
+                    this.blocks.push({
+                        siteId,
+                        pageId,
+                        items: [
+                            {
+                                videoUrl: null,
                                 type,
                                 blockId: idGenerator(),
                             }
@@ -243,6 +265,8 @@ export const useBlocksStore = defineStore("blocks", {
                         }
                 } else if (pageBlocks.items[index].type === "youtube" || pageBlocks.items[index].type === "vimeo" || pageBlocks.items[index].type === "youtube-p" || pageBlocks.items[index].type === "vimeo-p") {
                     pageBlocks.items[index].videoId = info.videoId;
+                } else if (pageBlocks.items[index].type === "video") {
+                    pageBlocks.items[index].videoUrl = info.videoUrl;
                 }
             }
         },
