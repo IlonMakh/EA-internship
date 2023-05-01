@@ -53,29 +53,21 @@ export const usePagesStore = defineStore("pages", {
 
         createPage(id) {
             const sitePages = this.pages.find((item) => item.siteId === id);
-
+            const length = (sitePages && sitePages.items.length) || 0;
+            const page = {
+                id: idGenerator(),
+                title: `page ${length}`,
+                badge: "/images/cat.jpg",
+                description: "Стандартная страница",
+                adress: "Адрес страницы",
+            };
+            
             if (sitePages) {
-                const length = sitePages.items.length;
-                
-                sitePages.items.push({
-                    id: idGenerator(),
-                    title: `page ${length ? length : 0}`,
-                    badge: "/images/cat.jpg",
-                    description: "Стандартная страница",
-                    adress: "Адрес страницы",
-                });
+                sitePages.items.push(page);
             } else {
                 this.pages.push({
                     siteId: id,
-                    items: [
-                        {
-                            id: idGenerator(),
-                            title: `page 0`,
-                            badge: "/images/cat.jpg",
-                            description: "Стандартная страница",
-                            adress: "Адрес страницы",
-                        },
-                    ],
+                    items: [page],
                 });
             }
         },
@@ -102,15 +94,16 @@ export const usePagesStore = defineStore("pages", {
 
         changeInfo(siteId, pageId, info) {
             const sitePages = this.pages.find((item) => item.siteId === siteId);
-
+        
             if (sitePages) {
                 const index = sitePages.items.findIndex(item => item.id === pageId);
-
-                sitePages.items[index].title = info.title;
-                sitePages.items[index].description = info.description;
-                sitePages.items[index].adress = info.adress;
+                const page = sitePages.items[index];
+        
+                page.title = info.title || page.title;
+                page.description = info.description || page.description;
+                page.adress = info.adress || page.adress;
             }
-        }
+        },
 
     },
 });

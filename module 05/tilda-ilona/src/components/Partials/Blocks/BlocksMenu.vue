@@ -1,27 +1,14 @@
 <template>
 <div class="block__menu">
-    <button class="block__menu-btn" @click="raiseBlock(activeSiteId, activePageId, blockId)">
+    <button v-for="btn in buttons" :key="btn.action" class="block__menu-btn" @click="btn.action(activeSiteId, activePageId, blockId)">
         <svg>
-            <use xlink:href="#up"></use>
-        </svg>
-    </button>
-    <button class="block__menu-btn" @click="copyBlock(activeSiteId, activePageId, blockId)">
-        <svg>
-            <use xlink:href="#copy"></use>
-        </svg>
-    </button>
-    <button class="block__menu-btn" @click="deleteBlock(activeSiteId, activePageId, blockId)">
-        <svg>
-            <use xlink:href="#delete2"></use>
-        </svg>
-    </button>
-    <button class="block__menu-btn" @click="lowerBlock(activeSiteId, activePageId, blockId)">
-        <svg>
-            <use xlink:href="#down"></use>
+            <use :xlink:href="btn.icon"></use>
         </svg>
     </button>
 </div>
-<button class="block__menu-content" @click="setActiveBlock(blockId), setActiveImage(activeBlock.img), openContent($event)">Контент</button>
+<button class="block__menu-content" @click="setContent">
+    Контент
+</button>
 </template>
 
 <script>
@@ -37,6 +24,28 @@ export default {
         blockId: Number,
     },
 
+    data() {
+        return {
+            buttons: [{
+                    action: this.raiseBlock,
+                    icon: "#up",
+                },
+                {
+                    action: this.copyBlock,
+                    icon: "#copy",
+                },
+                {
+                    action: this.deleteBlock,
+                    icon: "#delete2",
+                },
+                {
+                    action: this.lowerBlock,
+                    icon: "#down",
+                },
+            ],
+        };
+    },
+
     methods: {
         ...mapActions(useBlocksStore, [
             "deleteBlock",
@@ -45,10 +54,16 @@ export default {
             "lowerBlock",
             "setActiveBlock",
             "getActiveBlock",
-            "openContent"
+            "openContent",
         ]),
 
-        ...mapActions(useModalsStore, ['setActiveImage']),
+        ...mapActions(useModalsStore, ["setActiveImage"]),
+
+        setContent() {
+            this.setActiveBlock(this.blockId),
+                this.setActiveImage(this.activeBlock.img),
+                this.openContent()
+        }
     },
 
     computed: {
@@ -56,8 +71,12 @@ export default {
         ...mapState(usePagesStore, ["activePageId"]),
         ...mapState(useBlocksStore, ["activeBlockId"]),
         activeBlock() {
-            return this.getActiveBlock(this.activeSiteId, this.activePageId, this.activeBlockId);
-        }
+            return this.getActiveBlock(
+                this.activeSiteId,
+                this.activePageId,
+                this.activeBlockId
+            );
+        },
     },
 };
 </script>

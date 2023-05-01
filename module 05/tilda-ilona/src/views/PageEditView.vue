@@ -4,14 +4,7 @@
         <div class="container">
             <div v-if="pageBlocks.length" class="page-edit__blocks">
                 <div v-for="(block, index) in pageBlocks" :key="index" class="block-wrapper">
-                    <blocks-text v-if="block.type === 'text'" :blockId="block.blockId" :text="block.text"></blocks-text>
-                    <blocks-cover v-else-if="block.type === 'cover'" :image="block.img" :blockId="block.blockId" :text="block.text"></blocks-cover>
-                    <blocks-slider v-else-if="block.type === 'slider'" :blockId="block.blockId"></blocks-slider>
-                    <blocks-vimeo v-else-if="block.type === 'vimeo'" :blockId="block.blockId" :videoId="block.videoId"></blocks-vimeo>
-                    <blocks-youtube v-else-if="block.type === 'youtube'" :blockId="block.blockId" :videoId="block.videoId"></blocks-youtube>
-                    <blocks-popup-vimeo v-else-if="block.type === 'vimeo-p'" :blockId="block.blockId" :videoId="block.videoId"></blocks-popup-vimeo>
-                    <blocks-popup-youtube v-else-if="block.type === 'youtube-p'" :blockId="block.blockId" :videoId="block.videoId"></blocks-popup-youtube>
-                    <blocks-video v-else-if="block.type === 'video'" :blockId="block.blockId" :videoUrl="block.videoUrl"></blocks-video>
+                    <component :is="componentMap[block.type]" :blockId="block.blockId" :text="block.text" :image="block.img" :videoId="block.videoId" :videoUrl="block.videoUrl"></component>
                 </div>
             </div>
             <button v-show="!pageBlocks.length" class="page-edit__add" @click="openPopup">
@@ -63,6 +56,17 @@ export default {
     data() {
         return {
             isPopupOpen: false,
+
+            componentMap: {
+                text: "BlocksText",
+                cover: "BlocksCover",
+                slider: "BlocksSlider",
+                vimeo: "BlocksVimeo",
+                youtube: "BlocksYoutube",
+                'vimeo-p': "BlocksPopupVimeo",
+                'youtube-p': "BlocksPopupYoutube",
+                video: "BlocksVideo",
+            },
         };
     },
 
@@ -83,11 +87,15 @@ export default {
         ...mapState(usePagesStore, ["activePageId"]),
         ...mapState(useBlocksStore, ["isContentOpen", "activeBlockId"]),
         block() {
-            return this.getActiveBlock(this.activeSiteId, this.activePageId, this.activeBlockId);
+            return this.getActiveBlock(
+                this.activeSiteId,
+                this.activePageId,
+                this.activeBlockId
+            );
         },
         pageBlocks() {
             return this.getPageBlocks(this.activeSiteId, this.activePageId);
-        }
+        },
     },
 };
 </script>

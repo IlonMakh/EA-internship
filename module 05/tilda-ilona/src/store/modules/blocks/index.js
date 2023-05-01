@@ -1,5 +1,13 @@
 import { defineStore } from "pinia";
 import idGenerator from "@/helpers/idGenerator";
+import {
+    createCoverBlock,
+    createSliderBlock,
+    createTextBlock,
+    createVideoBlock,
+    createVimeoBlock,
+    createYoutubeBlock,
+} from "@/helpers/createBlocks";
 
 export const useBlocksStore = defineStore("blocks", {
     state: () => ({
@@ -26,25 +34,14 @@ export const useBlocksStore = defineStore("blocks", {
             const pageBlocks = this.blocks.find(
                 (item) => item.siteId === siteId && item.pageId === pageId
             );
-
-            if (pageBlocks) {
-                const activeBlock = pageBlocks.items.find(
-                    (item) => item.blockId === blockId
-                );
-                return activeBlock;
-            }
+            return pageBlocks?.items.find((item) => item.blockId === blockId);
         },
 
         getPageBlocks(siteId, pageId) {
             const pageBlocks = this.blocks.find(
                 (item) => item.siteId === siteId && item.pageId === pageId
             );
-
-            if (pageBlocks) {
-                return pageBlocks.items;
-            } else {
-                return [];
-            }
+            return pageBlocks ? pageBlocks.items : [];
         },
 
         addBlock(siteId, pageId, type) {
@@ -53,134 +50,74 @@ export const useBlocksStore = defineStore("blocks", {
                 (item) => item.siteId === siteId && item.pageId === pageId
             );
 
-            if (pageBlocks) {
-                if (type === "text") {
-                    pageBlocks.items.push({
-                        text: this.defaultText,
-                        type,
-                        blockId: idGenerator(),
-                    });
-                } else if (type === "cover") {
-                    pageBlocks.items.push({
-                        text: this.defaultText,
-                        img: this.defaultImg,
-                        type,
-                        blockId: idGenerator(),
-                    });
-                } else if (type === "slider") {
-                    pageBlocks.items.push({
-                        images: new Array(4).fill(this.defaultImg),
-                        type,
-                        blockId: idGenerator(),
-                    });
-                } else if (type === "youtube" || type === "youtube-p") {
-                    pageBlocks.items.push({
-                        videoId: this.defaultYoutube,
-                        type,
-                        blockId: idGenerator(),
-                    });
-                } else if (type === "vimeo" || type === "vimeo-p") {
-                    pageBlocks.items.push({
-                        videoId: this.defaultVimeo,
-                        type,
-                        blockId: idGenerator(),
-                    });
-                } else if (type === "video") {
-                    pageBlocks.items.push({
-                        videoUrl: null,
-                        type,
-                        blockId: idGenerator(),
-                    });
-                }
-            } else {
-                if (type === "text") {
-                    this.blocks.push({
+            switch (type) {
+                case "text":
+                    const textBlock = createTextBlock(this.defaultText);
+                    pageBlocks ? pageBlocks.items.push(textBlock) : this.blocks.push({
                         siteId,
                         pageId,
-                        items: [
-                            {
-                                text: this.defaultText,
-                                type,
-                                blockId: idGenerator(),
-                            },
-                        ],
+                        items: [textBlock],
                     });
-                } else if (type === "cover") {
-                    this.blocks.push({
+                    break;
+                case "cover":
+                    const coverBlock = createCoverBlock(this.defaultText, this.defaultImg);
+                    pageBlocks ? pageBlocks.items.push(coverBlock) : this.blocks.push({
                         siteId,
                         pageId,
-                        items: [
-                            {
-                                text: this.defaultText,
-                                img: this.defaultImg,
-                                type,
-                                blockId: idGenerator(),
-                            },
-                        ],
+                        items: [coverBlock],
                     });
-                } else if (type === "slider") {
-                    this.blocks.push({
+                    break;
+                case "slider":
+                    const sliderBlock = createSliderBlock(this.defaultImg);
+                    pageBlocks ? pageBlocks.items.push(sliderBlock) : this.blocks.push({
                         siteId,
                         pageId,
-                        items: [
-                            {
-                                images: new Array(4).fill(this.defaultImg),
-                                type,
-                                blockId: idGenerator(),
-                            },
-                        ],
+                        items: [sliderBlock],
                     });
-                } else if (type === "youtube" || type === "youtube-p") {
-                    this.blocks.push({
+                    break;
+                case "youtube":
+                case "youtube-p":
+                    const youtubeBlock = createYoutubeBlock(type, this.defaultYoutube);
+                    pageBlocks ? pageBlocks.items.push(youtubeBlock) : this.blocks.push({
                         siteId,
                         pageId,
-                        items: [
-                            {
-                                videoId: this.defaultYoutube,
-                                type,
-                                blockId: idGenerator(),
-                            }
-                        ],
+                        items: [youtubeBlock],
                     });
-                } else if (type === "vimeo" || type === "vimeo-p") {
-                    this.blocks.push({
+                    break;
+                case "vimeo":
+                case "vimeo-p":
+                    const vimeoBlock = createVimeoBlock(type,this.defaultVimeo);
+                    pageBlocks ? pageBlocks.items.push(vimeoBlock) : this.blocks.push({
                         siteId,
                         pageId,
-                        items: [
-                            {
-                                videoId: this.defaultVimeo,
-                                type,
-                                blockId: idGenerator(),
-                            }
-                        ],
+                        items: [vimeoBlock],
                     });
-                } else if (type === "video") {
-                    this.blocks.push({
+                    break;
+                case "video":
+                    const videoBlock = createVideoBlock();
+                    pageBlocks ? pageBlocks.items.push(videoBlock) : this.blocks.push({
                         siteId,
                         pageId,
-                        items: [
-                            {
-                                videoUrl: null,
-                                type,
-                                blockId: idGenerator(),
-                            }
-                        ],
+                        items: [videoBlock],
                     });
-                }
+                    break;
+                default:
+                    break;
             }
         },
 
         deleteBlock(siteId, pageId, blockId) {
             this.saveState();
-            const pageBlocks = this.blocks.find(
-                (item) => item.siteId === siteId && item.pageId === pageId
-            );
+            const pageBlocks = this.getPageBlocks(siteId, pageId);
 
             if (pageBlocks) {
-                const index = pageBlocks.items.findIndex(
+                const blockIndex = pageBlocks.findIndex(
                     (block) => block.blockId === blockId
                 );
-                pageBlocks.items.splice(index, 1);
+
+                if (blockIndex !== -1) {
+                    pageBlocks.splice(blockIndex, 1);
+                }
             }
         },
 
@@ -194,11 +131,12 @@ export const useBlocksStore = defineStore("blocks", {
                 const index = pageBlocks.items.findIndex(
                     (block) => block.blockId === blockId
                 );
-                const copy = JSON.parse(JSON.stringify(pageBlocks.items[index]));
-                
+                const copy = JSON.parse(
+                    JSON.stringify(pageBlocks.items[index])
+                );
+
                 copy.blockId = idGenerator();
                 pageBlocks.items.splice(index, 0, copy);
-                console.log(this.blocks);
             }
         },
 
@@ -209,14 +147,12 @@ export const useBlocksStore = defineStore("blocks", {
             );
 
             if (pageBlocks) {
-                const index = pageBlocks.items.findIndex(
+                const blockIndex = pageBlocks.items.findIndex(
                     (block) => block.blockId === blockId
                 );
-                if (index) {
-                    const block = pageBlocks.items[index];
-
-                    pageBlocks.items.splice(index, 1);
-                    pageBlocks.items.splice(index - 1, 0, block);
+                if (blockIndex > 0) {
+                    const [block] = pageBlocks.items.splice(blockIndex, 1);
+                    pageBlocks.items.splice(blockIndex - 1, 0, block);
                 }
             }
         },
@@ -231,11 +167,10 @@ export const useBlocksStore = defineStore("blocks", {
                 const index = pageBlocks.items.findIndex(
                     (block) => block.blockId === blockId
                 );
-                if (index !== pageBlocks.items.length - 1) {
+                if (index < pageBlocks.items.length - 1) {
                     const block = pageBlocks.items[index];
-
-                    pageBlocks.items.splice(index, 1);
-                    pageBlocks.items.splice(index + 1, 0, block);
+                    pageBlocks.items[index] = pageBlocks.items[index + 1];
+                    pageBlocks.items[index + 1] = block;
                 }
             }
         },
@@ -247,26 +182,40 @@ export const useBlocksStore = defineStore("blocks", {
             );
 
             if (pageBlocks) {
-                const index = pageBlocks.items.findIndex(
+                const block = pageBlocks.items.find(
                     (block) => block.blockId === blockId
                 );
 
-                if (pageBlocks.items[index].type === "text") {
-                    pageBlocks.items[index].text = info.text;
-                } else if (pageBlocks.items[index].type === "cover") {
-                    pageBlocks.items[index].text = info.text;
-                    pageBlocks.items[index].img = info.img;
-                } else if (pageBlocks.items[index].type === "slider") {
-                    pageBlocks.items[index].images[info.index] = info.img;
+                if (!block) {
+                    return;
+                }
+
+                switch (block.type) {
+                    case "text":
+                        block.text = info.text;
+                        break;
+                    case "cover":
+                        block.text = info.text;
+                        block.img = info.img;
+                        break;
+                    case "slider":
+                        block.images[info.index] = info.img;
                         if (info.index !== info.changeIndex) {
-                            const image = pageBlocks.items[index].images.splice(info.index, 1);
-                            
-                            pageBlocks.items[index].images.splice(info.changeIndex, 0, image[0]);
+                            const [image] = block.images.splice(info.index, 1);
+                            block.images.splice(info.changeIndex, 0, image);
                         }
-                } else if (pageBlocks.items[index].type === "youtube" || pageBlocks.items[index].type === "vimeo" || pageBlocks.items[index].type === "youtube-p" || pageBlocks.items[index].type === "vimeo-p") {
-                    pageBlocks.items[index].videoId = info.videoId;
-                } else if (pageBlocks.items[index].type === "video") {
-                    pageBlocks.items[index].videoUrl = info.videoUrl;
+                        break;
+                    case "youtube":
+                    case "vimeo":
+                    case "youtube-p":
+                    case "vimeo-p":
+                        block.videoId = info.videoId;
+                        break;
+                    case "video":
+                        block.videoUrl = info.videoUrl;
+                        break;
+                    default:
+                        break;
                 }
             }
         },
