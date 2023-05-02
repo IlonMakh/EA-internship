@@ -3,34 +3,14 @@ import idGenerator from "@/helpers/idGenerator";
 
 export const usePagesStore = defineStore("pages", {
     state: () => ({
-        pages: [
-            {
-                siteId: 12,
-                items: [
-                    {
-                        id: 1,
-                        title: "Page 0",
-                        badge: "/images/cat.jpg",
-                        description: "Стандартная страница",
-                        adress: "Адрес страницы",
-                    },
-                    {
-                        id: 2,
-                        title: "Page 1",
-                        badge: "/images/cat.jpg",
-                        description: "Стандартная страница",
-                        adress: "Адрес страницы",
-                    },
-                ],
-            },
-        ],
-
-        activePageId: "",
+        pages: JSON.parse(localStorage.getItem("pages")) || [],
+        activePageId: +localStorage.getItem("activePageId") || '',
     }),
 
     actions: {
         setActivePage(id) {
             this.activePageId = id;
+            localStorage.setItem("activePageId", this.activePageId);
         },
 
         getSitePages(id) {
@@ -70,6 +50,8 @@ export const usePagesStore = defineStore("pages", {
                     items: [page],
                 });
             }
+
+            localStorage.setItem("pages", JSON.stringify(this.pages));
         },
 
         deletePage(siteId, pageId) {
@@ -80,6 +62,8 @@ export const usePagesStore = defineStore("pages", {
 
                 sitePages.items.splice(index, 1);
             }
+
+            localStorage.setItem("pages", JSON.stringify(this.pages));
         },
 
         changeBadge(siteId, pageId, img) {
@@ -90,6 +74,8 @@ export const usePagesStore = defineStore("pages", {
 
                 sitePages.items[index].badge = img;
             }
+
+            localStorage.setItem("pages", JSON.stringify(this.pages));
         },
 
         changeInfo(siteId, pageId, info) {
@@ -103,6 +89,8 @@ export const usePagesStore = defineStore("pages", {
                 page.description = info.description || page.description;
                 page.adress = info.adress || page.adress;
             }
+
+            localStorage.setItem("pages", JSON.stringify(this.pages));
         },
 
     },

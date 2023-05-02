@@ -9,6 +9,7 @@
   "dependencies": {
     "@mahdikhashan/vue3-click-outside": "^0.1.2",
     "core-js": "^3.8.3",
+    "crypto-js": "^4.1.1",
     "filestack-js": "^3.26.1",
     "pinia": "^2.0.35",
     "swiper": "^9.2.4",

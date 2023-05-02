@@ -11,23 +11,25 @@ import {
 
 export const useBlocksStore = defineStore("blocks", {
     state: () => ({
-        blocks: [],
-        stateHistory: [],
+        blocks: JSON.parse(localStorage.getItem("blocks")) || [],
+        stateHistory: JSON.parse(localStorage.getItem("stateHistory")) || [],
         defaultText: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecatihic natus rerum sint expedita repellendus molestiae quisquam animi porro neque facilis sequi voluptate rem eligendi delectus esse explicabo, quod fuga! Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati hic natus rerum sint expedita repellendus molestiae quisquam animi porro neque facilis sequi voluptate rem eligendi delectus esse explicabo, quod fuga!`,
         defaultImg: "/images/cat3.jpg",
         defaultYoutube: "lqYAcBwvZkQ",
         defaultVimeo: "458037431",
-        activeBlockId: "",
-        activeVideo: "",
+        activeBlockId: +localStorage.getItem("activeBlockId") || '',
+        activeVideo: localStorage.getItem("activeVideo") || '',
         isContentOpen: false,
     }),
 
     actions: {
         setActiveVideo(video) {
             this.activeVideo = video;
+            localStorage.setItem("activeVideo", this.activeVideo);
         },
         setActiveBlock(blockId) {
             this.activeBlockId = blockId;
+            localStorage.setItem("activeBlockId", this.activeBlockId);
         },
 
         getActiveBlock(siteId, pageId, blockId) {
@@ -104,6 +106,8 @@ export const useBlocksStore = defineStore("blocks", {
                 default:
                     break;
             }
+
+            localStorage.setItem("blocks", JSON.stringify(this.blocks));
         },
 
         deleteBlock(siteId, pageId, blockId) {
@@ -119,6 +123,8 @@ export const useBlocksStore = defineStore("blocks", {
                     pageBlocks.splice(blockIndex, 1);
                 }
             }
+
+            localStorage.setItem("blocks", JSON.stringify(this.blocks));
         },
 
         copyBlock(siteId, pageId, blockId) {
@@ -138,6 +144,8 @@ export const useBlocksStore = defineStore("blocks", {
                 copy.blockId = idGenerator();
                 pageBlocks.items.splice(index, 0, copy);
             }
+
+            localStorage.setItem("blocks", JSON.stringify(this.blocks));
         },
 
         raiseBlock(siteId, pageId, blockId) {
@@ -155,6 +163,8 @@ export const useBlocksStore = defineStore("blocks", {
                     pageBlocks.items.splice(blockIndex - 1, 0, block);
                 }
             }
+
+            localStorage.setItem("blocks", JSON.stringify(this.blocks));
         },
 
         lowerBlock(siteId, pageId, blockId) {
@@ -173,6 +183,8 @@ export const useBlocksStore = defineStore("blocks", {
                     pageBlocks.items[index + 1] = block;
                 }
             }
+
+            localStorage.setItem("blocks", JSON.stringify(this.blocks));
         },
 
         editBlock(siteId, pageId, blockId, info) {
@@ -218,6 +230,8 @@ export const useBlocksStore = defineStore("blocks", {
                         break;
                 }
             }
+
+            localStorage.setItem("blocks", JSON.stringify(this.blocks));
         },
 
         openContent() {
@@ -230,11 +244,14 @@ export const useBlocksStore = defineStore("blocks", {
 
         saveState() {
             this.stateHistory.push(JSON.stringify(this.blocks));
+            localStorage.setItem("stateHistory", JSON.stringify(this.stateHistory));
         },
 
         undoAction() {
             if (this.stateHistory.length) {
                 this.blocks = JSON.parse(this.stateHistory.pop());
+                localStorage.setItem("stateHistory", JSON.stringify(this.stateHistory));
+                localStorage.setItem("blocks", JSON.stringify(this.blocks));
             }
         },
     },

@@ -12,10 +12,7 @@
             </ul>
         </nav>
         <div class="header__login">
-            <button v-if="!isLogin" class="header__login-btn" @click="isLogin = !isLogin">
-                Войти
-            </button>
-            <button v-else class="header__login-btn" @click="isLogin = !isLogin">
+            <button class="header__login-btn" @click="signOut">
                 Выйти
             </button>
         </div>
@@ -24,11 +21,13 @@
 </template>
 
 <script>
+import { useUserStore } from "@/store/modules/user";
+import { mapActions } from "pinia";
+
 export default {
     name: "app-header",
     data() {
         return {
-            isLogin: true,
             links: [{
                     path: "/",
                     text: "Мои сайты",
@@ -43,12 +42,19 @@ export default {
         };
     },
     methods: {
+        ...mapActions(useUserStore, ["deleteToken"]),
+
         changeActive(index) {
             this.links
                 .filter((link) => link.isActive)
                 .forEach((link) => (link.isActive = false));
             this.links[index].isActive = true;
         },
+
+        signOut() {
+            this.deleteToken();
+            this.$router.push('/login');
+        }
     },
 };
 </script>

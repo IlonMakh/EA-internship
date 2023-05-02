@@ -6,11 +6,12 @@ export const useModalsStore = defineStore("modals", {
         isDomainOpen: false,
         isImageOpen: false,
 
-        activeImage: "",
+        activeImage: localStorage.getItem("activeImage") || '',
     }),
     actions: {
         setActiveImage(img) {
             this.activeImage = img;
+            localStorage.setItem("activeImage", this.activeImage);
         },
 
         openGlobalModal(type) {
