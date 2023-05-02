@@ -53,7 +53,7 @@ export default {
 
                 this.setToken(response.token);
                 this.$router.push(this.$route.query.redirectTo || '/');
-                console.log('decrypt response token',decryptString(response.token));
+                console.log('decrypt response token', decryptString(response.token));
             }
         }
 

@@ -16,9 +16,9 @@ export const setToken = (name, surname, birthdate) => {
         surname,
         birthdate,
         id: Date.now(),
-    }
+    };
     const string = JSON.stringify(data);
     const cipherString = encryptString(string);
-    
+
     return cipherString;
 };
