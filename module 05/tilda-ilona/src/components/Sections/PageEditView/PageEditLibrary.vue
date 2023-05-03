@@ -4,7 +4,7 @@
         <div class="page-edit__modal-menu">
             <div class="page-edit__modal-panel">
                 <input v-model="searchValue" class="page-edit__modal-input" type="text" placeholder="Библиотека блоков" @keyup="debounceSearch" @keydown.enter="search" />
-                <button class="page-edit__modal-search">
+                <button class="page-edit__modal-search" @click="search">
                     <svg>
                         <use xlink:href="#search"></use>
                     </svg>
