@@ -1,7 +1,12 @@
 <template>
-<div class="sites__list">
-    <sites-card v-for="(site, index) in sites" :site="site" :index="index" :key="site.title"></sites-card>
-</div>
+    <div class="sites__list">
+        <sites-card
+            v-for="(site, index) in sites"
+            :site="site"
+            :index="index"
+            :key="site.title"
+        ></sites-card>
+    </div>
 </template>
 
 <script>
@@ -12,9 +17,9 @@ import { mapState } from "pinia";
 export default {
     name: "sites-list",
     components: {
-        SitesCard
+        SitesCard,
     },
-    
+
     computed: {
         ...mapState(useSitesStore, ["sites"]),
     },

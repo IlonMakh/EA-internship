@@ -2,7 +2,7 @@
 <section class="block__cover">
     <img class="block__cover-img" :src="image" />
     <div class="container">
-        <p class="block__cover-content" contenteditable @input="checkContent($event)">
+        <p class="block__cover-content" :contenteditable="$route.name === 'page-edit'" @input="checkContent($event)">
             {{ text }}
         </p>
     </div>

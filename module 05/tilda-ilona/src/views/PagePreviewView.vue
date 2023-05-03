@@ -57,6 +57,7 @@ export default {
 
     methods: {
         ...mapActions(useBlocksStore, ["getPageBlocks"]),
+
     },
 
     computed: {
@@ -64,7 +65,7 @@ export default {
         ...mapState(usePagesStore, ["activePageId"]),
         pageBlocks() {
             return this.getPageBlocks(this.activeSiteId, this.activePageId);
-        }
+        },
     },
 };
 </script>

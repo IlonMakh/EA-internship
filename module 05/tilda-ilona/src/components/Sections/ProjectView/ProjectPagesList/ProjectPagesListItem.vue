@@ -4,19 +4,23 @@
         <router-link :to="{
                     name: 'page-edit',
                     params: {
-                        projectId: this.$route.params.id,
+                        projectId: this.$route.params.projectId,
                         id: this.page.id,
                     },
                 }" class="item-info__img" @click="setParams">
             <img :src="page.badge" />
         </router-link>
-        <router-link :to="{
+        <div class="project__list-item-details">
+            <router-link :to="{
                     name: 'page-edit',
                     params: {
-                        projectId: this.$route.params.id,
+                        projectId: this.$route.params.projectId,
                         id: this.page.id,
                     },
                 }" class="item-info__title" @click="setParams">{{ page.title }}</router-link>
+                <p>Описание: {{ page.description }}</p>
+                <p>Адрес: {{ page.adress }}</p>
+        </div>
     </div>
     <div class="project__list-item-menu">
         <button class="item-menu__settings" @click="toSettings">

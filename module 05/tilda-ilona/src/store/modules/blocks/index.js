@@ -8,21 +8,30 @@ import {
     createVimeoBlock,
     createYoutubeBlock,
 } from "@/helpers/createBlocks";
+import { ACTIVE_BLOCK_ID, ACTIVE_VIDEO, BLOCKS, STATE_HISTORY } from "./constants";
+import { getLocalStorageArray, getLocalStorageValue } from "@/helpers/localStorageCheck";
 
 export const useBlocksStore = defineStore("blocks", {
     state: () => ({
-        blocks: JSON.parse(localStorage.getItem("blocks")) || [],
-        stateHistory: JSON.parse(localStorage.getItem("stateHistory")) || [],
+        blocks: BLOCKS,
+        stateHistory: STATE_HISTORY,
         defaultText: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecatihic natus rerum sint expedita repellendus molestiae quisquam animi porro neque facilis sequi voluptate rem eligendi delectus esse explicabo, quod fuga! Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati hic natus rerum sint expedita repellendus molestiae quisquam animi porro neque facilis sequi voluptate rem eligendi delectus esse explicabo, quod fuga!`,
         defaultImg: "/images/cat3.jpg",
         defaultYoutube: "lqYAcBwvZkQ",
         defaultVimeo: "458037431",
-        activeBlockId: +localStorage.getItem("activeBlockId") || '',
-        activeVideo: localStorage.getItem("activeVideo") || '',
+        activeBlockId: ACTIVE_BLOCK_ID,
+        activeVideo: ACTIVE_VIDEO,
         isContentOpen: false,
     }),
 
     actions: {
+        updateBlocksState() {
+            this.blocks = getLocalStorageArray('blocks');
+            this.stateHistory = getLocalStorageArray('stateHistory');
+            this.activeBlockId = getLocalStorageValue('activeBlockId');
+            this.activeVideo = getLocalStorageValue('activeVideo');
+        },
+
         setActiveVideo(video) {
             this.activeVideo = video;
             localStorage.setItem("activeVideo", this.activeVideo);
@@ -36,6 +45,7 @@ export const useBlocksStore = defineStore("blocks", {
             const pageBlocks = this.blocks.find(
                 (item) => item.siteId === siteId && item.pageId === pageId
             );
+
             return pageBlocks?.items.find((item) => item.blockId === blockId);
         },
 
@@ -43,6 +53,7 @@ export const useBlocksStore = defineStore("blocks", {
             const pageBlocks = this.blocks.find(
                 (item) => item.siteId === siteId && item.pageId === pageId
             );
+
             return pageBlocks ? pageBlocks.items : [];
         },
 
@@ -55,59 +66,55 @@ export const useBlocksStore = defineStore("blocks", {
             switch (type) {
                 case "text":
                     const textBlock = createTextBlock(this.defaultText);
-                    pageBlocks ? pageBlocks.items.push(textBlock) : this.blocks.push({
-                        siteId,
-                        pageId,
-                        items: [textBlock],
-                    });
+
+                    pageBlocks ? pageBlocks.items.push(textBlock) : this.addBlockGroup(siteId, pageId, textBlock);
                     break;
+
                 case "cover":
                     const coverBlock = createCoverBlock(this.defaultText, this.defaultImg);
-                    pageBlocks ? pageBlocks.items.push(coverBlock) : this.blocks.push({
-                        siteId,
-                        pageId,
-                        items: [coverBlock],
-                    });
+
+                    pageBlocks ? pageBlocks.items.push(coverBlock) : this.addBlockGroup(siteId, pageId, coverBlock);
                     break;
+
                 case "slider":
                     const sliderBlock = createSliderBlock(this.defaultImg);
-                    pageBlocks ? pageBlocks.items.push(sliderBlock) : this.blocks.push({
-                        siteId,
-                        pageId,
-                        items: [sliderBlock],
-                    });
+
+                    pageBlocks ? pageBlocks.items.push(sliderBlock) : this.addBlockGroup(siteId, pageId, sliderBlock);
                     break;
+
                 case "youtube":
                 case "youtube-p":
                     const youtubeBlock = createYoutubeBlock(type, this.defaultYoutube);
-                    pageBlocks ? pageBlocks.items.push(youtubeBlock) : this.blocks.push({
-                        siteId,
-                        pageId,
-                        items: [youtubeBlock],
-                    });
+
+                    pageBlocks ? pageBlocks.items.push(youtubeBlock) : this.addBlockGroup(siteId, pageId, youtubeBlock);
                     break;
+
                 case "vimeo":
                 case "vimeo-p":
                     const vimeoBlock = createVimeoBlock(type,this.defaultVimeo);
-                    pageBlocks ? pageBlocks.items.push(vimeoBlock) : this.blocks.push({
-                        siteId,
-                        pageId,
-                        items: [vimeoBlock],
-                    });
+
+                    pageBlocks ? pageBlocks.items.push(vimeoBlock) : this.addBlockGroup(siteId, pageId, vimeoBlock);
                     break;
+
                 case "video":
                     const videoBlock = createVideoBlock();
-                    pageBlocks ? pageBlocks.items.push(videoBlock) : this.blocks.push({
-                        siteId,
-                        pageId,
-                        items: [videoBlock],
-                    });
+
+                    pageBlocks ? pageBlocks.items.push(videoBlock) : this.addBlockGroup(siteId, pageId, videoBlock);
                     break;
+
                 default:
                     break;
             }
 
             localStorage.setItem("blocks", JSON.stringify(this.blocks));
+        },
+
+        addBlockGroup(siteId, pageId, block) {
+            this.blocks.push({
+                siteId,
+                pageId,
+                items: [block],
+            });
         },
 
         deleteBlock(siteId, pageId, blockId) {
@@ -158,8 +165,10 @@ export const useBlocksStore = defineStore("blocks", {
                 const blockIndex = pageBlocks.items.findIndex(
                     (block) => block.blockId === blockId
                 );
+
                 if (blockIndex > 0) {
                     const [block] = pageBlocks.items.splice(blockIndex, 1);
+
                     pageBlocks.items.splice(blockIndex - 1, 0, block);
                 }
             }
@@ -177,8 +186,10 @@ export const useBlocksStore = defineStore("blocks", {
                 const index = pageBlocks.items.findIndex(
                     (block) => block.blockId === blockId
                 );
+
                 if (index < pageBlocks.items.length - 1) {
                     const block = pageBlocks.items[index];
+
                     pageBlocks.items[index] = pageBlocks.items[index + 1];
                     pageBlocks.items[index + 1] = block;
                 }
@@ -214,6 +225,7 @@ export const useBlocksStore = defineStore("blocks", {
                         block.images[info.index] = info.img;
                         if (info.index !== info.changeIndex) {
                             const [image] = block.images.splice(info.index, 1);
+                            
                             block.images.splice(info.changeIndex, 0, image);
                         }
                         break;

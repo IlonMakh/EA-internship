@@ -9,16 +9,3 @@ export const encryptString = (str) => {
 export const decryptString = (str) => {
     return CryptoJS.AES.decrypt(str, cryptoKey).toString(CryptoJS.enc.Utf8);
 };
-
-export const setToken = (name, surname, birthdate) => {
-    const data = {
-        name,
-        surname,
-        birthdate,
-        id: Date.now(),
-    };
-    const string = JSON.stringify(data);
-    const cipherString = encryptString(string);
-
-    return cipherString;
-};

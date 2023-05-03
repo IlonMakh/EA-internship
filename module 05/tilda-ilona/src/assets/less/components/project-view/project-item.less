@@ -10,6 +10,19 @@
         padding: 3rem 2rem;
     }
 
+    &-details {
+        .flex-column-left-between;
+        gap: 1rem;
+
+        p {
+            color: darken(@gray, 20%);
+
+            @media (max-width: @breakpoint-m) {
+                font-size: 1.4rem;
+            }
+        }
+    }
+
     &-info {
         .flex-center;
         gap: 3rem;
@@ -49,6 +62,7 @@
             color: @dark-gray;
             transition: all 0.3s ease-in-out;
             cursor: pointer;
+            margin-bottom: 2rem;
 
             @media (max-width: @breakpoint-m) {
                 font-size: 2.4rem;

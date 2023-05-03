@@ -41,6 +41,7 @@ export default {
 
         validation() {
             const templateMail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
             this.isMailValid = templateMail.test(this.mailValue.toLowerCase());
             this.isPasswordValid = this.checkPassword(this.passwordValue);
         },

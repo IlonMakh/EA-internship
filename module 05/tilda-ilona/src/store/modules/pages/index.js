@@ -1,13 +1,28 @@
 import { defineStore } from "pinia";
 import idGenerator from "@/helpers/idGenerator";
+import { ACTIVE_PAGE_ID, PAGES } from "./constants";
+import { getLocalStorageArray, getLocalStorageValue } from "@/helpers/localStorageCheck";
 
 export const usePagesStore = defineStore("pages", {
     state: () => ({
-        pages: JSON.parse(localStorage.getItem("pages")) || [],
-        activePageId: +localStorage.getItem("activePageId") || '',
+        pages: PAGES,
+        activePageId: ACTIVE_PAGE_ID,
     }),
 
     actions: {
+        updatePagesState() {
+            this.pages = getLocalStorageArray('pages');
+            this.activePageId = getLocalStorageValue('activePageId');
+        },
+
+        hasPage(siteId, pageId) {
+            const sitePages = this.pages.find((item) => item.siteId === siteId);
+
+            if (sitePages) {
+                return sitePages.items.some(item => item.id === pageId);
+            }
+        },
+
         setActivePage(id) {
             this.activePageId = id;
             localStorage.setItem("activePageId", this.activePageId);

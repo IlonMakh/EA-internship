@@ -6,9 +6,39 @@ import ProjectView from "@/views/ProjectView.vue";
 import PageEditView from "@/views/PageEditView.vue";
 import PagePreviewView from "@/views/PagePreviewView.vue";
 import { useUserStore } from "@/store/modules/user";
+import { useSitesStore } from "@/store/modules/sites";
+import { usePagesStore } from "@/store/modules/pages";
+
+const isPageExists = (to, from, next) => {
+    const siteId = +to.params.projectId;
+    const pageId = +to.params.id;
+    const sitesStore = useSitesStore();
+    const pagesStore = usePagesStore();
+    const siteExists = sitesStore.hasSite(siteId);
+
+    if (to.name === "project") {
+        if (siteExists) {
+            sitesStore.setActiveSite(siteId);
+            next();
+        } else {
+            next({ path: "/" });
+        }
+    } else {
+        const pageExists = pagesStore.hasPage(siteId, pageId);
+        
+        if (pageExists && siteExists) {
+            sitesStore.setActiveSite(siteId);
+            pagesStore.setActivePage(pageId);
+            next();
+        } else {
+            next({ path: "/" });
+        }
+    }
+};
 
 const requireAuth = async (to, from, next) => {
     const store = useUserStore();
+
     try {
         await store.checkTokenRequest();
         next();
@@ -17,16 +47,16 @@ const requireAuth = async (to, from, next) => {
         next({
             path: "/login",
             query: { redirectTo: to.fullPath },
-            replace: true,
         });
     }
 };
 
 const requireNoAuth = async (to, from, next) => {
     const store = useUserStore();
+
     try {
         await store.checkTokenRequest();
-        next({path: "/"});
+        next({ path: "/" });
     } catch (error) {
         console.error(error);
         next();
@@ -48,29 +78,35 @@ const routes = [
     },
     {
         path: "/profile",
+        name: "profile",
         component: ProfileView,
         beforeEnter: requireAuth,
     },
     {
-        path: "/project/:id",
+        path: "/project/:projectId",
         component: ProjectView,
         name: "project",
         props: true,
-        beforeEnter: requireAuth,
+        beforeEnter: [requireAuth, isPageExists],
     },
     {
         path: "/project/:projectId/page-edit/:id",
         component: PageEditView,
         name: "page-edit",
         props: true,
-        beforeEnter: requireAuth,
+        beforeEnter: [requireAuth, isPageExists],
     },
     {
         path: "/project/:projectId/page-preview/:id",
         component: PagePreviewView,
         name: "page-preview",
         props: true,
-        beforeEnter: requireAuth,
+        beforeEnter: [requireAuth, isPageExists],
+    },
+
+    {
+        path: "/:catchAll(.*)",
+        redirect: "/",
     },
 ];
 

@@ -68,6 +68,5 @@ export default {
             return this.getActiveSite(this.activeSiteId);
         },
     },
-
 };
 </script>

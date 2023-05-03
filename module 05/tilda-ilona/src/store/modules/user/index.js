@@ -1,26 +1,32 @@
-import { deleteCookie, getCookie, isCookieExpired, isCookieValid, setCookie } from "@/helpers/cookie";
-import { decryptString, encryptString, setToken, token } from "@/helpers/crypto";
+import { deleteCookie, getCookie, isCookieExpired, setCookie } from "@/helpers/cookie";
+import { decryptString, encryptString } from "@/helpers/crypto";
 import { defineStore } from "pinia";
+import { TOKEN } from "./constants";
+import { getLocalStorageValue } from "@/helpers/localStorageCheck";
 
 export const useUserStore = defineStore("user", {
     state: () => ({
         password: encryptString("Я_обожаю_стажировку_в_E2!"),
-        token: localStorage.getItem("userToken") || '',
+        token: TOKEN,
     }),
 
     actions: {
+        updateUserState() {
+            this.token = getLocalStorageValue('token');
+        },
+
         checkPassword(str) {
             return str === decryptString(this.password);
         },
 
         setToken(token) {
             this.token = token;
-            localStorage.setItem("userToken", token);
-            setCookie("userToken", token, 3);
+            localStorage.setItem("token", token);
+            setCookie("token", token, 3);
         },
 
         async tokenRequest() {
-            const token = setToken("Илона", "Махнач", "19.11.1998");
+            const token = this.getToken("Илона", "Махнач", "19.11.1998");
 
             await new Promise((resolve) => setTimeout(resolve, 500));
             return { token };
@@ -29,8 +35,8 @@ export const useUserStore = defineStore("user", {
         async checkTokenRequest() {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    const cookieToken = getCookie("userToken");
-                    const isTokenValid = !isCookieExpired("userToken");
+                    const cookieToken = getCookie("token");
+                    const isTokenValid = !isCookieExpired("token");
 
                     if (this.token === cookieToken && isTokenValid) {
                         resolve({ success: true });
@@ -41,9 +47,22 @@ export const useUserStore = defineStore("user", {
             });
         },
 
+        getToken(name, surname, birthdate) {
+            const data = {
+                name,
+                surname,
+                birthdate,
+                id: Date.now(),
+            };
+            const string = JSON.stringify(data);
+            const cipherString = encryptString(string);
+        
+            return cipherString;
+        },
+
         deleteToken() {
-            localStorage.removeItem("userToken");
-            deleteCookie("userToken");
+            localStorage.removeItem("token");
+            deleteCookie("token");
             this.token = "";
         }
     },

@@ -2,6 +2,7 @@ export const setCookie = (cookieName, value, days) => {
     let expires = "";
     if (days) {
         const date = new Date();
+
         date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
         expires = "; expires=" + date.toUTCString();
     }
@@ -11,6 +12,7 @@ export const setCookie = (cookieName, value, days) => {
 export const getCookie = (cookieName) => {
     const cookieString = `; ${document.cookie}`;
     const parts = cookieString.split(`; ${cookieName}=`);
+
     if (parts.length === 2) {
         return parts.pop().split(";").shift();
     }
@@ -25,9 +27,11 @@ export const isCookieExpired = (cookieName) => {
         .split("; ")
         .find((row) => row.startsWith(`${cookieName}=`))
         ?.split("=")[1];
+        
     if (cookieValue) {
         const expirationTime = parseInt(cookieValue);
         const now = new Date().getTime();
+
         return now > expirationTime;
     }
     return true;

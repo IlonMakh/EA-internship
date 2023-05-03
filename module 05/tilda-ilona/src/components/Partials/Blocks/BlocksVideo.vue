@@ -1,7 +1,7 @@
 <template>
     <section class="block__video">
         <div class="container">
-            <div v-if="!videoUrl"  class="block__video-upload">
+            <div v-if="!videoUrl && $route.name !== 'page-preview'"  class="block__video-upload">
                 <label class="block__video-upload-btn" for="video">Загрузить видео</label>
                 <input class="block__video-upload-input" type="file" id="video" accept="video/*" @change="uploadVideo"/>
             </div>

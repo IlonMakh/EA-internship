@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { ACTIVE_IMAGE } from "./constants";
 
 export const useModalsStore = defineStore("modals", {
     state: () => ({
@@ -6,7 +7,7 @@ export const useModalsStore = defineStore("modals", {
         isDomainOpen: false,
         isImageOpen: false,
 
-        activeImage: localStorage.getItem("activeImage") || '',
+        activeImage: ACTIVE_IMAGE,
     }),
     actions: {
         setActiveImage(img) {

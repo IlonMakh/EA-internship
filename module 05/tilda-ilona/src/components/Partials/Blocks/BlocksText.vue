@@ -1,7 +1,7 @@
 <template>
 <section class="block__text">
     <div class="container">
-        <p class="block__text-content" contenteditable @input="checkContent($event)">
+        <p class="block__text-content" :contenteditable="$route.name === 'page-edit'" @input="checkContent($event)">
             {{ text }}
         </p>
     </div>

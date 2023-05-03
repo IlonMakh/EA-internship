@@ -1,25 +1,50 @@
 <template>
-<main>
-    <section class="page-edit">
-        <div class="container">
-            <div v-if="pageBlocks.length" class="page-edit__blocks">
-                <div v-for="(block, index) in pageBlocks" :key="index" class="block-wrapper">
-                    <component :is="componentMap[block.type]" :blockId="block.blockId" :text="block.text" :image="block.img" :videoId="block.videoId" :videoUrl="block.videoUrl"></component>
+    <main>
+        <section class="page-edit">
+            <div class="container">
+                <div v-if="pageBlocks.length" class="page-edit__blocks">
+                    <div
+                        v-for="(block, index) in pageBlocks"
+                        :key="index"
+                        class="block-wrapper"
+                    >
+                        <component
+                            :is="componentMap[block.type]"
+                            :blockId="block.blockId"
+                            :text="block.text"
+                            :image="block.img"
+                            :videoId="block.videoId"
+                            :videoUrl="block.videoUrl"
+                        ></component>
+                    </div>
                 </div>
+                <button
+                    v-show="!pageBlocks.length"
+                    class="page-edit__add"
+                    @click="openPopup"
+                >
+                    Добавить блок
+                </button>
+                <button
+                    v-show="pageBlocks.length"
+                    class="page-edit__add-more"
+                    @click="openPopup"
+                >
+                    <svg>
+                        <use xlink:href="#plus"></use>
+                    </svg>
+                </button>
             </div>
-            <button v-show="!pageBlocks.length" class="page-edit__add" @click="openPopup">
-                Добавить блок
-            </button>
-            <button v-show="pageBlocks.length" class="page-edit__add-more" @click="openPopup">
-                <svg>
-                    <use xlink:href="#plus"></use>
-                </svg>
-            </button>
-        </div>
-    </section>
-    <page-edit-library :class="isPopupOpen ? 'open' : ''" @closeModal="closePopup"></page-edit-library>
-    <page-edit-block-content v-if="isContentOpen" :block="block"></page-edit-block-content>
-</main>
+        </section>
+        <page-edit-library
+            :class="isPopupOpen ? 'open' : ''"
+            @closeModal="closePopup"
+        ></page-edit-library>
+        <page-edit-block-content
+            v-if="isContentOpen"
+            :block="block"
+        ></page-edit-block-content>
+    </main>
 </template>
 
 <script>
@@ -63,8 +88,8 @@ export default {
                 slider: "BlocksSlider",
                 vimeo: "BlocksVimeo",
                 youtube: "BlocksYoutube",
-                'vimeo-p': "BlocksPopupVimeo",
-                'youtube-p': "BlocksPopupYoutube",
+                "vimeo-p": "BlocksPopupVimeo",
+                "youtube-p": "BlocksPopupYoutube",
                 video: "BlocksVideo",
             },
         };

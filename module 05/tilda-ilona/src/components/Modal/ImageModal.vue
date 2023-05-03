@@ -74,9 +74,10 @@ export default {
             try {
                 const response = await fetch(this.apiUrl + params);
                 const data = await response.json();
+                
                 this.images = data.results;
             } catch (error) {
-                console.log(error);
+                console.log('error', error);
             }
         },
 

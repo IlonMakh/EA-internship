@@ -47,6 +47,7 @@ export default {
 
         slideSpace() {
             const screenWidth = window.innerWidth;
+            
             if (screenWidth >= 1280) {
                 return 30;
             } else if (screenWidth >= 768) {

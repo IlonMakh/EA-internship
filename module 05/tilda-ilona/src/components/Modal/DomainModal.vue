@@ -50,6 +50,7 @@ export default {
 
         checkDomain() {
             const regExp = /^([\wёa-я-]{2,}\.)+[\wёa-я-]{2,}$/i;
+            
             this.isValid = this.domainValue.match(regExp);
         },
     },
