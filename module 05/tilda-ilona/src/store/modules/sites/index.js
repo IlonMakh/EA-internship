@@ -1,7 +1,9 @@
 import { defineStore } from "pinia";
 import idGenerator from "@/helpers/idGenerator";
-import { ACTIVE_SITE_ID, SITES } from "./constants";
 import { getLocalStorageArray, getLocalStorageValue } from "@/helpers/localStorageCheck";
+
+const SITES = getLocalStorageArray('sites');
+const ACTIVE_SITE_ID = getLocalStorageValue('activeSiteId');
 
 export const useSitesStore = defineStore('sites',{
     state: () => ({

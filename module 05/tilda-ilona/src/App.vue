@@ -1,13 +1,17 @@
 <template>
-    <HeaderApp v-if="$route.name == 'sites' || $route.name == 'profile' || $route.name == 'project'"></HeaderApp>
-    <header-edit v-else-if="$route.name == 'page-edit'"></header-edit>
-    <router-view />
+<HeaderApp v-if="
+            $route.name == 'sites' ||
+            $route.name == 'profile' ||
+            $route.name == 'project'
+        "></HeaderApp>
+<header-edit v-else-if="$route.name == 'page-edit'"></header-edit>
+<router-view />
 
-    <settings-modal v-if="isSettingsOpen && activePageId"></settings-modal>
-    <domain-modal v-if="isDomainOpen"></domain-modal>
-    <image-modal v-if="isImageOpen"></image-modal>
+<settings-modal v-if="isSettingsOpen && activePageId"></settings-modal>
+<domain-modal v-if="isDomainOpen"></domain-modal>
+<image-modal v-if="isImageOpen"></image-modal>
 
-    <sprites-svg></sprites-svg>
+<sprites-svg></sprites-svg>
 </template>
 
 <script>
@@ -43,18 +47,45 @@ export default {
     },
 
     computed: {
-        ...mapState(useModalsStore, ["isSettingsOpen", "isDomainOpen", "isImageOpen"]),
+        ...mapState(useModalsStore, [
+            "isSettingsOpen",
+            "isDomainOpen",
+            "isImageOpen",
+        ]),
         ...mapState(usePagesStore, ["activePageId"]),
     },
 
     mounted() {
-        window.addEventListener('storage', (event) => {
-            this.updateSitesState();
-            this.updatePagesState();
-            this.updateBlocksState();
-            this.updateUserState();
-        })
+        window.addEventListener("storage", (event) => {
+            switch (event.key) {
+                case "token":
+                    if (!event.newValue) {
+                        this.$router.push("/login");
+                    }
+                    this.updateUserState();
+                    break;
+
+                case "sites":
+                case "activeSiteId":
+                    this.updateSitesState();
+                    break;
+
+                case "pages":
+                case "activePageId":
+                    this.updatePagesState();
+                    break;
+
+                case "blocks":
+                case "stateHistory":
+                case "activeBlockId":
+                case "activeVideo":
+                    this.updateBlocksState();
+                    break;
+
+                default:
+                    break;
+            }
+        });
     },
 };
 </script>
-

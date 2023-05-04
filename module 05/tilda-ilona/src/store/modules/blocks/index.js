@@ -8,8 +8,12 @@ import {
     createVimeoBlock,
     createYoutubeBlock,
 } from "@/helpers/createBlocks";
-import { ACTIVE_BLOCK_ID, ACTIVE_VIDEO, BLOCKS, STATE_HISTORY } from "./constants";
 import { getLocalStorageArray, getLocalStorageValue } from "@/helpers/localStorageCheck";
+
+const BLOCKS = getLocalStorageArray('blocks');
+const STATE_HISTORY = getLocalStorageArray('stateHistory');
+const ACTIVE_BLOCK_ID = getLocalStorageValue('activeBlockId');
+const ACTIVE_VIDEO = getLocalStorageValue('activeVideo');
 
 export const useBlocksStore = defineStore("blocks", {
     state: () => ({

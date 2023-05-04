@@ -2,9 +2,9 @@
 <div class="page-edit__modal" @click.self="closeModal">
     <div class="page-edit__modal-content">
         <div class="page-edit__modal-menu">
-            <div class="page-edit__modal-panel">
-                <input v-model="searchValue" class="page-edit__modal-input" type="text" placeholder="Библиотека блоков" @keyup="debounceSearch" @keydown.enter="search" />
-                <button class="page-edit__modal-search" @click="search">
+            <form class="page-edit__modal-panel" @submit.prevent="search">
+                <input v-model="searchValue" class="page-edit__modal-input" type="text" placeholder="Библиотека блоков" @keyup="debounceSearch"/>
+                <button class="page-edit__modal-search" type="submit">
                     <svg>
                         <use xlink:href="#search"></use>
                     </svg>
@@ -14,7 +14,7 @@
                         <use xlink:href="#close2"></use>
                     </svg>
                 </button>
-            </div>
+            </form>
             <button v-for="tab in displayedTabs" :key="tab.name" :class="activeTab === tab.name ? 'active' : ''" class="page-edit__modal-tab" @click="activeTab = tab.name">
                 {{ tab.title }}
             </button>

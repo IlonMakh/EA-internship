@@ -1,5 +1,7 @@
+import { getLocalStorageValue } from "@/helpers/localStorageCheck";
 import { defineStore } from "pinia";
-import { ACTIVE_IMAGE } from "./constants";
+
+const ACTIVE_IMAGE= getLocalStorageValue('activeImage');
 
 export const useModalsStore = defineStore("modals", {
     state: () => ({

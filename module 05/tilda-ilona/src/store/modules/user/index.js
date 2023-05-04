@@ -1,8 +1,9 @@
 import { deleteCookie, getCookie, isCookieExpired, setCookie } from "@/helpers/cookie";
 import { decryptString, encryptString } from "@/helpers/crypto";
 import { defineStore } from "pinia";
-import { TOKEN } from "./constants";
 import { getLocalStorageValue } from "@/helpers/localStorageCheck";
+
+const TOKEN = getLocalStorageValue('token');
 
 export const useUserStore = defineStore("user", {
     state: () => ({

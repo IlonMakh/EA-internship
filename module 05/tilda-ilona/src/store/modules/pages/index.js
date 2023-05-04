@@ -1,7 +1,9 @@
 import { defineStore } from "pinia";
 import idGenerator from "@/helpers/idGenerator";
-import { ACTIVE_PAGE_ID, PAGES } from "./constants";
 import { getLocalStorageArray, getLocalStorageValue } from "@/helpers/localStorageCheck";
+
+const PAGES = getLocalStorageArray('pages');
+const ACTIVE_PAGE_ID = getLocalStorageValue('activePageId');
 
 export const usePagesStore = defineStore("pages", {
     state: () => ({
